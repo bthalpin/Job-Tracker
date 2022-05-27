@@ -16,10 +16,13 @@ function Home() {
           .then((res) => res.json())
           .then((response) => setAllCompanies(response));
       };
-    
+ 
   return (
       <>
-        <button className="addCompany">Add Company</button>
+        <div className="addContainer">
+            <Link to={'/company/'} className="addCompany">Add Company</Link>
+
+        </div>
         <div className="homeContainer" >
             {allComapnies.map((company,index)=>{
                 return (

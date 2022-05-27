@@ -1,4 +1,4 @@
-import {Home,Company} from './pages';
+import {Home,Company,AddCompany} from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -10,6 +10,10 @@ function App() {
           <Route
             path='/'
             element={<Home />}
+            />
+          <Route
+            path='/company/'
+            element={<AddCompany />}
             />
           <Route
             path='/company/:companyId'
