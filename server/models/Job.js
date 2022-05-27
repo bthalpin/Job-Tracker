@@ -23,6 +23,16 @@ const jobSchema = new Schema({
     applied: {
         type: Boolean
     },
+    offer: {
+        type: Boolean
+    },
+    rejected: {
+        type: Boolean
+    },
+    company:{
+        type: Schema.Types.ObjectId,
+        ref: 'Company'
+    }
     
 });
 
