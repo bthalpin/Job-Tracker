@@ -20,6 +20,12 @@ const companySchema = new Schema({
     logo: {
         type: String
     },
+    jobs:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Job'
+        }
+    ]
 });
 
 const Company = mongoose.model('Company', companySchema);

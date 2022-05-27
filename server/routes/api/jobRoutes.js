@@ -8,11 +8,11 @@ const {
 } = require('../../controllers/jobController.js');
 
 // /api/Jobs
-router.route('/').get(getJob).post(createJob);
+router.route('/:companyId').get(getJob).post(createJob);
 
 // /api/Jobs/:JobId
 router
-  .route('/:jobId')
+  .route('/:companyId/:jobId')
   .get(getSingleJob)
   .put(updateJob)
   .delete(deleteJob);

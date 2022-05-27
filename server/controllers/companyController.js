@@ -11,10 +11,11 @@ module.exports = {
   getSingleCompany(req, res) {
     Company.findOne({ _id: req.params.companyId })
       .select('-__v')
+      .populate('Jobs')
       .then((company) =>
         !company
           ? res.status(404).json({ message: 'No Company with that ID' })
-          : res.json(company)
+          :res.json({job,company})
       )
       .catch((err) => res.status(500).json(err));
   },

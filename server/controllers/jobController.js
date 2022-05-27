@@ -1,9 +1,9 @@
-const { Job } = require('../models');
+const { Job,Company } = require('../models');
 
 module.exports = {
   // Get all job
   getJob(req, res) {
-    Job.find()
+    Job.find({company:req.params.companyId})
       .then((jobs) => res.json(jobs))
       .catch((err) => res.status(500).json(err));
   },
@@ -21,7 +21,19 @@ module.exports = {
   // Create a job
   createJob(req, res) {
     Job.create(req.body)
-      .then((job) => res.json(job))
+      .then((job) => 
+      !job
+      ? res.status(404).json({ message: 'No job with that ID' })
+      :Company.findOneAndUpdate(
+        {_id:req.params.companyId},
+        {$push:{jobs:job._id}},
+        {new:true}
+      ))
+      .then(company=>
+        !company
+        ?res.status(404).json({ message: 'No company with that ID' })
+        : res.json(company)
+        )
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);

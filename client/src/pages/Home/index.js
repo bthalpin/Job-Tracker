@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import {Job} from '../../components/'
+import {Link} from 'react-router-dom';
+import {Job} from '../../components/';
 import './home.css';
 
 function Home() {
-    const [allJobs,setAllJobs ] = useState([])
+    const [allComapnies,setAllCompanies ] = useState([])
     useEffect(() => {
-        getJobs();
+        getCompanies();
       }, []);
     
-   const getJobs = () => {
-        let jobURL = `http://localhost:3001/api/jobs/`;
+   const getCompanies = () => {
+        let jobURL = `http://localhost:3001/api/company/`;
         
         fetch(jobURL)
           .then((res) => res.json())
-          .then((response) => setAllJobs(response));
+          .then((response) => setAllCompanies(response));
       };
     
   return (
-    <div className="homeContainer" >
-        <button>Add Job</button>
-        {allJobs.map((job,index)=>{
-            return (
-                <div className="homeCard" key={index}>
-                    <Job job={job} setAllJobs={setAllJobs}/>
-                </div>
-            )
-        })}
-        <Job />
+      <>
+        <button className="addCompany">Add Company</button>
+        <div className="homeContainer" >
+            {allComapnies.map((company,index)=>{
+                return (
+                    <Link to={`/company/${company._id}`} className="homeCard" key={index}>
+                        <h2>{company.name}</h2>
+                        <img src={company.logo} alt="Company logo"></img>
+                        <p>{company.jobs.length} Jobs</p>
+                    </Link>
+                )
+            })}
+            <Job />
 
-    </div>
+        </div>
+      </>
   );
 }
 

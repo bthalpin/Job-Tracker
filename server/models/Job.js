@@ -14,7 +14,7 @@ const jobSchema = new Schema({
     contactInfo: {
         type: String
     },
-    Notes: {
+    notes: {
         type: String
     },
     link: {
