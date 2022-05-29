@@ -1,3 +1,6 @@
+.companyLogo{
+    width:500px;
+}
 .companyContainer{
     display:flex;
     flex-wrap: wrap;

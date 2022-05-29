@@ -9,13 +9,14 @@ module.exports = {
   },
   // Get a Company
   getSingleCompany(req, res) {
+      console.log(req.params)
     Company.findOne({ _id: req.params.companyId })
       .select('-__v')
-      .populate('Jobs')
+      .populate('jobs')
       .then((company) =>
         !company
           ? res.status(404).json({ message: 'No Company with that ID' })
-          :res.json({job,company})
+          :res.json(company)
       )
       .catch((err) => res.status(500).json(err));
   },

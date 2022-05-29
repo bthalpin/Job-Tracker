@@ -26,11 +26,13 @@ function Home() {
         <div className="homeContainer" >
             {allComapnies.map((company,index)=>{
                 return (
-                    <Link to={`/company/${company._id}`} className="homeCard" key={index}>
-                        <h2>{company.name}</h2>
-                        <img src={company.logo} alt="Company logo"></img>
-                        <p>{company.jobs.length} Jobs</p>
-                    </Link>
+                    <div className="homeCard">
+                        <Link to={`/company/${company._id}`} className="homeCard" key={index}>
+                            <h2>{company.name}</h2>
+                            <img src={company.logo} alt="Company logo"></img>
+                            <p>{company.jobs.length} Jobs</p>
+                        </Link>
+                    </div>
                 )
             })}
             <Job />
