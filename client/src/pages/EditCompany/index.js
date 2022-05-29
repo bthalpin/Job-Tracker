@@ -1,9 +1,11 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
-import {Link} from 'react-router-dom';
-import './addCompany.css'
 
-function AddCompany() {
+import {Link, useParams} from 'react-router-dom';
+// import './editCompany.css'
+
+function EditCompany() {
+    const {companyId} = useParams()
     const [newCompany,setNewCompany] = useState({
         name:'',
         address:'',
@@ -12,11 +14,20 @@ function AddCompany() {
         logo:'',
     })
     const [created,setCreated] = useState('')
+
+    useEffect(()=>{
+        fetch(`http://localhost:3001/api/company/${companyId}`)
+        .then(res=>res.json())
+        .then(company=>{
+            setNewCompany(company)})
+
+    },[setNewCompany])
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newCompany)
-        fetch('http://localhost:3001/api/company',{
-            method:'POST',
+        fetch(`http://localhost:3001/api/company/${companyId}`,{
+            method:'PUT',
             headers:{
                 'Content-Type':'application/json'
             },
@@ -24,14 +35,14 @@ function AddCompany() {
 
         }).then(response=>response.json())
         .then(company=>{
-            setCreated(`The company ${company.name} was created successfully`)
-            setNewCompany({
-                name:'',
-                address:'',
-                phone:'',
-                website:'',
-                logo:'',
-            })
+            setCreated(`The company ${company.name} was edited successfully`)
+            // setNewCompany({
+            //     name:'',
+            //     address:'',
+            //     phone:'',
+            //     website:'',
+            //     logo:'',
+            // })
         })
         // let jobURL = `http://localhost:3001/api/jobs/`;
         
@@ -41,7 +52,8 @@ function AddCompany() {
       };
   return (
     <div className="addCompanyContainer" >
-        <CompanyForm newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Add' />
+        <CompanyForm newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Edit' />
+        
         {created!==''
         ?<div>
             <p>{created}</p>
@@ -54,4 +66,4 @@ function AddCompany() {
   );
 }
 
-export default AddCompany;
+export default EditCompany;

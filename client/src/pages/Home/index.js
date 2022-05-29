@@ -10,11 +10,21 @@ function Home() {
       }, []);
     
    const getCompanies = () => {
-        let jobURL = `http://localhost:3001/api/company/`;
+        let companyURL = `http://localhost:3001/api/company/`;
         
-        fetch(jobURL)
+        fetch(companyURL)
           .then((res) => res.json())
           .then((response) => setAllCompanies(response));
+      };
+   const deleteCompany = (companyId) => {
+        console.log(companyId)
+        let companyURL = `http://localhost:3001/api/company/${companyId}`;
+        
+        fetch(companyURL,{
+            method:'DELETE'
+        })
+          .then((res) => res.json())
+          .then((response) => setAllCompanies(response))
       };
  
   return (
@@ -27,10 +37,15 @@ function Home() {
             {allComapnies.map((company,index)=>{
                 return (
                     <div className="homeCard">
-                        <Link to={`/company/${company._id}`} className="homeCard" key={index}>
-                            <h2>{company.name}</h2>
-                            <img src={company.logo} alt="Company logo"></img>
-                            <p>{company.jobs.length} Jobs</p>
+                        <Link to={`/company/edit/${company._id}`}>Edit</Link>
+                        <button onClick={()=>deleteCompany(company._id)}>Delete</button>
+                        <Link to={`/company/${company._id}`} className="homeLink" key={index}>
+                            <div>
+                                <h2>{company.name}</h2>
+                                <img src={company.logo} alt="Company logo"></img>
+                                <p>{company.jobs.length} Jobs</p>
+
+                            </div>
                         </Link>
                     </div>
                 )

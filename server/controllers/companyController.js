@@ -1,4 +1,5 @@
 const { Company } = require('../models');
+const { ObjectId } = require('mongoose').Types;
 
 module.exports = {
   // Get all Company
@@ -31,11 +32,11 @@ module.exports = {
   },
   // Delete a Company
   deleteCompany(req, res) {
-    Company.findOneAndDelete({ _id: req.params.CompanyId })
+    Company.findOneAndDelete({ _id: ObjectId(req.params.companyId) })
       .then((company) =>
         !company
           ? res.status(404).json({ message: 'No Company with that ID' })
-          : Company.find().then((companys) => res.json(companys))
+          : Company.find().then((companies) => res.json(companies))
       )
       .catch((err) => res.status(500).json(err));
   },
