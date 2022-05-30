@@ -6,15 +6,14 @@ function SelectedJob() {
     const {jobId,companyId} = useParams()
     const navigate = useNavigate()
     const [job,setJob ] = useState()
+    const [status,setStatus] = useState('created')
     const [newJob,setNewJob] = useState({
         title:'',
         description:'',
         contactInfo:'',
         link:'',
         notes:'',
-        applied:false,
-        offer:false,
-        rejected:false,
+        status:'created',
         company:companyId
     })
     const [edit,setEdit] = useState(false)
@@ -69,7 +68,7 @@ function SelectedJob() {
             {edit
             ?
             <>
-                <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} buttonName='Edit' />
+                <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} setStatus={setStatus} buttonName='Edit' />
 
                 <button onClick={()=>setEdit(false)}>Cancel</button>
             </>
@@ -77,6 +76,7 @@ function SelectedJob() {
             <>
                 <button onClick={()=>setEdit(true)}>Edit</button>
                 {job?.title}
+                {status}
             </>
             
             }

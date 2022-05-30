@@ -5,40 +5,39 @@ import {Link,useParams} from 'react-router-dom';
 
 function AddJob() {
     const {companyId} = useParams()
+    const [status,setStatus] = useState('created')
     const [newJob,setNewJob] = useState({
         title:'',
         description:'',
         contactInfo:'',
         link:'',
         notes:'',
-        applied:false,
-        offer:false,
-        rejected:false,
+        status:status,
         company:companyId
     })
     const [created,setCreated] = useState('')
-    const handleChange = (e) => {
-        e.preventDefault();
-        const {value} = e.target
-        console.log(value,'change')
-        switch (value){
-            case 'applied':
-                console.log('here')
-                setNewJob({...newJob, applied:true,rejected:false,offer:false})
-                break;
+    // const handleChange = (e) => {
+    //     e.preventDefault();
+    //     const {value} = e.target
+    //     console.log(value,'change')
+    //     switch (value){
+    //         case 'applied':
+    //             console.log('here')
+    //             setNewJob({...newJob, applied:true,rejected:false,offer:false})
+    //             break;
             
-            case 'offer':
-                setNewJob({...newJob, applied:true,rejected:false,offer:true})
-                break;
+    //         case 'offer':
+    //             setNewJob({...newJob, applied:true,rejected:false,offer:true})
+    //             break;
             
-            case 'rejected':
-                setNewJob({...newJob, applied:true,rejected:true,offer:false})
-                break;
-            default:
-                setNewJob({...newJob, applied:false,rejected:false,offer:false})
-        }
-        console.log(newJob)
-    }
+    //         case 'rejected':
+    //             setNewJob({...newJob, applied:true,rejected:true,offer:false})
+    //             break;
+    //         default:
+    //             setNewJob({...newJob, applied:false,rejected:false,offer:false})
+    //     }
+    //     console.log(newJob)
+    // }
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newJob,'submit')
@@ -58,9 +57,7 @@ function AddJob() {
                 contactInfo:'',
                 link:'',
                 notes:'',
-                applied:false,
-                offer:false,
-                rejected:false,
+                status:status,
                 company:companyId
             })
 
@@ -75,7 +72,7 @@ function AddJob() {
       };
   return (
     <div className="AddJobContainer" >
-        <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} handleChange={handleChange} buttonName='Add' />
+        <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} buttonName='Add' />
         {created!==''
         ?<div>
             <p>{created}</p>

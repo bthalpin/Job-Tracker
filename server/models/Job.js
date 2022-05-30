@@ -20,14 +20,9 @@ const jobSchema = new Schema({
     link: {
         type: String
     },
-    applied: {
-        type: Boolean
-    },
-    offer: {
-        type: Boolean
-    },
-    rejected: {
-        type: Boolean
+    status:{
+        type:String,
+        enum:['created','applied','offer','rejected']
     },
     company:{
         type: Schema.Types.ObjectId,
