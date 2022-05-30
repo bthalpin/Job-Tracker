@@ -43,9 +43,9 @@ function Company() {
         <button>Add Job</button>
         {allJobs.map((job,index)=>{
             return (
-                <div className="companyCard" key={index}>
+                <Link to={`/company/add/${companyId}`} className="companyCard" key={index}>
                     <Job job={job} setAllJobs={setAllJobs}/>
-                </div>
+                </Link>
             )
         })}
         <Job />
