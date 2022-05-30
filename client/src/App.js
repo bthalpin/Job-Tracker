@@ -1,4 +1,4 @@
-import {Home,Company,AddCompany,EditCompany,AddJob} from './pages';
+import {Home,Company,AddCompany,EditCompany,AddJob,SelectedJob} from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -26,6 +26,10 @@ function App() {
           <Route
             path='/company/:companyId'
             element={<Company />}
+            />
+          <Route
+            path='/jobs/:companyId/:jobId'
+            element={<SelectedJob />}
             />
         </Routes>
       </Router>

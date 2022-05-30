@@ -43,7 +43,7 @@ function Company() {
         <Link to={`/company/add/${companyId}`} >Add Job</Link>
         {allJobs.map((job,index)=>{
             return (
-                <Link to={`/job/${job._id}`} className="companyCard" key={index}>
+                <Link to={`/jobs/${companyId}/${job._id}`} className="companyCard" key={index}>
                     <Job job={job} setAllJobs={setAllJobs}/>
                 </Link>
             )
