@@ -40,10 +40,10 @@ function Company() {
             </p>
             <a href={company.website}>{company.name}</a>
         </div>
-        <button>Add Job</button>
+        <Link to={`/company/add/${companyId}`} >Add Job</Link>
         {allJobs.map((job,index)=>{
             return (
-                <Link to={`/company/add/${companyId}`} className="companyCard" key={index}>
+                <Link to={`/job/${job._id}`} className="companyCard" key={index}>
                     <Job job={job} setAllJobs={setAllJobs}/>
                 </Link>
             )

@@ -20,8 +20,8 @@ function Job({job,setAllJobs}) {
             <p>{job.Notes}</p>
             <p>{job.link}</p>
             <p>{job.contactInfo}</p>
-            <button >edit</button>
-            <button onClick={()=>deleteJob(job._id)}>delete</button>
+            {/* <button >edit</button>
+            <button onClick={()=>deleteJob(job._id)}>delete</button> */}
             </>
            
             
