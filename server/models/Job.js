@@ -27,6 +27,10 @@ const jobSchema = new Schema({
     company:{
         type: Schema.Types.ObjectId,
         ref: 'Company'
+    },
+    userId:{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
     
 });

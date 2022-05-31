@@ -3,6 +3,10 @@ const cors = require('cors');
 const db = require('./config/connection');
 const path = require('path');
 const routes = require('./routes');
+const jwt = require('jsonwebtoken');
+
+require('dotenv').config()
+
 
 const corsOptions = {
     origin: 'http://localhost:3000',
@@ -15,6 +19,21 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors(corsOptions))
+
+app.use(function(req, res, next) {
+    console.log(req.headers)
+    if (req.headers && req.headers.authorization) {
+      jwt.verify(req.headers.authorization, process.env.JWT_SECRET, function(err, decode) {
+        if (err) req.user = undefined;
+        req.user = decode;
+        next();
+      });
+    } else {
+      req.user = undefined;
+      next();
+    }
+  });
+
 app.use(routes);
 
 app.use('/public', express.static(path.join(__dirname, '../client/public')));

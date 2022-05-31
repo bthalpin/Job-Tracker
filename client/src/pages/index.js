@@ -4,5 +4,6 @@ import AddCompany from './AddCompany';
 import AddJob from './AddJob';
 import SelectedJob from './SelectedJob';
 import EditCompany from './EditCompany';
+import Login from './Login';
 
-export {Home,Company,AddCompany,AddJob,EditCompany,SelectedJob}
+export {Home,Company,AddCompany,AddJob,EditCompany,SelectedJob,Login}

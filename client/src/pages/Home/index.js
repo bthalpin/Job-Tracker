@@ -5,6 +5,7 @@ import './home.css';
 
 function Home() {
     const navigate = useNavigate()
+    const token = localStorage.getItem("id_token") || "";
     const [allComapnies,setAllCompanies ] = useState([])
     useEffect(() => {
         getCompanies();
@@ -13,7 +14,11 @@ function Home() {
    const getCompanies = () => {
         let companyURL = `http://localhost:3001/api/company/`;
         
-        fetch(companyURL)
+        fetch(companyURL,{
+            headers:{
+                'authorization':token
+            }
+        })
           .then((res) => res.json())
           .then((response) => setAllCompanies(response));
       };
