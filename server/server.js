@@ -7,10 +7,17 @@ const jwt = require('jsonwebtoken');
 
 require('dotenv').config()
 
+if (precess.env.PORT){
+    const corsOptions = {
+        origin: 'https://job-tracker-bh.herokuapp.com/',
+        optionsSuccessStatus: 200
+    }
+} else {
+    const corsOptions = {
+        origin: 'http://localhost:3000/',
+        optionsSuccessStatus: 200
+    }
 
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200
 }
 
 const PORT = process.env.PORT || 3001;
