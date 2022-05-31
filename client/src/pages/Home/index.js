@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import {Job} from '../../components/';
 import './home.css';
 
 function Home() {
+    const navigate = useNavigate()
     const [allComapnies,setAllCompanies ] = useState([])
     useEffect(() => {
         getCompanies();
@@ -37,8 +38,10 @@ function Home() {
             {allComapnies.map((company,index)=>{
                 return (
                     <div className="homeCard">
-                        <Link to={`/company/edit/${company._id}`}>Edit</Link>
-                        <button onClick={()=>deleteCompany(company._id)}>Delete</button>
+                        <div className="homeBtnContainer">
+                            <button onClick={()=>navigate(`/company/edit/${company._id}`)}>Edit</button>
+                            <button onClick={()=>deleteCompany(company._id)}>Delete</button>
+                        </div>
                         <Link to={`/company/${company._id}`} className="homeLink" key={index}>
                             <div>
                                 <h2>{company.name}</h2>

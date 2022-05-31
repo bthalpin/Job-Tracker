@@ -1,0 +1,11 @@
+.navigation{
+    display:flex;
+    justify-content: space-between;
+    background-color: rgb(46, 46, 97);
+    padding:2rem;
+}
+.navigation *{
+    text-decoration: none;
+    color:white;
+    font-size: 1.2rem;
+    }

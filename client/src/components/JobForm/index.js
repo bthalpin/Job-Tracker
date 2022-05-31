@@ -1,7 +1,7 @@
 import React from 'react';
 // import './job.css';
 
-function JobForm({newJob,setNewJob,handleSubmit,setStatus,buttonName}) {
+function JobForm({newJob,setNewJob,handleSubmit,buttonName}) {
     
     return (
         <>
@@ -17,12 +17,14 @@ function JobForm({newJob,setNewJob,handleSubmit,setStatus,buttonName}) {
             <input type="text" name="link" placeholder="Link" value={newJob.link} onChange={(e)=>setNewJob({...newJob, link:e.target.value})}></input>
             <label htmlFor="notes">Notes</label>
             <textarea name="notes" placeholder="Notes" value={newJob.notes} onChange={(e)=>setNewJob({...newJob, notes:e.target.value})}></textarea>
+            {buttonName==='Add'?<></>:
             <select  onChange={(e)=>setNewJob({...newJob,status:e.target.value})}>
                 <option value="created">---</option>
                 <option value="applied">Applied</option>
                 <option value="offer">Offer</option>
                 <option value="rejected">Rejected</option>
             </select>
+            }
             <button className="addButton" onClick={handleSubmit}>{buttonName}</button>
         </form>
         </>

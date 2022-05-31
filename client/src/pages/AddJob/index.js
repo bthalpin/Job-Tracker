@@ -1,10 +1,11 @@
 import React, {useState,useEffect} from 'react';
 import {JobForm} from '../../components';
-import {Link,useParams} from 'react-router-dom';
+import {Link,useParams,useNavigate} from 'react-router-dom';
 // import './AddJob.css'
 
 function AddJob() {
     const {companyId} = useParams()
+    const navigate = useNavigate()
     const [status,setStatus] = useState('created')
     const [newJob,setNewJob] = useState({
         title:'',
@@ -12,7 +13,7 @@ function AddJob() {
         contactInfo:'',
         link:'',
         notes:'',
-        status:status,
+        status:'created',
         company:companyId
     })
     const [created,setCreated] = useState('')
@@ -57,12 +58,12 @@ function AddJob() {
                 contactInfo:'',
                 link:'',
                 notes:'',
-                status:status,
+                status:'created',
                 company:companyId
             })
 
-            // CHANGE LATER
-            window.location = `/company/${companyId}`
+            navigate(`/company/${companyId}`)
+            
         })
         // let jobURL = `http://localhost:3001/api/jobs/`;
         

@@ -28,29 +28,36 @@ function Company() {
       };
     
   return (
-    <div className="companyContainer" >
-        <div>
-            <h2>{company.name}</h2>
-            <img className="companyLogo" src={company.logo} alt="logo"></img>
-            <p>
-                {company.address}
-            </p>
-            <p>
-                {company.phone}
-            </p>
-            <a href={company.website}>{company.name}</a>
-        </div>
-        <Link to={`/company/add/${companyId}`} >Add Job</Link>
-        {allJobs.map((job,index)=>{
-            return (
-                <Link to={`/jobs/${companyId}/${job._id}`} className="companyCard" key={index}>
-                    <Job job={job} setAllJobs={setAllJobs}/>
-                </Link>
-            )
-        })}
-        <Job />
+      <div>
 
-    </div>
+            <div className="companyContainer">
+                <h2>{company.name}</h2>
+                <img className="companyLogo" src={company.logo} alt="logo"></img>
+                <p>
+                    {company.address}
+                </p>
+                <p>
+                    {company.phone}
+                </p>
+                <a href={company.website}>{company.name}</a>
+            </div>
+            <div className="addJobContainer">
+
+                <Link className="addJobBtn" to={`/company/add/${companyId}`} >Add Job</Link>
+            </div>
+            <div className="companyJobContainer" >
+                
+                {allJobs.map((job,index)=>{
+                    return (
+                        <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
+                            <Job job={job} setAllJobs={setAllJobs}/>
+                        </Link>
+                    )
+                })}
+                <Job />
+
+            </div>
+      </div>
   );
 }
 

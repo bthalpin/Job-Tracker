@@ -1,3 +1,4 @@
+import {Nav} from './components';
 import {Home,Company,AddCompany,EditCompany,AddJob,SelectedJob} from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -6,6 +7,8 @@ function App() {
   return (
     <div className="App">
       <Router>
+      <Nav />
+
         <Routes>
           <Route
             path='/'

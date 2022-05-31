@@ -18,6 +18,15 @@
     width:500px;
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
 }
+.homeBtnContainer{
+    display:flex;
+    justify-content: space-between;
+}
+.homeBtnContainer button{
+    padding:0.5rem;
+    color:white;
+    background-color: var(--button);
+}
 .homeLink{
     /* border:1px solid black; */
     /* padding:1rem; */
