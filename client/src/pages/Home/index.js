@@ -13,7 +13,7 @@ function Home() {
       }, []);
     
    const getCompanies = () => {
-        let companyURL = `http://localhost:3001/api/company/`;
+        let companyURL = `/api/company/`;
         
         fetch(companyURL,{
             headers:{
@@ -25,7 +25,7 @@ function Home() {
       };
    const deleteCompany = (companyId) => {
         console.log(companyId)
-        let companyURL = `http://localhost:3001/api/company/${companyId}`;
+        let companyURL = `/api/company/${companyId}`;
         
         fetch(companyURL,{
             headers:{

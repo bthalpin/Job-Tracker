@@ -16,7 +16,7 @@ function EditCompany() {
     const [created,setCreated] = useState('')
     const token = Auth.getToken();
     useEffect(()=>{
-        fetch(`http://localhost:3001/api/company/${companyId}`,{
+        fetch(`/api/company/${companyId}`,{
             headers:{
                 'authorization':`Bearer ${token}`
             }
@@ -30,7 +30,7 @@ function EditCompany() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newCompany)
-        fetch(`http://localhost:3001/api/company/${companyId}`,{
+        fetch(`/api/company/${companyId}`,{
             method:'PUT',
             headers:{
                 'authorization':`Bearer ${token}`

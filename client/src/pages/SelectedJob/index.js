@@ -24,7 +24,7 @@ function SelectedJob() {
       }, []);
     
     const getJob = () => {
-        let jobURL = `http://localhost:3001/api/jobs/${companyId}/${jobId}`;
+        let jobURL = `/api/jobs/${companyId}/${jobId}`;
         
         fetch(jobURL,{
             headers:{
@@ -39,7 +39,7 @@ function SelectedJob() {
     };
     
     const deleteJob = () => {
-        let jobURL = `http://localhost:3001/api/jobs/${companyId}/${jobId}`;
+        let jobURL = `/api/jobs/${companyId}/${jobId}`;
         
         fetch(jobURL,{
             headers:{
@@ -54,7 +54,7 @@ function SelectedJob() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        let jobURL = `http://localhost:3001/api/jobs/${companyId}/${jobId}`;
+        let jobURL = `/api/jobs/${companyId}/${jobId}`;
         
         fetch(jobURL,{
             method:'PUT',

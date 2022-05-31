@@ -17,7 +17,7 @@ function AddCompany() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newCompany)
-        fetch('http://localhost:3001/api/company',{
+        fetch('/api/company',{
             method:'POST',
             headers:{
                 'authorization':`Bearer ${token}`
@@ -35,7 +35,7 @@ function AddCompany() {
                 logo:'',
             })
         })
-        // let jobURL = `http://localhost:3001/api/jobs/`;
+        // let jobURL = `https://localhost:3001/api/jobs/`;
         
         // fetch(jobURL)
         //   .then((res) => res.json())

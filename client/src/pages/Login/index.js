@@ -12,7 +12,7 @@ function Login() {
     
     const register = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3001/user',{
+        fetch('/user',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -24,7 +24,7 @@ function Login() {
     }
     const login = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3001/user/login',{
+        fetch('/user/login',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

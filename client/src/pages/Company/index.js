@@ -15,7 +15,7 @@ function Company() {
       }, []);
     
    const getCompany = () => {
-        let companyURL = `http://localhost:3001/api/company/${companyId}`;
+        let companyURL = `/api/company/${companyId}`;
         
         fetch(companyURL,{
             headers:{
@@ -26,7 +26,7 @@ function Company() {
           .then((response) => setCompany(response));
       };
    const getJobs = () => {
-        let jobURL = `http://localhost:3001/api/jobs/${companyId}`;
+        let jobURL = `/api/jobs/${companyId}`;
         
         fetch(jobURL,{
             headers:{

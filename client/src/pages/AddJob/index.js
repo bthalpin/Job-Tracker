@@ -44,7 +44,7 @@ function AddJob() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newJob,'submit')
-        fetch(`http://localhost:3001/api/jobs/${companyId}`,{
+        fetch(`/api/jobs/${companyId}`,{
             method:'POST',
             headers:{
                 'authorization':`Bearer ${token}`
