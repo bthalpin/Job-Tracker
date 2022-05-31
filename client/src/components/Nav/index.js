@@ -9,7 +9,7 @@ function Nav() {
     const [isloggedIn,setIsLoggedIn] = useState()
     const logout = () => {
         Auth.logout()
-        navigate('/login/')
+        navigate('/')
     }
     useEffect(()=>{
         // const checkAuthorized = async () => {
@@ -24,7 +24,7 @@ function Nav() {
             setIsLoggedIn(true)
         } else {
             setIsLoggedIn(false)
-            navigate('/login/')
+            navigate('/')
         }
     },[location.pathname])
 
@@ -41,7 +41,7 @@ function Nav() {
             {window.location.pathname.substr(0,8)!=='/company'?
             <></>
             :
-            <Link to="/">Companies</Link>
+            <Link to="/home/">Companies</Link>
             }
             <div className="logout" onClick={logout}>Logout</div>
 

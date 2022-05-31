@@ -20,7 +20,10 @@ function Login() {
             body:JSON.stringify(user)
 
         }).then(response=>response.json())
-        .then(data=>Auth.login(data.token))
+        .then(data=>{
+            Auth.login(data.token)
+            navigate('/home/')
+        })
     }
     const login = (e) => {
         e.preventDefault();
@@ -34,7 +37,7 @@ function Login() {
         }).then(response=>response.json())
         .then(data=>{
             Auth.login(data.token)
-            navigate('/')
+            navigate('/home/')
         })
 
     }
