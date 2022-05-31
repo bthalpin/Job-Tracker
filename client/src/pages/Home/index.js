@@ -8,9 +8,9 @@ function Home() {
     const navigate = useNavigate()
     const token = Auth.getToken();
     const [allComapnies,setAllCompanies ] = useState([])
-    useEffect(() => {
-        getCompanies();
-      }, []);
+    // useEffect(() => {
+    //     getCompanies();
+    //   }, []);
     
    const getCompanies = () => {
         let companyURL = `/api/company/`;
