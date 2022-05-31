@@ -41,13 +41,7 @@ function EditCompany() {
         }).then(response=>response.json())
         .then(company=>{
             setCreated(`The company ${company.name} was edited successfully`)
-            // setNewCompany({
-            //     name:'',
-            //     address:'',
-            //     phone:'',
-            //     website:'',
-            //     logo:'',
-            // })
+           
         })
         // let jobURL = `http://localhost:3001/api/jobs/`;
         
