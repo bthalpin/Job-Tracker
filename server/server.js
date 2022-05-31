@@ -22,8 +22,8 @@ app.use(cors(corsOptions))
 
 app.use(function(req, res, next) {
     console.log(req.headers)
-    if (req.headers && req.headers.authorization) {
-      jwt.verify(req.headers.authorization, process.env.JWT_SECRET, function(err, decode) {
+    if (req.headers && req.headers.authorization&& req.headers.authorization.split(' ')[0] === 'Bearer') {
+      jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET, function(err, decode) {
         if (err) req.user = undefined;
         req.user = decode;
         next();

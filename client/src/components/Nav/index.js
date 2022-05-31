@@ -1,21 +1,54 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState,useEffect} from 'react';
+import {Link, useNavigate,useLocation} from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './nav.css';
 
 function Nav() {
     const navigate = useNavigate()
+    const location = useLocation()
+    const [isloggedIn,setIsLoggedIn] = useState()
     const logout = () => {
         Auth.logout()
+        navigate('/login/')
     }
+    useEffect(()=>{
+        // const checkAuthorized = async () => {
+        //     const token = await Auth.getToken() || '';
+        //     if (token===''){
+        //             navigate('/login/')
+        //     }
+        // }
+        // console.log(location)
+        // checkAuthorized()
+        if(Auth.loggedIn()){
+            setIsLoggedIn(true)
+        } else {
+            setIsLoggedIn(false)
+            navigate('/login/')
+        }
+    },[location.pathname])
+
     return (
        <div className="navigation">
-           {window.location.pathname!=='/'?
-           <div onClick={()=>navigate(-1)}>Back</div>
-           :<></>
-           }
-           <Link to="/">Companies</Link>
-           <div onClick={logout}>Logout</div>
+           {isloggedIn?
+            <>
+            {window.location.pathname!=='/'?
+            <div onClick={()=>navigate(-1)}>Back</div>
+            :<></>
+            }
+            
+            <div className="navButtons">
+            {window.location.pathname.substr(0,8)!=='/company'?
+            <></>
+            :
+            <Link to="/">Companies</Link>
+            }
+            <div className="logout" onClick={logout}>Logout</div>
+
+            </div>
+            </>
+            :<></>}
+          
        </div>
     );
   }

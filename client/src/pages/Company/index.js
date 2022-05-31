@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {Job} from '../../components/';
+import Auth from '../../utils/auth';
 import './company.css';
 
 function Company() {
     const {companyId} = useParams()
     const [allJobs,setAllJobs ] = useState([])
     const [company,setCompany ] = useState({})
+    const token = Auth.getToken();
     useEffect(() => {
         getCompany()
         getJobs();
@@ -15,14 +17,22 @@ function Company() {
    const getCompany = () => {
         let companyURL = `http://localhost:3001/api/company/${companyId}`;
         
-        fetch(companyURL)
+        fetch(companyURL,{
+            headers:{
+                'authorization':`Bearer ${token}`
+            }
+        })
           .then((res) => res.json())
           .then((response) => setCompany(response));
       };
    const getJobs = () => {
         let jobURL = `http://localhost:3001/api/jobs/${companyId}`;
         
-        fetch(jobURL)
+        fetch(jobURL,{
+            headers:{
+                'authorization':`Bearer ${token}`
+            }
+        })
           .then((res) => res.json())
           .then((response) => setAllJobs(response));
       };

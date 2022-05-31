@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useParams,useNavigate} from 'react-router-dom';
 import {Job,JobForm} from '../../components/';
+import Auth from '../../utils/auth';
 
 function SelectedJob() {
     const {jobId,companyId} = useParams()
     const navigate = useNavigate()
     const [job,setJob ] = useState()
     const [status,setStatus] = useState('created')
+    const token = Auth.getToken();
     const [newJob,setNewJob] = useState({
         title:'',
         description:'',
@@ -24,7 +26,11 @@ function SelectedJob() {
     const getJob = () => {
         let jobURL = `http://localhost:3001/api/jobs/${companyId}/${jobId}`;
         
-        fetch(jobURL)
+        fetch(jobURL,{
+            headers:{
+                'authorization':`Bearer ${token}`
+            }
+        })
           .then((res) => res.json())
           .then((response) => {
               setJob(response)
@@ -36,6 +42,9 @@ function SelectedJob() {
         let jobURL = `http://localhost:3001/api/jobs/${companyId}/${jobId}`;
         
         fetch(jobURL,{
+            headers:{
+                'authorization':`Bearer ${token}`
+            },
             method:'DELETE'
         })
           .then((res) => res.json())
@@ -50,7 +59,7 @@ function SelectedJob() {
         fetch(jobURL,{
             method:'PUT',
             headers:{
-                'Content-Type':'application/json'
+                'authorization':`Bearer ${token}`
             },
             body:JSON.stringify(newJob)
 

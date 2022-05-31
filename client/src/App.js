@@ -1,9 +1,12 @@
+import React,{useEffect} from 'react';
 import {Nav} from './components';
 import {Home,Company,AddCompany,EditCompany,AddJob,SelectedJob,Login} from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Auth from './utils/auth';
 import './App.css';
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
@@ -15,7 +18,7 @@ function App() {
             element={<Home />}
             />
           <Route
-            path='/login'
+            path='/login/'
             element={<Login />}
             />
           <Route

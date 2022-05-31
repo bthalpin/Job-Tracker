@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
-
+import Auth from '../../utils/auth';
 import {Link, useParams} from 'react-router-dom';
 // import './editCompany.css'
 
@@ -14,9 +14,13 @@ function EditCompany() {
         logo:'',
     })
     const [created,setCreated] = useState('')
-
+    const token = Auth.getToken();
     useEffect(()=>{
-        fetch(`http://localhost:3001/api/company/${companyId}`)
+        fetch(`http://localhost:3001/api/company/${companyId}`,{
+            headers:{
+                'authorization':`Bearer ${token}`
+            }
+        })
         .then(res=>res.json())
         .then(company=>{
             setNewCompany(company)})
@@ -29,8 +33,9 @@ function EditCompany() {
         fetch(`http://localhost:3001/api/company/${companyId}`,{
             method:'PUT',
             headers:{
-                'Content-Type':'application/json'
+                'authorization':`Bearer ${token}`
             },
+            
             body:JSON.stringify(newCompany)
 
         }).then(response=>response.json())

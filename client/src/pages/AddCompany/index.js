@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
 import {Link} from 'react-router-dom';
+import Auth from '../../utils/auth';
 import './addCompany.css'
 
 function AddCompany() {
@@ -12,13 +13,14 @@ function AddCompany() {
         logo:'',
     })
     const [created,setCreated] = useState('')
+    const token = Auth.getToken();
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newCompany)
         fetch('http://localhost:3001/api/company',{
             method:'POST',
             headers:{
-                'Content-Type':'application/json'
+                'authorization':`Bearer ${token}`
             },
             body:JSON.stringify(newCompany)
 

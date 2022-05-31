@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {Link,useNavigate} from 'react-router-dom';
 import {Job} from '../../components/';
+import Auth from '../../utils/auth';
 import './home.css';
 
 function Home() {
     const navigate = useNavigate()
-    const token = localStorage.getItem("id_token") || "";
+    const token = Auth.getToken();
     const [allComapnies,setAllCompanies ] = useState([])
     useEffect(() => {
         getCompanies();
@@ -16,7 +17,7 @@ function Home() {
         
         fetch(companyURL,{
             headers:{
-                'authorization':token
+                'authorization':`Bearer ${token}`
             }
         })
           .then((res) => res.json())
@@ -27,6 +28,9 @@ function Home() {
         let companyURL = `http://localhost:3001/api/company/${companyId}`;
         
         fetch(companyURL,{
+            headers:{
+                'authorization':`Bearer ${token}`
+            },
             method:'DELETE'
         })
           .then((res) => res.json())
@@ -42,7 +46,7 @@ function Home() {
         <div className="homeContainer" >
             {allComapnies.map((company,index)=>{
                 return (
-                    <div className="homeCard">
+                    <div className="homeCard" key={index}>
                         <div className="homeBtnContainer">
                             <button onClick={()=>navigate(`/company/edit/${company._id}`)}>Edit</button>
                             <button onClick={()=>deleteCompany(company._id)}>Delete</button>

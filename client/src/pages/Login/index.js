@@ -32,7 +32,10 @@ function Login() {
             body:JSON.stringify(user)
 
         }).then(response=>response.json())
-        .then(data=>Auth.login(data.token))
+        .then(data=>{
+            Auth.login(data.token)
+            navigate('/')
+        })
 
     }
     return (
