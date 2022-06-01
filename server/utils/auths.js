@@ -28,7 +28,7 @@ module.exports = {
         return req;
     },
     loginRequired:function(req, res, next) {
-        console.log(req,'tets')
+        // console.log(req,'tets')
         if (req.user) {
           next();
         } else {

@@ -49,7 +49,7 @@ function AddJob() {
             headers:{
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify(newJob)
+            body:JSON.stringify({...newJob,userId:Auth.getProfile().data._id})
 
         }).then(response=>response.json())
         .then(job=>{

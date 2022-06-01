@@ -17,13 +17,13 @@ function AddCompany() {
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(newCompany)
+        console.log(Auth.getProfile())
         fetch('/api/company',{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify(newCompany)
+            body:JSON.stringify({...newCompany,userId:Auth.getProfile().data._id})
 
         }).then(response=>response.json())
         .then(company=>{

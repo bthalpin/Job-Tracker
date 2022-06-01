@@ -3,13 +3,14 @@ const { Job,Company } = require('../models');
 module.exports = {
   // Get all job
   getJob(req, res) {
-    Job.find({company:req.params.companyId})
+    // console.log(req.user.data._id)
+    Job.find({company:req.params.companyId,userId:req.user.data._id})
       .then((jobs) => res.json(jobs))
       .catch((err) => res.status(500).json(err));
   },
   // Get a job
   getSingleJob(req, res) {
-    Job.findOne({ _id: req.params.jobId })
+    Job.findOne({ _id: req.params.jobId,userId:req.user.data._id })
       .select('-__v')
       .then((job) =>
         !job

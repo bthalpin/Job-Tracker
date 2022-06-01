@@ -19,7 +19,7 @@ if (process.env.PORT){
     }
 
 }
-console.log(corsOptions,'cors')
+// console.log(corsOptions,'cors')
 const PORT = process.env.PORT || 3001;
 const app = express();
 
