@@ -18,6 +18,18 @@
     padding:3rem;
     height:calc(100vh - 3.7rem);
 }
+.jobContainer h3{
+    text-align: start;
+}
+.description,.notes{
+    white-space: pre-wrap;
+    text-align: start;
+    width:90vw;
+    margin-bottom:3rem;
+    padding:1rem;
+    border:1px solid var(--border);
+    box-shadow:0.3rem 0.3rem 1rem var(--shadow) inset;
+}
 .appliedjob{
     border:10px solid var(--applied);
 }

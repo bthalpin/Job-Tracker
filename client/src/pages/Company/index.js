@@ -82,6 +82,8 @@ function Company() {
                             {/* <p>{job.Notes}</p> */}
                             <p>{job.link}</p>
                             <p>{job.contactInfo}</p>
+                            {console.log(job)}
+                            {job.createdAt?<p>Created at {job.date}</p>:<></>}
                         </Link>
                     )
                 })}

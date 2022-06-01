@@ -111,9 +111,19 @@ function SelectedJob() {
             <>
             <h2>{job?.title}</h2>
                 <p>{job?.contactInfo}</p>
-                <a href={job?.link}>{job?.title}</a>
-                <p>{job?.description}</p>
-                <p>{job?.notes}</p>
+                <a href={job?.link}>{job?.title} - Post</a>
+                {job.description?
+                <>
+                    <h3>Description:</h3>
+                    <p className="description">{job.description}</p>
+                </>
+                :<></>}
+                {job.notes?
+                <>
+                    <h3>Notes:</h3>
+                    <p className="notes">{job?.notes}</p>
+                </>
+                :<></>}
                 <p>Set status</p>
                 <select value={newJob.status} onChange={changeStatus}>
                 <option value="created" >---</option>

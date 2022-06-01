@@ -10,7 +10,7 @@ function JobForm({newJob,setNewJob,handleSubmit,buttonName,setEdit}) {
             <label htmlFor="Job">Job Title</label>
             <input type="text" name="Job" placeholder="Job Title" value={newJob.title} onChange={(e)=>setNewJob({...newJob, title:e.target.value})}></input>
             <label htmlFor="Description">Description</label>
-            <input type="text" name="Description" placeholder="Description" value={newJob.description} onChange={(e)=>setNewJob({...newJob, description:e.target.value})}></input>
+            <textarea name="Description" placeholder="Description" value={newJob.description} onChange={(e)=>setNewJob({...newJob, description:e.target.value})}></textarea>
             <label htmlFor="contact">Contact Information</label>
             <input type="text" name="contact" placeholder="Contact Information" value={newJob.contactInfo} onChange={(e)=>setNewJob({...newJob, contactInfo:e.target.value})}></input>
             <label htmlFor="link">Link</label>

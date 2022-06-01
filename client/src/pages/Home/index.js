@@ -44,7 +44,7 @@ function Home() {
                             <div>
                                 <h2>{company.name}</h2>
                                 <img src={company.logo||'/images/default.png'} alt="Company logo"></img>
-                                <p>{company.jobs.length} Jobs</p>
+                                <p>{company.jobs.length} {company.jobs.length===1?'Job':'Jobs'}</p>
 
                             </div>
                         </Link>

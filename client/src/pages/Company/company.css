@@ -9,7 +9,7 @@
 .companyJobContainer{
     display:flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 .companyCard{
     margin:2rem;
