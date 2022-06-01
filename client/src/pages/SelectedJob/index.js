@@ -23,6 +23,24 @@ function SelectedJob() {
     useEffect(() => {
         getJob();
       }, []);
+    useEffect(()=>{
+        if(newJob.title){
+        let jobURL = `/api/jobs/${companyId}/${jobId}`;
+        console.log(newJob.status)
+        fetch(jobURL,{
+            method:'PUT',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(newJob)
+
+        })
+          .then((res) => res.json())
+          .then((response) => {
+              
+                setJob(response)
+            });}
+    },[newJob.status])
     
     const getJob = () => {
         let jobURL = `/api/jobs/${companyId}/${jobId}`;
@@ -53,6 +71,12 @@ function SelectedJob() {
               navigate(`/company/${companyId}`)
             });
     }
+    const changeStatus = async (e) => {
+        e.preventDefault()
+        console.log('here')
+        setJob({...newJob,status:e.target.value})
+        setNewJob({...newJob,status:e.target.value})
+    }
     const handleSubmit = (e) => {
         e.preventDefault()
         let jobURL = `/api/jobs/${companyId}/${jobId}`;
@@ -67,6 +91,7 @@ function SelectedJob() {
         })
           .then((res) => res.json())
           .then((response) => {
+              console.log(response)
                 setJob(response)
                 setEdit(false)
             });
@@ -84,16 +109,24 @@ function SelectedJob() {
             </>
             :
             <>
+            <h2>{job?.title}</h2>
+                <p>{job?.contactInfo}</p>
+                <a href={job?.link}>{job?.title}</a>
+                <p>{job?.description}</p>
+                <p>{job?.notes}</p>
+                <p>Set status</p>
+                <select value={newJob.status} onChange={changeStatus}>
+                <option value="created" >---</option>
+                <option value="applied">Applied</option>
+                <option value="offer">Offer</option>
+                <option value="rejected">Rejected</option>
+            </select>
             <div className="jobButtonContainer">
                 <button className="jobButton" onClick={deleteJob}>Delete</button>
                 <button className="jobButton" onClick={()=>setEdit(true)}>Edit</button>
 
             </div>
-                <h2>{job?.title}</h2>
-                <p>{job?.contactInfo}</p>
-                <a href={job?.link}>{job?.title}</a>
-                <p>{job?.description}</p>
-                <p>{job?.notes}</p>
+                
             </>
             
             }

@@ -51,6 +51,7 @@ module.exports = {
   },
   // Update a job
   updateJob(req, res) {
+    console.log(req.body)
     Job.findOneAndUpdate(
       { _id: req.params.jobId },
       { $set: req.body },
