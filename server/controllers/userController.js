@@ -47,16 +47,16 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // Create a user
-  createUser(req, res) {
-    User.create(req.body)
-      .then((user) => 
-      !user
-      ? res.status(404).json({ message: 'No user with that ID' })
-      :res.json(user))
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+  async createUser(req, res) {
+    try {
+      const user = await  User.create(req.body)
+      const token = signToken(user)
+      res.json({token,user})
+    } catch (err) {
+      res.status(500).json(err)
+
+    }
+   
   },
   // Delete a user
   deleteuser(req, res) {

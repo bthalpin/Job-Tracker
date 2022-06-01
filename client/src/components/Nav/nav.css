@@ -1,19 +1,10 @@
 .navigation{
     display:flex;
     justify-content: space-between;
-    position: relative;
     background-color: var(--nav);
     padding:0.5rem;
 }
-.back{
-    position: absolute;
-    top:3.8rem;
-    left:0;
-    background-color: var(--nav);
-    padding:0.5rem;
-    border-bottom-right-radius: 0.2rem;
 
-}
 .navigation *{
     text-decoration: none;
     color:white;
@@ -22,10 +13,9 @@
 .navButtons{
     display:flex;
     justify-content: space-between;
-    /* margin-right:0; */
     align-items: center;
-    width:20vw;
-    min-width:200px;
+    width:130px;
+    /* margin:auto 0.2rem; */
 }
 .logout{
     margin-left:auto;

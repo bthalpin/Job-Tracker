@@ -80,9 +80,9 @@ function Login() {
                         <label htmlFor="name">Name:</label>
                         <input name="name" type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Enter Name" required></input>
                         <label htmlFor="email">Email:</label>
-                        <input name="email" type="text" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
+                        <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
                         <label htmlFor="password">Password:</label>
-                        <input name="password" type="text" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
+                        <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
                     
                     </div>
                     <button className="loginButton">Register</button>
@@ -97,9 +97,9 @@ function Login() {
                 <form onSubmit={login}>
                     <div className="inputContainer">
                         <label htmlFor="email">Email:</label>
-                        <input name="email" type="text" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
+                        <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
                         <label htmlFor="password">Password:</label>
-                        <input name="password" type="text" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
+                        <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
                     </div>
                     <button className="loginButton">Login</button>
                 </form>

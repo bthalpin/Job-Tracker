@@ -22,10 +22,18 @@
     display:flex;
     justify-content: space-between;
 }
-.companyBtnContainer button{
+.companyEdit{
     padding:0.5rem;
     color:white;
     background-color: var(--button);
+    cursor: pointer;
+
+}
+.delete{
+    padding:0.5rem;
+    color:white;
+    cursor: pointer;
+    background-color: var(--warning);
 }
 .addJobContainer{
     margin:1rem;

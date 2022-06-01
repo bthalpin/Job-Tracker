@@ -1,0 +1,42 @@
+.jobFormContainer{
+    margin:2rem;
+    padding:2rem;
+}
+.jobFormContainer form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.jobFormContainer input{
+    margin:0.5rem;
+    border-radius: 0.2rem;
+    padding:0.2rem;
+    width:300px;
+    max-width: 100%;
+
+}
+.jobFormContainer textarea{
+    width:300px;
+    height:100px;
+    max-width: 100%;
+}
+.homeButtonContainer{
+    margin:1rem;
+}
+.jobFormButton{
+    margin: 1rem 0.3rem;
+    padding:0.5rem;
+    background-color: var(--button);
+    border-radius:0.5rem;
+    color:white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    min-width:100px;
+    cursor: pointer;
+}
+@media screen and (max-width:500px) {
+    .jobFormContainer{
+        margin:0;
+        padding:0;
+    }
+}

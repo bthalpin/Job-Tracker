@@ -64,8 +64,8 @@ function Company() {
                 </p>
                 <a href={company.website}>{company.name}</a>
                 <div className="companyBtnContainer">
-                            <button onClick={()=>navigate(`/company/edit/${company._id}`)}>Edit</button>
-                            <button onClick={()=>deleteCompany(company._id)}>Delete</button>
+                            <button className="companyEdit" onClick={()=>navigate(`/company/edit/${company._id}`)}>Edit</button>
+                            <button className="delete" onClick={()=>deleteCompany(company._id)}>Delete</button>
                         </div>
             </div>
             <div className="addJobContainer">

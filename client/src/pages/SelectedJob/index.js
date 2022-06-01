@@ -103,9 +103,9 @@ function SelectedJob() {
             {edit
             ?
             <>  
-                <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} setStatus={setStatus} buttonName='Edit' />
+                <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} setStatus={setStatus} setEdit={setEdit} buttonName='Save' />
 
-                <button onClick={()=>setEdit(false)}>Cancel</button>
+                
             </>
             :
             <>
@@ -122,7 +122,7 @@ function SelectedJob() {
                 <option value="rejected">Rejected</option>
             </select>
             <div className="jobButtonContainer">
-                <button className="jobButton" onClick={deleteJob}>Delete</button>
+                <button className="jobButton deleteJob" onClick={deleteJob}>Delete</button>
                 <button className="jobButton" onClick={()=>setEdit(true)}>Edit</button>
 
             </div>
