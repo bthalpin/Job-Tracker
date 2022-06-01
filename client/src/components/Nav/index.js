@@ -36,7 +36,7 @@ function Nav() {
            {isloggedIn?
             <>
             <Link to="/home/">
-                <h2 className="navTitle">Job Tracker</h2>
+                <h2 className="navTitle">JobTracker</h2>
             </Link>
             <div className="navButtons">
             {/* {window.location.pathname.substr(0,8)!=='/company'?

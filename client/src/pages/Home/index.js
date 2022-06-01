@@ -27,6 +27,10 @@ function Home() {
  
   return (
       <>
+            {allComapnies.length?<></>
+            :<div>
+                <p className="welcomeMessage"><span className="welcome">Welcome to JobTracker!</span> To begin, start by adding a company that you are applying to.  Once the company is created you can then add individual jobs and mark the jobs once you apply, get an offer, or are rejected.</p>
+            </div>}
         <div className="addContainer">
             <Link to={'/company/'} className="addCompany">Add Company</Link>
 
