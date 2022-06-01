@@ -43,6 +43,7 @@ module.exports = {
   },
   // Update a Company
   updateCompany(req, res) {
+    console.log(req.body)
     Company.findOneAndUpdate(
       { _id: req.params.companyId },
       { $set: req.body },

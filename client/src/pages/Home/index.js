@@ -23,19 +23,7 @@ function Home() {
           .then((res) => res.json())
           .then((response) => setAllCompanies(response));
       };
-   const deleteCompany = (companyId) => {
-        console.log(companyId)
-        let companyURL = `/api/company/${companyId}`;
-        
-        fetch(companyURL,{
-            headers:{
-                'authorization':`Bearer ${token}`
-            },
-            method:'DELETE'
-        })
-          .then((res) => res.json())
-          .then((response) => setAllCompanies(response))
-      };
+  
  
   return (
       <>
@@ -47,14 +35,11 @@ function Home() {
             {allComapnies.map((company,index)=>{
                 return (
                     <div className="homeCard" key={index}>
-                        <div className="homeBtnContainer">
-                            <button onClick={()=>navigate(`/company/edit/${company._id}`)}>Edit</button>
-                            <button onClick={()=>deleteCompany(company._id)}>Delete</button>
-                        </div>
+                        
                         <Link to={`/company/${company._id}`} className="homeLink" key={index}>
                             <div>
                                 <h2>{company.name}</h2>
-                                <img src={company.logo} alt="Company logo"></img>
+                                <img src={company.logo||'/images/default.png'} alt="Company logo"></img>
                                 <p>{company.jobs.length} Jobs</p>
 
                             </div>

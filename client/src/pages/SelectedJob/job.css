@@ -1,0 +1,25 @@
+.jobButtonContainer{
+    display:flex;
+    justify-content: center;
+    /* margin-top:3rem; */
+}
+.jobButton{
+    padding:0.5rem;
+    color:white;
+    background-color: var(--button);
+    margin:1rem;
+}
+.jobContainer{
+    padding:3rem;
+    height:calc(100vh - 3.7rem);
+}
+
+.appliedjob{
+    border:10px solid var(--applied);
+}
+.offerjob{
+    border:10px solid var(--offer);
+}
+.rejectedjob{
+    border:10px solid var(--rejected);
+}

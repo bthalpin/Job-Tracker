@@ -15,7 +15,7 @@ router.route('/:companyId').get(loginRequired,getJob).post(createJob);
 router
   .route('/:companyId/:jobId')
   .get(loginRequired,getSingleJob)
-  .put(loginRequired,updateJob)
+  .put(updateJob)
   .delete(loginRequired,deleteJob);
 
 module.exports = router;

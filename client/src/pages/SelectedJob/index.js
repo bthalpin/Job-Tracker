@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Link, useParams,useNavigate} from 'react-router-dom';
 import {Job,JobForm} from '../../components/';
 import Auth from '../../utils/auth';
+import './job.css'
 
 function SelectedJob() {
     const {jobId,companyId} = useParams()
@@ -59,7 +60,7 @@ function SelectedJob() {
         fetch(jobURL,{
             method:'PUT',
             headers:{
-                'authorization':`Bearer ${token}`
+                'Content-Type': 'application/json'
             },
             body:JSON.stringify(newJob)
 
@@ -72,20 +73,27 @@ function SelectedJob() {
     }
 
     return (
-        <div className="companyContainer" >
-            <button onClick={deleteJob}>Delete</button>
+        <div className={`${job?.status}job jobContainer`} >
+            
             {edit
             ?
-            <>
+            <>  
                 <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} setStatus={setStatus} buttonName='Edit' />
 
                 <button onClick={()=>setEdit(false)}>Cancel</button>
             </>
             :
             <>
-                <button onClick={()=>setEdit(true)}>Edit</button>
-                {job?.title}
-                {status}
+            <div className="jobButtonContainer">
+                <button className="jobButton" onClick={deleteJob}>Delete</button>
+                <button className="jobButton" onClick={()=>setEdit(true)}>Edit</button>
+
+            </div>
+                <h2>{job?.title}</h2>
+                <p>{job?.contactInfo}</p>
+                <a href={job?.link}>{job?.title}</a>
+                <p>{job?.description}</p>
+                <p>{job?.notes}</p>
             </>
             
             }

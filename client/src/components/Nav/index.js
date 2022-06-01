@@ -26,6 +26,9 @@ function Nav() {
             setIsLoggedIn(false)
             navigate('/')
         }
+        if (Auth.loggedIn() && location.pathname==='/'){
+            navigate('/home');
+        }
     },[location.pathname])
 
     return (

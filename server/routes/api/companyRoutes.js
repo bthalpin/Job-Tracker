@@ -14,7 +14,7 @@ router.route('/').get(loginRequired,getCompany).post(createCompany);
 router
   .route('/:companyId')
   .get(loginRequired,getSingleCompany)
-  .put(loginRequired,updateCompany)
+  .put(updateCompany)
   .delete(loginRequired,deleteCompany);
 
 module.exports = router;

@@ -1,11 +1,12 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
 import Auth from '../../utils/auth';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams,useNavigate} from 'react-router-dom';
 // import './editCompany.css'
 
 function EditCompany() {
     const {companyId} = useParams()
+    const navigate = useNavigate()
     const [newCompany,setNewCompany] = useState({
         name:'',
         address:'',
@@ -33,14 +34,15 @@ function EditCompany() {
         fetch(`/api/company/${companyId}`,{
             method:'PUT',
             headers:{
-                'authorization':`Bearer ${token}`
+                'Content-Type': 'application/json'
             },
             
             body:JSON.stringify(newCompany)
 
         }).then(response=>response.json())
         .then(company=>{
-            setCreated(`The company ${company.name} was edited successfully`)
+            navigate(`/company/${companyId}`)
+            // setCreated(`The company ${company.name} was edited successfully`)
            
         })
         // let jobURL = `http://localhost:3001/api/jobs/`;
@@ -53,14 +55,14 @@ function EditCompany() {
     <div className="addCompanyContainer" >
         <CompanyForm newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Edit' />
         
-        {created!==''
+        {/* {created!==''
         ?<div>
             <p>{created}</p>
             <div className="homeButtonContainer">
                 <Link to='/' className="homeButton">Home</Link>
             </div>
         </div>
-        :<></>}
+        :<></>} */}
     </div>
   );
 }
