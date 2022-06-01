@@ -8,7 +8,7 @@ const {
 } = require('../../controllers/companyController.js');
 const {loginRequired} = require('../../utils/auths');
 // /api/Companys
-router.route('/').get(loginRequired,getCompany).post(loginRequired,createCompany);
+router.route('/').get(loginRequired,getCompany).post(createCompany);
 
 // /api/Companys/:CompanyId
 router

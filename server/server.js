@@ -14,7 +14,7 @@ if (process.env.PORT){
     }
 } else {
     corsOptions = {
-        origin: 'localhost:3000',
+        origin: 'http://localhost:3000',
         optionsSuccessStatus: 200
     }
 
@@ -28,8 +28,10 @@ app.use(express.json());
 app.use(cors(corsOptions))
 
 app.use(function(req, res, next) {
-    console.log(req.headers)
+    // console.log('here')
+    // console.log(req.headers,'here')
     if (req.headers && req.headers.authorization&& req.headers.authorization.split(' ')[0] === 'Bearer') {
+        // console.log('here')
       jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET, function(err, decode) {
         if (err) req.user = undefined;
         req.user = decode;

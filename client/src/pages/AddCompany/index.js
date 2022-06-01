@@ -20,7 +20,7 @@ function AddCompany() {
         fetch('/api/company',{
             method:'POST',
             headers:{
-                'authorization':`Bearer ${token}`
+                'Content-Type': 'application/json'
             },
             body:JSON.stringify(newCompany)
 

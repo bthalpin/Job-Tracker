@@ -6,9 +6,10 @@ const expiration = '2h';
 
 module.exports = {
     authMiddleware: function ({ req }) {
-        console.log(req)
-        let token = req.body.token || req.query.token || req.headers.authorization;
-
+        // console.log('HERE',req)
+        // console.log(req,'HERE')
+        let token = req.headers.authorization;
+        // console.log('here')
         if (req.headers.authorization) {
             token = token.split(' ').pop().trim();
         }
@@ -16,7 +17,7 @@ module.exports = {
         if (!token) {
             return req;
         }
-
+        // console.log(token,'tets')
         try {
             const { data } = jwt.verify(token, secret, { maxAge: expiration });
             req.user = data;
@@ -27,7 +28,7 @@ module.exports = {
         return req;
     },
     loginRequired:function(req, res, next) {
-        // console.log(req)
+        console.log(req,'tets')
         if (req.user) {
           next();
         } else {

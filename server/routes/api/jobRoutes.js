@@ -9,7 +9,7 @@ const {
 const {loginRequired} = require('../../utils/auths');
 
 // /api/Jobs
-router.route('/:companyId').get(loginRequired,getJob).post(loginRequired,createJob);
+router.route('/:companyId').get(loginRequired,getJob).post(createJob);
 
 // /api/Jobs/:JobId
 router

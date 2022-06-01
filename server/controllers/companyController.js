@@ -23,10 +23,11 @@ module.exports = {
   },
   // Create a Company
   createCompany(req, res) {
+    // console.log('sssssssssssssssssssssssssssssssssssssssss',req,'bodasdasdas ds dasdasdasdy')
     Company.create(req.body)
       .then((company) => res.json(company))
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         return res.status(500).json(err);
       });
   },
