@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './addCompany.css'
 
@@ -14,6 +14,7 @@ function AddCompany() {
     })
     const [created,setCreated] = useState('')
     const token = Auth.getToken();
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newCompany)
@@ -26,7 +27,7 @@ function AddCompany() {
 
         }).then(response=>response.json())
         .then(company=>{
-            setCreated(`The company ${company.name} was created successfully`)
+            // setCreated(`The company ${company.name} was created successfully`)
             setNewCompany({
                 name:'',
                 address:'',
@@ -34,6 +35,7 @@ function AddCompany() {
                 website:'',
                 logo:'',
             })
+            navigate('/home/')
         })
         // let jobURL = `https://localhost:3001/api/jobs/`;
         

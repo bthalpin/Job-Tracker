@@ -44,7 +44,7 @@ function AddJob() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newJob,'submit')
-        fetch(`http://localhost:3001/api/jobs/${companyId}`,{
+        fetch(`/api/jobs/${companyId}`,{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ function AddJob() {
 
         }).then(response=>response.json())
         .then(job=>{
-            setCreated(`The job ${job.title} was created successfully`)
+            // setCreated(`The job ${job.title} was created successfully`)
             setNewJob({
                 title:'',
                 description:'',
