@@ -1,7 +1,8 @@
 :root{
   --main:#acc6f0;
   --shadow:#7184a1;
-  --button:#1c3252
+  --button:#1c3252;
+  --nav:rgb(46, 46, 97);
 }
 
 *{

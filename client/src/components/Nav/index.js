@@ -33,10 +33,12 @@ function Nav() {
            {isloggedIn?
             <>
             {window.location.pathname!=='/'?
-            <div onClick={()=>navigate(-1)}>Back</div>
+            <div className="back" onClick={()=>navigate(-1)}>Back</div>
             :<></>
             }
-            
+            <div>
+                <h2 className="navTitle">Job Tracker</h2>
+            </div>
             <div className="navButtons">
             {window.location.pathname.substr(0,8)!=='/company'?
             <></>
@@ -47,7 +49,9 @@ function Nav() {
 
             </div>
             </>
-            :<></>}
+            :<div className="titleContainer">
+            <p className="navTitle">Job Tracker</p>
+        </div>}
           
        </div>
     );
