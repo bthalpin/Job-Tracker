@@ -78,17 +78,17 @@ function Login() {
                 <form onSubmit={register}>
                     <div className="inputContainer">
                         <label htmlFor="name">Name:</label>
-                        <input name="name" type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Enter Name"></input>
+                        <input name="name" type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Enter Name" required></input>
                         <label htmlFor="email">Email:</label>
-                        <input name="email" type="text" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email"></input>
+                        <input name="email" type="text" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
                         <label htmlFor="password">Password:</label>
-                        <input name="password" type="text" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password"></input>
+                        <input name="password" type="text" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
                     
                     </div>
                     <button className="loginButton">Register</button>
                     
                 </form>
-                <button onClick={()=>changeLogin('login')}>Return to Login</button>
+                <p className="loginNavigation" onClick={()=>changeLogin('login')}>Return to Login</p>
                 {errorMessage}
             </div>
         
@@ -97,13 +97,13 @@ function Login() {
                 <form onSubmit={login}>
                     <div className="inputContainer">
                         <label htmlFor="email">Email:</label>
-                        <input name="email" type="text" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email"></input>
+                        <input name="email" type="text" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
                         <label htmlFor="password">Password:</label>
-                        <input name="password" type="text" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password"></input>
+                        <input name="password" type="text" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
                     </div>
                     <button className="loginButton">Login</button>
                 </form>
-                <button onClick={()=>changeLogin('register')}>Click to Register</button>
+                <p className="loginNavigation" onClick={()=>changeLogin('register')}>Click to Register</p>
                 {errorMessage}
                 
             </div>
