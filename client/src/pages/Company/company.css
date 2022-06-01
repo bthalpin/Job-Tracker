@@ -1,10 +1,10 @@
 .companyLogo{
-    width:500px;
+    height:300px;
     max-width:80vw;
 }
 .companyContainer{
     padding:2rem;
-    border-bottom: 1px solid var(--button);
+    border-bottom: 1px solid var(--border);
 }
 .companyJobContainer{
     display:flex;
@@ -16,17 +16,19 @@
     padding:2rem;
     width:500px;
     border-radius: 0.2rem;
+    border:1px solid var(--border);
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
 }
 .companyBtnContainer{
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .companyEdit{
     padding:0.5rem;
     color:white;
     background-color: var(--button);
     cursor: pointer;
+    margin:1rem 1rem 0;
 
 }
 .delete{
@@ -34,6 +36,8 @@
     color:white;
     cursor: pointer;
     background-color: var(--warning);
+    margin:1rem 1rem 0;
+
 }
 .addJobContainer{
     margin:1rem;
@@ -42,6 +46,7 @@
     background-color: var(--button);
     color:white;
     padding:0.5rem;
+    border:1px solid var(--border)
 }
 .jobTitle{
     margin-bottom:3rem;
