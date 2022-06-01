@@ -12,13 +12,13 @@
     border-radius: 0.2rem;
     padding:0.2rem;
     width:300px;
-    max-width: 100%;
+    max-width: 95%;
 
 }
 .jobFormContainer textarea{
     width:300px;
     height:100px;
-    max-width: 100%;
+    max-width: 95%;
 }
 .homeButtonContainer{
     margin:1rem;

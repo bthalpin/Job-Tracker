@@ -12,6 +12,7 @@
     border-radius: 0.2rem;
     padding:0.2rem;
     width:300px;
+    max-width: 95vw;
 }
 .homeButtonContainer{
     margin:1rem;
