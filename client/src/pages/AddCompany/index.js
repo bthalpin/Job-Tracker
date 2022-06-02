@@ -1,9 +1,10 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import './addCompany.css'
 
 function AddCompany() {
+    const navigate = useNavigate()
     const [newCompany,setNewCompany] = useState({
         name:'',
         address:'',
@@ -11,7 +12,6 @@ function AddCompany() {
         website:'',
         logo:'',
     })
-    const [created,setCreated] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newCompany)
@@ -24,14 +24,15 @@ function AddCompany() {
 
         }).then(response=>response.json())
         .then(company=>{
-            setCreated(`The company ${company.name} was created successfully`)
-            setNewCompany({
-                name:'',
-                address:'',
-                phone:'',
-                website:'',
-                logo:'',
-            })
+            navigate('/')
+            // setCreated(`The company ${company.name} was created successfully`)
+            // setNewCompany({
+            //     name:'',
+            //     address:'',
+            //     phone:'',
+            //     website:'',
+            //     logo:'',
+            // })
         })
         // let jobURL = `http://localhost:3001/api/jobs/`;
         
@@ -42,14 +43,14 @@ function AddCompany() {
   return (
     <div className="addCompanyContainer" >
         <CompanyForm newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Add' />
-        {created!==''
+        {/* {created!==''
         ?<div>
             <p>{created}</p>
             <div className="homeButtonContainer">
                 <Link to='/' className="homeButton">Home</Link>
             </div>
         </div>
-        :<></>}
+        :<></>} */}
     </div>
   );
 }

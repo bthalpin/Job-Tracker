@@ -75,8 +75,11 @@ function SelectedJob() {
             :
             <>
                 <button onClick={()=>setEdit(true)}>Edit</button>
-                {job?.title}
-                {status}
+                <p>{job?.title}</p>
+                <a href={job?.link}>{job?.link}</a>
+                <p>Contact Information{job?.contactInfo}</p>
+                <p>Description: {job?.description}</p>
+                <p>Notes: {job?.notes}</p>
             </>
             
             }

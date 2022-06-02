@@ -17,16 +17,16 @@ function Home() {
           .then((res) => res.json())
           .then((response) => setAllCompanies(response));
       };
-   const deleteCompany = (companyId) => {
-        console.log(companyId)
-        let companyURL = `http://localhost:3001/api/company/${companyId}`;
+//    const deleteCompany = (companyId) => {
+//         console.log(companyId)
+//         let companyURL = `http://localhost:3001/api/company/${companyId}`;
         
-        fetch(companyURL,{
-            method:'DELETE'
-        })
-          .then((res) => res.json())
-          .then((response) => setAllCompanies(response))
-      };
+//         fetch(companyURL,{
+//             method:'DELETE'
+//         })
+//           .then((res) => res.json())
+//           .then((response) => setAllCompanies(response))
+//       };
  
   return (
       <>
@@ -38,10 +38,10 @@ function Home() {
             {allComapnies.map((company,index)=>{
                 return (
                     <div className="homeCard">
-                        <div className="homeBtnContainer">
+                        {/* <div className="homeBtnContainer">
                             <button onClick={()=>navigate(`/company/edit/${company._id}`)}>Edit</button>
                             <button onClick={()=>deleteCompany(company._id)}>Delete</button>
-                        </div>
+                        </div> */}
                         <Link to={`/company/${company._id}`} className="homeLink" key={index}>
                             <div>
                                 <h2>{company.name}</h2>

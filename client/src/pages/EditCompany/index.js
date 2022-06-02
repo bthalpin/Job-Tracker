@@ -1,10 +1,11 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
 
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams,useNavigate} from 'react-router-dom';
 // import './editCompany.css'
 
 function EditCompany() {
+    const navigate = useNavigate()
     const {companyId} = useParams()
     const [newCompany,setNewCompany] = useState({
         name:'',
@@ -13,7 +14,7 @@ function EditCompany() {
         website:'',
         logo:'',
     })
-    const [created,setCreated] = useState('')
+    // const [created,setCreated] = useState('')
 
     useEffect(()=>{
         fetch(`http://localhost:3001/api/company/${companyId}`)
@@ -35,7 +36,8 @@ function EditCompany() {
 
         }).then(response=>response.json())
         .then(company=>{
-            setCreated(`The company ${company.name} was edited successfully`)
+            navigate(`/company/${companyId}`)
+            // setCreated(`The company ${company.name} was edited successfully`)
             // setNewCompany({
             //     name:'',
             //     address:'',
@@ -54,14 +56,14 @@ function EditCompany() {
     <div className="addCompanyContainer" >
         <CompanyForm newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Edit' />
         
-        {created!==''
+        {/* {created!==''
         ?<div>
             <p>{created}</p>
             <div className="homeButtonContainer">
                 <Link to='/' className="homeButton">Home</Link>
             </div>
         </div>
-        :<></>}
+        :<></>} */}
     </div>
   );
 }
