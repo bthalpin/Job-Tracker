@@ -65,6 +65,9 @@ function Company() {
       };
       const handleSubmit = (e) => {
         e.preventDefault();
+        if (!newCompany.name){
+            return
+        }
         console.log(newCompany)
         fetch(`/api/company/${companyId}`,{
             method:'PUT',

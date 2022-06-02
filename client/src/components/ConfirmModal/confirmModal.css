@@ -11,7 +11,7 @@
 .show::before{
     content:'';
     background-color: black;
-    position:absolute;
+    position:fixed;
     top:0;
     right:0;
     bottom:0;
@@ -19,15 +19,20 @@
     opacity: 0.5;
 }
 .confirmCard{
-    position: absolute;
+    position: fixed;
     border-radius:0.2rem;
     top:10%;
     left:50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0);
     width:500px;
     height:300px;
     background-color: var(--main);
 }
 .show{
     display:block;
+}
+@media screen and (max-width:500px) {
+    .confirmCard{
+        width:95vw;
+    }
 }

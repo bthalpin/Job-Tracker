@@ -16,7 +16,13 @@
 }
 .jobContainer{
     padding:3rem;
+    max-width: 800px;
     height:calc(100vh - 3.7rem);
+    margin:auto;
+    
+}
+.jobContainer *{
+    /* margin:auto; */
 }
 .jobContainer h3{
     text-align: start;
@@ -24,7 +30,8 @@
 .description,.notes{
     white-space: pre-wrap;
     text-align: start;
-    width:90vw;
+    /* width:90vw; */
+
     margin-bottom:3rem;
     padding:1rem;
     border:1px solid var(--border);
@@ -32,12 +39,18 @@
 }
 .appliedjob{
     border:10px solid var(--applied);
+    height:100%;
+    min-height: calc(100vh - 3.7rem);
 }
 .offerjob{
     border:10px solid var(--offer);
+    height:calc(100vh - 3.7rem);
+
 }
 .rejectedjob{
     border:10px solid var(--rejected);
+    height:calc(100vh - 3.7rem);
+
 }
 @media screen and (max-width:500px) {
     .jobContainer{

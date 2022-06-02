@@ -59,6 +59,9 @@ function Home() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log(Auth.getProfile())
+        if (!newCompany.name.trim()){
+            return
+        }
         setShow('show')
         // let jobURL = `https://localhost:3001/api/jobs/`;
         
