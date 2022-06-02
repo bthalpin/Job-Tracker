@@ -1,12 +1,14 @@
 import React, {useState,useEffect} from 'react';
 import {JobForm} from '../../components';
 import {Link,useParams,useNavigate} from 'react-router-dom';
+import Auth from '../../utils/auth';
 // import './AddJob.css'
 
 function AddJob() {
     const {companyId} = useParams()
     const navigate = useNavigate()
     const [status,setStatus] = useState('created')
+    const token = Auth.getToken();
     const [newJob,setNewJob] = useState({
         title:'',
         description:'',
@@ -42,16 +44,16 @@ function AddJob() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newJob,'submit')
-        fetch(`http://localhost:3001/api/jobs/${companyId}`,{
+        fetch(`/api/jobs/${companyId}`,{
             method:'POST',
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             },
-            body:JSON.stringify(newJob)
+            body:JSON.stringify({...newJob,userId:Auth.getProfile().data._id})
 
         }).then(response=>response.json())
         .then(job=>{
-            setCreated(`The job ${job.title} was created successfully`)
+            // setCreated(`The job ${job.title} was created successfully`)
             setNewJob({
                 title:'',
                 description:'',

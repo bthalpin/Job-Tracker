@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
 import {Link,useNavigate} from 'react-router-dom';
+import Auth from '../../utils/auth';
 import './addCompany.css'
 
 function AddCompany() {
@@ -12,29 +13,31 @@ function AddCompany() {
         website:'',
         logo:'',
     })
+    const [created,setCreated] = useState('')
+    const token = Auth.getToken();
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(newCompany)
-        fetch('http://localhost:3001/api/company',{
+        console.log(Auth.getProfile())
+        fetch('/api/company',{
             method:'POST',
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             },
-            body:JSON.stringify(newCompany)
+            body:JSON.stringify({...newCompany,userId:Auth.getProfile().data._id})
 
         }).then(response=>response.json())
         .then(company=>{
-            navigate('/')
             // setCreated(`The company ${company.name} was created successfully`)
-            // setNewCompany({
-            //     name:'',
-            //     address:'',
-            //     phone:'',
-            //     website:'',
-            //     logo:'',
-            // })
+            setNewCompany({
+                name:'',
+                address:'',
+                phone:'',
+                website:'',
+                logo:'',
+            })
+            navigate('/home/')
         })
-        // let jobURL = `http://localhost:3001/api/jobs/`;
+        // let jobURL = `https://localhost:3001/api/jobs/`;
         
         // fetch(jobURL)
         //   .then((res) => res.json())

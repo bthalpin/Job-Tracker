@@ -1,12 +1,12 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
-
+import Auth from '../../utils/auth';
 import {Link, useParams,useNavigate} from 'react-router-dom';
 // import './editCompany.css'
 
 function EditCompany() {
-    const navigate = useNavigate()
     const {companyId} = useParams()
+    const navigate = useNavigate()
     const [newCompany,setNewCompany] = useState({
         name:'',
         address:'',
@@ -14,10 +14,14 @@ function EditCompany() {
         website:'',
         logo:'',
     })
-    // const [created,setCreated] = useState('')
-
+    const [created,setCreated] = useState('')
+    const token = Auth.getToken();
     useEffect(()=>{
-        fetch(`http://localhost:3001/api/company/${companyId}`)
+        fetch(`/api/company/${companyId}`,{
+            headers:{
+                'authorization':`Bearer ${token}`
+            }
+        })
         .then(res=>res.json())
         .then(company=>{
             setNewCompany(company)})
@@ -27,24 +31,19 @@ function EditCompany() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newCompany)
-        fetch(`http://localhost:3001/api/company/${companyId}`,{
+        fetch(`/api/company/${companyId}`,{
             method:'PUT',
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             },
+            
             body:JSON.stringify(newCompany)
 
         }).then(response=>response.json())
         .then(company=>{
             navigate(`/company/${companyId}`)
             // setCreated(`The company ${company.name} was edited successfully`)
-            // setNewCompany({
-            //     name:'',
-            //     address:'',
-            //     phone:'',
-            //     website:'',
-            //     logo:'',
-            // })
+           
         })
         // let jobURL = `http://localhost:3001/api/jobs/`;
         

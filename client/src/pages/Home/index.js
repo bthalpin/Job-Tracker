@@ -1,35 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import {Link,useNavigate} from 'react-router-dom';
 import {Job} from '../../components/';
+import Auth from '../../utils/auth';
 import './home.css';
 
 function Home() {
     const navigate = useNavigate()
+    const token = Auth.getToken();
     const [allComapnies,setAllCompanies ] = useState([])
     useEffect(() => {
         getCompanies();
       }, []);
     
    const getCompanies = () => {
-        let companyURL = `http://localhost:3001/api/company/`;
+        let companyURL = `/api/company/`;
         
-        fetch(companyURL)
+        fetch(companyURL,{
+            headers:{
+                'authorization':`Bearer ${token}`
+            }
+        })
           .then((res) => res.json())
           .then((response) => setAllCompanies(response));
       };
-//    const deleteCompany = (companyId) => {
-//         console.log(companyId)
-//         let companyURL = `http://localhost:3001/api/company/${companyId}`;
-        
-//         fetch(companyURL,{
-//             method:'DELETE'
-//         })
-//           .then((res) => res.json())
-//           .then((response) => setAllCompanies(response))
-//       };
+  
  
   return (
       <>
+            {allComapnies.length?<></>
+            :<div>
+                <p className="welcomeMessage"><span className="welcome">Welcome to JobTracker!</span> To begin, start by adding a company that you are applying to.  Once the company is created you can then add individual jobs and mark the jobs once you apply, get an offer, or are rejected.</p>
+            </div>}
         <div className="addContainer">
             <Link to={'/company/'} className="addCompany">Add Company</Link>
 
@@ -37,16 +38,13 @@ function Home() {
         <div className="homeContainer" >
             {allComapnies.map((company,index)=>{
                 return (
-                    <div className="homeCard">
-                        {/* <div className="homeBtnContainer">
-                            <button onClick={()=>navigate(`/company/edit/${company._id}`)}>Edit</button>
-                            <button onClick={()=>deleteCompany(company._id)}>Delete</button>
-                        </div> */}
+                    <div className="homeCard" key={index}>
+                        
                         <Link to={`/company/${company._id}`} className="homeLink" key={index}>
                             <div>
                                 <h2>{company.name}</h2>
-                                <img src={company.logo} alt="Company logo"></img>
-                                <p>{company.jobs.length} Jobs</p>
+                                <img src={company.logo||'/images/default.png'} alt="Company logo"></img>
+                                <p>{company.jobs.length} {company.jobs.length===1?'Job':'Jobs'}</p>
 
                             </div>
                         </Link>

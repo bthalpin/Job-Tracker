@@ -1,7 +1,13 @@
 :root{
-  --main:#acc6f0;
-  --shadow:#7184a1;
-  --button:#1c3252
+  --main:#f0efef;
+  --shadow:#c9c9c9;
+  --button:#f56f76;
+  --nav:#2F5061;
+  --border:#4297A0;
+  --applied:rgb(250, 250, 185);
+  --offer:rgb(113, 179, 113);
+  --rejected:rgb(196, 98, 98);
+  --warning:rgb(99, 16, 16);
 }
 
 *{

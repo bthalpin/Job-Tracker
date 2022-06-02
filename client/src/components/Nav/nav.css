@@ -1,11 +1,30 @@
 .navigation{
     display:flex;
     justify-content: space-between;
-    background-color: rgb(46, 46, 97);
-    padding:2rem;
+    background-color: var(--nav);
+    padding:0.5rem;
 }
+
 .navigation *{
     text-decoration: none;
     color:white;
     font-size: 1.2rem;
-    }
+}
+.navButtons{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:130px;
+    /* margin:auto 0.2rem; */
+}
+.logout{
+    margin-left:auto;
+}
+.titleContainer{
+    /* margin:auto; */
+}
+.navTitle{
+    color:white;
+    font-size: 2rem;
+    font-weight:400;
+}

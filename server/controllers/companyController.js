@@ -4,14 +4,15 @@ const { ObjectId } = require('mongoose').Types;
 module.exports = {
   // Get all Company
   getCompany(req, res) {
-    Company.find()
+    console.log(req.user.data._id)
+    Company.find({userId:ObjectId(req.user.data._id)})
       .then((companys) => res.json(companys))
       .catch((err) => res.status(500).json(err));
   },
   // Get a Company
   getSingleCompany(req, res) {
       console.log(req.params)
-    Company.findOne({ _id: req.params.companyId })
+    Company.findOne({ _id: req.params.companyId, userId:ObjectId(req.user.data._id)})
       .select('-__v')
       .populate('jobs')
       .then((company) =>
@@ -23,10 +24,12 @@ module.exports = {
   },
   // Create a Company
   createCompany(req, res) {
+    console.log(req)
+    // console.log('sssssssssssssssssssssssssssssssssssssssss',req,'bodasdasdas ds dasdasdasdy')
     Company.create(req.body)
       .then((company) => res.json(company))
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         return res.status(500).json(err);
       });
   },
@@ -42,6 +45,7 @@ module.exports = {
   },
   // Update a Company
   updateCompany(req, res) {
+    console.log(req.body)
     Company.findOneAndUpdate(
       { _id: req.params.companyId },
       { $set: req.body },

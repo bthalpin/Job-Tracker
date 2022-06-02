@@ -1,32 +1,37 @@
+.welcomeMessage{
+    margin:2rem auto;
+    padding:1rem;
+    max-width:700px;
+}
+.welcome{
+    font-size: 1.8rem;;
+}
 .addContainer{
     margin:2rem;
 }
 .addCompany{
     padding:1rem;
     background-color: var(--button);
-    border-radius:0.5rem;
+    border:1px solid var(--border);
+
+    border-radius:0.3rem;
     color:white;
     font-size: 1.2rem;
 }
 .homeContainer{
     display:flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 .homeCard{
     margin:2rem;
-    width:500px;
+    /* width:500px; */
+    max-width: 98vw;
+    border-radius: 0.2rem;
+    border:1px solid var(--border);
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
 }
-.homeBtnContainer{
-    display:flex;
-    justify-content: space-between;
-}
-.homeBtnContainer button{
-    padding:0.5rem;
-    color:white;
-    background-color: var(--button);
-}
+
 .homeLink{
     /* border:1px solid black; */
     /* padding:1rem; */
@@ -40,5 +45,11 @@
 }
 .homeCard img {
     margin:1rem;
-    width:26rem;
+    height:5rem;
+    max-width: 80vw;
+}
+@media screen and (max-width:500px) {
+    .welcome{
+        font-size: 1.4rem;
+    }
 }

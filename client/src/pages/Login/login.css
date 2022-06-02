@@ -1,0 +1,32 @@
+.loginContainer{
+    width:30rem;
+    margin:2rem auto;
+}
+.loginContainer input {
+    width:100%;
+    padding:0.2rem;
+    border-radius: 0.2rem;
+}
+.inputContainer{
+    text-align: start;
+}
+.loginButton{
+    padding:0.5rem;
+    background-color: var(--button);
+    color:white;
+    margin:0.3rem;
+    border-radius:0.3rem;
+    cursor: pointer;
+}
+.loginNavigation{
+    color:var(--button);
+    text-decoration: underline;
+    cursor: pointer;
+    width:fit-content;
+    margin:auto;
+}
+@media screen and (max-width:500px) {
+    .loginContainer,.loginContainer input{
+        width:95vw;
+    }
+}

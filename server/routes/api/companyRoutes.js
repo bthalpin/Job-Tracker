@@ -6,15 +6,15 @@ const {
   updateCompany,
   deleteCompany,
 } = require('../../controllers/companyController.js');
-
+const {loginRequired} = require('../../utils/auths');
 // /api/Companys
-router.route('/').get(getCompany).post(createCompany);
+router.route('/').get(loginRequired,getCompany).post(createCompany);
 
 // /api/Companys/:CompanyId
 router
   .route('/:companyId')
-  .get(getSingleCompany)
+  .get(loginRequired,getSingleCompany)
   .put(updateCompany)
-  .delete(deleteCompany);
+  .delete(loginRequired,deleteCompany);
 
 module.exports = router;
