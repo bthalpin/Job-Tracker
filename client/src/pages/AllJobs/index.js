@@ -16,7 +16,7 @@ function AllJobs() {
     
    const getAllJobs = () => {
        console.log(token)
-        let jobURL = `http://localhost:3001/api/jobs/myjobs`;
+        let jobURL = `/api/jobs/myjobs`;
         
         fetch(jobURL,{
             headers:{
@@ -30,7 +30,7 @@ function AllJobs() {
   return (
       <div>
       <input name="jobSearch" className="jobSearch" value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
-                  <button onClick={()=>setJobSearch('')}>Clear</button>
+                  <button className="clearJobSearch" onClick={()=>setJobSearch('')}>Clear</button>
             <div className="allJobContainer" >
                 {hideArchived?
                 <>

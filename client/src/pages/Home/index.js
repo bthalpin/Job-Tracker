@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import {Link,useNavigate} from 'react-router-dom';
-import {Job} from '../../components/';
+import {ConfirmModal,CompanyForm} from '../../components/';
 import Auth from '../../utils/auth';
 import './home.css';
 
 function Home() {
     const navigate = useNavigate()
     const token = Auth.getToken();
+    const [show,setShow] = useState('')
+    const [edit,setEdit] = useState(false)
     const [search,setSearch] = useState('');
-    const [allComapnies,setAllCompanies ] = useState([])
+    const [newCompany,setNewCompany] = useState({
+        name:'',
+        address:'',
+        phone:'',
+        website:'',
+        logo:'',
+    })
+    const [allCompanies,setAllCompanies ] = useState([])
     useEffect(() => {
         getCompanies();
       }, []);
@@ -25,21 +34,67 @@ function Home() {
           .then((response) => setAllCompanies(response));
       };
   
- 
+      const addCompany = () => {
+        fetch('/api/company',{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({...newCompany,userId:Auth.getProfile().data._id})
+
+        }).then(response=>response.json())
+        .then(company=>{
+            // setCreated(`The company ${company.name} was created successfully`)
+            getCompanies()
+            setNewCompany({
+                name:'',
+                address:'',
+                phone:'',
+                website:'',
+                logo:'',
+            })
+            setEdit(false)
+        })
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(Auth.getProfile())
+        setShow('show')
+        // let jobURL = `https://localhost:3001/api/jobs/`;
+        
+        // fetch(jobURL)
+        //   .then((res) => res.json())
+        //   .then((response) => console.log(response));
+      };
   return (
       <>    
       <input name="search" className="search" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
-      <button onClick={()=>setSearch('')}>Clear</button>
-            {allComapnies.length?<></>
+      <button className="clearSearch" onClick={()=>setSearch('')}>Clear</button>
+            {allCompanies.length?<></>
             :<div>
                 <p className="welcomeMessage"><span className="welcome">Welcome to JobTracker!</span> To begin, start by adding a company that you are applying to.  Once the company is created you can then add individual jobs and mark the jobs once you apply, get an offer, or are rejected.</p>
             </div>}
+            {edit?
+            <div className="addCompanyContainer" >
+            <CompanyForm newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Add' />
+            {/* {created!==''
+            ?<div>
+                <p>{created}</p>
+                <div className="homeButtonContainer">
+                    <Link to='/' className="homeButton">Home</Link>
+                </div>
+            </div>
+            :<></>} */}
+            <ConfirmModal show={show} setShow={setShow} callBack={addCompany} action="create" name={newCompany.name}/>
+        </div>:
         <div className="addContainer">
-            <Link to={'/company/'} className="addCompany">Add Company</Link>
+            {/* <Link to={'/company/'} className="addCompany">Add Company</Link> */}
+            <button className="addCompany" onClick={()=>setEdit(true)}>Add Company</button>
+            {/* <ConfirmModal /> */}
 
-        </div>
+        </div>}
         <div className="homeContainer" >
-            {allComapnies.filter(company=>company.name.includes(search)).map((company,index)=>{
+            {allCompanies.filter(company=>company.name.includes(search)).map((company,index)=>{
                 return (
                     <div className="homeCard" key={index}>
                         
@@ -54,7 +109,7 @@ function Home() {
                     </div>
                 )
             })}
-            <Job />
+            {/* <Job /> */}
 
         </div>
       </>

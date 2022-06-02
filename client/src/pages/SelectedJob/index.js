@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useParams,useNavigate} from 'react-router-dom';
-import {Job,JobForm} from '../../components/';
+import {ConfirmModal,JobForm} from '../../components/';
 import Auth from '../../utils/auth';
 import './job.css'
 
 function SelectedJob() {
     const {jobId,companyId} = useParams()
     const navigate = useNavigate()
+    const [show,setShow] = useState('')
     const [job,setJob ] = useState()
     const [status,setStatus] = useState('created')
     const token = Auth.getToken();
@@ -67,7 +68,7 @@ function SelectedJob() {
             method:'DELETE'
         })
           .then((res) => res.json())
-          .then((response) => {
+          .then(() => {
               navigate(`/company/${companyId}`)
             });
     }
@@ -124,8 +125,8 @@ function SelectedJob() {
                     <p className="notes">{job?.notes}</p>
                 </>
                 :<></>}
-                <p>Set status</p>
-                <select value={newJob.status} onChange={changeStatus}>
+                <label htmlFor="status">Set status: </label>
+                <select name="status" value={newJob.status} onChange={changeStatus}>
                 <option value="created" >---</option>
                 <option value="applied">Applied</option>
                 <option value="offer">Offer</option>
@@ -133,7 +134,7 @@ function SelectedJob() {
                 <option value="archived">Archive</option>
             </select>
             <div className="jobButtonContainer">
-                <button className="jobButton deleteJob" onClick={deleteJob}>Delete</button>
+                <button className="jobButton deleteJob" onClick={()=>setShow('show')}>Delete</button>
                 <button className="jobButton" onClick={()=>setEdit(true)}>Edit</button>
 
             </div>
@@ -141,6 +142,8 @@ function SelectedJob() {
             </>
             
             }
+        <ConfirmModal show={show} setShow={setShow} callBack={deleteJob} action="delete" name={newJob.title}/>
+
         </div>
   );
 }

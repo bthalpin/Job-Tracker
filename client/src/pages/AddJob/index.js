@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import {JobForm} from '../../components';
+import {JobForm,ConfirmModal} from '../../components';
 import {Link,useParams,useNavigate} from 'react-router-dom';
 import Auth from '../../utils/auth';
 // import './AddJob.css'
@@ -7,6 +7,7 @@ import Auth from '../../utils/auth';
 function AddJob() {
     const {companyId} = useParams()
     const navigate = useNavigate()
+    const [show,setShow] = useState('')
     const [status,setStatus] = useState('created')
     const token = Auth.getToken();
     const [newJob,setNewJob] = useState({
@@ -41,9 +42,7 @@ function AddJob() {
     //     }
     //     console.log(newJob)
     // }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(newJob,'submit')
+    const addJob = () =>{
         fetch(`/api/jobs/${companyId}`,{
             method:'POST',
             headers:{
@@ -72,6 +71,11 @@ function AddJob() {
         // fetch(jobURL)
         //   .then((res) => res.json())
         //   .then((response) => console.log(response));
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(newJob,'submit')
+        setShow('show')
       };
   return (
     <div className="AddJobContainer" >
@@ -84,6 +88,8 @@ function AddJob() {
             </div>
         </div>
         :<></>}
+        <ConfirmModal show={show} setShow={setShow} callBack={addJob} action="create" name={newJob.title}/>
+
     </div>
   );
 }

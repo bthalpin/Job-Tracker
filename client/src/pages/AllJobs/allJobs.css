@@ -11,7 +11,18 @@
     border:1px solid var(--border);
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
 }
-
+.jobSearch{
+    margin-top: 0.5rem;;
+    padding:0.3rem;
+}
+.clearJobSearch{
+    padding:0.3rem;
+    color:white;
+    border:2px solid rgb(95, 95, 95);
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    background-color: var(--altButton);
+}
 .jobTitle{
     margin-bottom:3rem;
 }

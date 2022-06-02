@@ -54,7 +54,14 @@ module.exports = {
       .then((job) =>
         !job
           ? res.status(404).json({ message: 'No job with that ID' })
-          : Job.find().then((jobs) => res.json(jobs))
+          : Company.findOneAndUpdate(
+            {_id:req.params.companyId},
+            {$pull:{jobs:req.params.jobId}}
+          ))
+          .then(company=>
+            !company
+              ? res.status(404).json({ message: 'No job with that ID' })
+              : res.json(company)
       )
       .catch((err) => res.status(500).json(err));
   },

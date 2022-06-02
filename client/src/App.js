@@ -29,10 +29,10 @@ function App() {
             path='/myjobs/'
             element={<AllJobs />}
             />
-          <Route
+          {/* <Route
             path='/company/edit/:companyId'
             element={<EditCompany />}
-            />
+            /> */}
           <Route
             path='/company/add/:companyId'
             element={<AddJob />}

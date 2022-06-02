@@ -1,11 +1,12 @@
 import React, {useState,useEffect} from 'react';
-import {CompanyForm} from '../../components';
+import {CompanyForm, ConfirmModal} from '../../components';
 import {Link,useNavigate} from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './addCompany.css'
 
 function AddCompany() {
     const navigate = useNavigate()
+    const [show,setShow] = useState('')
     const [newCompany,setNewCompany] = useState({
         name:'',
         address:'',
@@ -15,9 +16,7 @@ function AddCompany() {
     })
     const [created,setCreated] = useState('')
     const token = Auth.getToken();
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(Auth.getProfile())
+    const addCompany = () => {
         fetch('/api/company',{
             method:'POST',
             headers:{
@@ -37,6 +36,11 @@ function AddCompany() {
             })
             navigate('/home/')
         })
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(Auth.getProfile())
+        setShow('show')
         // let jobURL = `https://localhost:3001/api/jobs/`;
         
         // fetch(jobURL)
@@ -54,6 +58,7 @@ function AddCompany() {
             </div>
         </div>
         :<></>} */}
+        <ConfirmModal show={show} setShow={setShow} callBack={addCompany} action="create" name={newCompany.name}/>
     </div>
   );
 }

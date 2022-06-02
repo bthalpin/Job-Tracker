@@ -48,6 +48,26 @@
     padding:0.5rem;
     border:1px solid var(--border)
 }
+.jobSearch{
+    margin-top: 0.5rem;;
+    padding:0.3rem;
+}
+.clearJobSearch{
+    padding:0.3rem;
+    color:white;
+    border:2px solid rgb(95, 95, 95);
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    background-color: var(--altButton);
+}
+.archiveButton{
+    padding:0.3rem;
+    color:white;
+    border:2px solid rgb(95, 95, 95);
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+    background-color: var(--altButton);
+}
 .jobTitle{
     margin-bottom:3rem;
 }

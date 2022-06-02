@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useParams,useNavigate} from 'react-router-dom';
-import {Job} from '../../components/';
+import {ConfirmModal,CompanyForm} from '../../components/';
 import Auth from '../../utils/auth';
 import './company.css';
 
 function Company() {
     const {companyId} = useParams()
     const navigate = useNavigate()
+    const [show,setShow] = useState('')
+    const [edit,setEdit] = useState(false)
     const [allJobs,setAllJobs ] = useState([])
     const [company,setCompany ] = useState({})
-    const [hideArchived,setHideArchived] = useState(true)
-
+    const [hideArchived,setHideArchived] = useState('archived')
+    const [newCompany,setNewCompany] = useState({
+        name:'',
+        address:'',
+        phone:'',
+        website:'',
+        logo:'',
+    })
     const [jobSearch,setJobSearch] = useState('');
     const token = Auth.getToken();
     useEffect(() => {
@@ -27,7 +35,9 @@ function Company() {
             }
         })
           .then((res) => res.json())
-          .then((response) => setCompany(response));
+          .then((response) => {
+              setNewCompany(response)
+              setCompany(response)});
       };
    const getJobs = () => {
         let jobURL = `/api/jobs/${companyId}`;
@@ -40,7 +50,7 @@ function Company() {
           .then((res) => res.json())
           .then((response) => setAllJobs(response));
       };
-     const deleteCompany = (companyId) => {
+     const deleteCompany = () => {
         console.log(companyId)
         let companyURL = `/api/company/${companyId}`;
         
@@ -53,9 +63,40 @@ function Company() {
           .then((res) => res.json())
           .then((response) => navigate('/home/'))
       };
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(newCompany)
+        fetch(`/api/company/${companyId}`,{
+            method:'PUT',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            
+            body:JSON.stringify(newCompany)
+
+        }).then(response=>response.json())
+        .then(company=>{
+            setCompany(company)
+            setNewCompany(company)
+            setEdit(false)
+            // navigate(`/company/${companyId}`)
+            // setCreated(`The company ${company.name} was edited successfully`)
+           
+        })
+        // let jobURL = `http://localhost:3001/api/jobs/`;
+        
+        // fetch(jobURL)
+        //   .then((res) => res.json())
+        //   .then((response) => console.log(response));
+      };
   return (
       <div>
+            {edit?
+            <div className='addCompanyContainer'>
 
+                <CompanyForm setEdit={setEdit} newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Save' />
+                </div>
+                :
             <div className="companyContainer">
                 <h2>{company.name}</h2>
                 <img className="companyLogo" src={company.logo||'/images/default.png'} alt="logo"></img>
@@ -67,22 +108,28 @@ function Company() {
                 </p>
                 <a href={company.website}>{company.name}</a>
                 <div className="companyBtnContainer">
-                            <button className="companyEdit" onClick={()=>navigate(`/company/edit/${company._id}`)}>Edit</button>
-                            <button className="delete" onClick={()=>deleteCompany(company._id)}>Delete</button>
+                            <button className="companyEdit" onClick={()=>setEdit(true)}>Edit</button>
+                            <button className="delete" onClick={()=>setShow('show')}>Delete</button>
                         </div>
             </div>
+            }
             <div className="addJobContainer">
 
                 <Link className="addJobBtn" to={`/company/add/${companyId}`} >Add Job</Link>
             </div>
-      <input name="jobSearch" className="jobSearch" value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
-                              <button onClick={()=>setJobSearch('')}>Clear</button>
+            {hideArchived?
+                <button className="archiveButton" onClick={()=>setHideArchived('')}>View Archived</button>
+                :
+                <button className="archiveButton" onClick={()=>setHideArchived('archived')}>Hide Archived</button>
+            }
+                <input name="jobSearch" className="jobSearch" value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
+                <button className="clearJobSearch" onClick={()=>setJobSearch('')}>Clear</button>
             <div className="companyJobContainer" >
-                {hideArchived?
-            <>
-            <button onClick={()=>setHideArchived(!hideArchived)}>View Archived</button>
+                {/* {hideArchived? */}
+            {/* <> */}
+            
                 
-                {allJobs.filter(job=>job.title.includes(jobSearch)&&job.status!=='archived').map((job,index)=>{
+                {allJobs.filter(job=>job.title.includes(jobSearch)&&job.status!==hideArchived).map((job,index)=>{
                     return (
                         <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
                             <h3 className="jobTitle">{job.title}</h3>
@@ -95,28 +142,29 @@ function Company() {
                         </Link>
                     )
                 })}
-            </>
-            :
-            <>
-            <button onClick={()=>setHideArchived(!hideArchived)}>Hide Archived</button>
+            {/* </> */}
+            {/* : */}
+            {/* <> */}
+            {/* <button onClick={()=>setHideArchived(!hideArchived)}>Hide Archived</button> */}
                 
-                {allJobs.filter(job=>job.title.includes(jobSearch)).map((job,index)=>{
+                {/* {allJobs.filter(job=>job.title.includes(jobSearch)).map((job,index)=>{
                     return (
                         <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
                             <h3 className="jobTitle">{job.title}</h3>
-                            {/* <p>{job.description}</p> */}
-                            {/* <p>{job.Notes}</p> */}
+                           
                             <p>{job.link}</p>
                             <p>{job.contactInfo}</p>
                             {console.log(job)}
                             {job.createdAt?<p>Created at {job.date}</p>:<></>}
                         </Link>
                     )
-                })}
-            </>}
+                })} */}
+            {/* </>} */}
                 {/* <Job /> */}
 
             </div>
+        <ConfirmModal show={show} setShow={setShow} callBack={deleteCompany} action="delete" name={company.name}/>
+
       </div>
   );
 }
