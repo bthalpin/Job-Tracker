@@ -9,6 +9,9 @@ function Company() {
     const navigate = useNavigate()
     const [allJobs,setAllJobs ] = useState([])
     const [company,setCompany ] = useState({})
+    const [hideArchived,setHideArchived] = useState(true)
+
+    const [jobSearch,setJobSearch] = useState('');
     const token = Auth.getToken();
     useEffect(() => {
         getCompany()
@@ -72,9 +75,14 @@ function Company() {
 
                 <Link className="addJobBtn" to={`/company/add/${companyId}`} >Add Job</Link>
             </div>
+      <input name="jobSearch" className="jobSearch" value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
+                              <button onClick={()=>setJobSearch('')}>Clear</button>
             <div className="companyJobContainer" >
+                {hideArchived?
+            <>
+            <button onClick={()=>setHideArchived(!hideArchived)}>View Archived</button>
                 
-                {allJobs.map((job,index)=>{
+                {allJobs.filter(job=>job.title.includes(jobSearch)&&job.status!=='archived').map((job,index)=>{
                     return (
                         <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
                             <h3 className="jobTitle">{job.title}</h3>
@@ -87,7 +95,26 @@ function Company() {
                         </Link>
                     )
                 })}
-                <Job />
+            </>
+            :
+            <>
+            <button onClick={()=>setHideArchived(!hideArchived)}>Hide Archived</button>
+                
+                {allJobs.filter(job=>job.title.includes(jobSearch)).map((job,index)=>{
+                    return (
+                        <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
+                            <h3 className="jobTitle">{job.title}</h3>
+                            {/* <p>{job.description}</p> */}
+                            {/* <p>{job.Notes}</p> */}
+                            <p>{job.link}</p>
+                            <p>{job.contactInfo}</p>
+                            {console.log(job)}
+                            {job.createdAt?<p>Created at {job.date}</p>:<></>}
+                        </Link>
+                    )
+                })}
+            </>}
+                {/* <Job /> */}
 
             </div>
       </div>

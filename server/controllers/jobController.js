@@ -1,7 +1,15 @@
 const { Job,Company } = require('../models');
+const { ObjectId } = require('mongoose').Types;
 
 module.exports = {
   // Get all job
+  getAllJobs(req, res) {
+    console.log(req.user,'here')
+    // console.log(req.user.data._id)
+    Job.find({userId:ObjectId(req.user.data._id)})
+      .then((jobs) => res.json(jobs))
+      .catch((err) => res.status(404).json(err));
+  },
   getJob(req, res) {
     // console.log(req.user.data._id)
     Job.find({company:req.params.companyId,userId:req.user.data._id})

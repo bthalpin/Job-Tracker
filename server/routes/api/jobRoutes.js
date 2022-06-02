@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {
+  getAllJobs,
   getJob,
   getSingleJob,
   createJob,
@@ -8,6 +9,7 @@ const {
 } = require('../../controllers/jobController.js');
 const {loginRequired} = require('../../utils/auths');
 
+router.route('/myjobs').get(getAllJobs)
 // /api/Jobs
 router.route('/:companyId').get(loginRequired,getJob).post(createJob);
 

@@ -22,7 +22,7 @@ const jobSchema = new Schema({
     },
     status:{
         type:String,
-        enum:['created','applied','offer','rejected']
+        enum:['created','applied','offer','rejected','archived']
     },
     company:{
         type: Schema.Types.ObjectId,

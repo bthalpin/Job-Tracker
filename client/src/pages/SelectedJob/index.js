@@ -130,6 +130,7 @@ function SelectedJob() {
                 <option value="applied">Applied</option>
                 <option value="offer">Offer</option>
                 <option value="rejected">Rejected</option>
+                <option value="archived">Archive</option>
             </select>
             <div className="jobButtonContainer">
                 <button className="jobButton deleteJob" onClick={deleteJob}>Delete</button>

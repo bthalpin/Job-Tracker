@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import {Nav} from './components';
-import {Home,Company,AddCompany,EditCompany,AddJob,SelectedJob,Login} from './pages';
+import {Home,Company,AddCompany,EditCompany,AddJob,SelectedJob,Login,AllJobs} from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Auth from './utils/auth';
 import './App.css';
@@ -24,6 +24,10 @@ function App() {
           <Route
             path='/company/'
             element={<AddCompany />}
+            />
+          <Route
+            path='/myjobs/'
+            element={<AllJobs />}
             />
           <Route
             path='/company/edit/:companyId'

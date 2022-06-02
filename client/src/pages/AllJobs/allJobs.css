@@ -1,0 +1,26 @@
+.allJobContainer{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.allJobCard{
+    margin:2rem;
+    padding:2rem;
+    width:500px;
+    border-radius: 0.2rem;
+    border:1px solid var(--border);
+    box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
+}
+
+.jobTitle{
+    margin-bottom:3rem;
+}
+.applied{
+    background-color: var(--applied);
+}
+.offer{
+    background-color: var(--offer);
+}
+.rejected{
+    background-color: var(--rejected);
+}

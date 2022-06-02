@@ -45,10 +45,11 @@ function Nav() {
             <Link to="/home/">Companies</Link>
         } */}
         {window.location.pathname!=='/'&&window.location.pathname!=='/home/'?
-        <div className="back" onClick={()=>navigate(-1)}><p>Back</p></div>
+        <div className="back navLink" onClick={()=>navigate(-1)}><p>Back</p></div>
         :<></>
-        }
-            <div className="logout" onClick={logout}>Logout</div>
+    }
+    <Link to='/myjobs' className="allJobLink navLink">All Jobs</Link>
+            <div className="logout navLink" onClick={logout}>Logout</div>
 
             </div>
             </>
