@@ -7,6 +7,7 @@ import './home.css';
 function Home() {
     const navigate = useNavigate()
     const token = Auth.getToken();
+    const [search,setSearch] = useState('');
     const [allComapnies,setAllCompanies ] = useState([])
     useEffect(() => {
         getCompanies();
@@ -26,7 +27,9 @@ function Home() {
   
  
   return (
-      <>
+      <>    
+      <input name="search" className="search" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
+      <button onClick={()=>setSearch('')}>Clear</button>
             {allComapnies.length?<></>
             :<div>
                 <p className="welcomeMessage"><span className="welcome">Welcome to JobTracker!</span> To begin, start by adding a company that you are applying to.  Once the company is created you can then add individual jobs and mark the jobs once you apply, get an offer, or are rejected.</p>
@@ -36,7 +39,7 @@ function Home() {
 
         </div>
         <div className="homeContainer" >
-            {allComapnies.map((company,index)=>{
+            {allComapnies.filter(company=>company.name.includes(search)).map((company,index)=>{
                 return (
                     <div className="homeCard" key={index}>
                         

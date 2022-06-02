@@ -112,13 +112,13 @@ function SelectedJob() {
             <h2>{job?.title}</h2>
                 <p>{job?.contactInfo}</p>
                 <a href={job?.link}>{job?.title} - Post</a>
-                {job.description?
+                {job?.description?
                 <>
                     <h3>Description:</h3>
                     <p className="description">{job.description}</p>
                 </>
                 :<></>}
-                {job.notes?
+                {job?.notes?
                 <>
                     <h3>Notes:</h3>
                     <p className="notes">{job?.notes}</p>

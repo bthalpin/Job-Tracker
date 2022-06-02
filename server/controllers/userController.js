@@ -50,7 +50,9 @@ module.exports = {
   async createUser(req, res) {
     try {
       const user = await  User.create(req.body)
+      console.log(user)
       const token = signToken(user)
+      console.log(token)
       res.json({token,user})
     } catch (err) {
       res.status(500).json(err)
