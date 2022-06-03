@@ -120,6 +120,8 @@ function Company() {
 
                 <Link className="addJobBtn" to={`/company/add/${companyId}`} >Add Job</Link>
             </div>
+            {company?.jobs?.length?
+            <>
             {hideArchived?
                 <button className="archiveButton" onClick={()=>setHideArchived('')}>View Archived</button>
                 :
@@ -166,6 +168,11 @@ function Company() {
                 {/* <Job /> */}
 
             </div>
+            </>
+            :
+            <div>
+                <h3 className="noJobs">You currently do not have any jobs for {company.name}, press the add job button to track your first job.</h3>
+            </div>}
         <ConfirmModal show={show} setShow={setShow} callBack={deleteCompany} action="delete" name={company.name}/>
 
       </div>

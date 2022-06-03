@@ -68,6 +68,11 @@
     border-bottom-left-radius: 0.4rem;
     background-color: var(--altButton);
 }
+.noJobs{
+    margin-top:5rem;
+    padding:1rem;
+    font-size: 1.5rem;
+}
 .jobTitle{
     margin-bottom:3rem;
 }
