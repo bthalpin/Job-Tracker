@@ -32,7 +32,7 @@ function AllJobs() {
                 {hideArchived?
                 <button className="archiveBtn" onClick={()=>setHideArchived('')}>View Archived</button>
                 :<button className="archiveBtn" onClick={()=>setHideArchived('archived')}>Hide Archived</button>}
-      <input name="jobSearch" className="jobSearch" value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
+      <input name="jobSearch" className="jobSearch"  placeholder="Search your jobs" value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
                   <button className="clearJobSearch" onClick={()=>setJobSearch('')}>Clear</button>
             <div className="allJobContainer" >
                 

@@ -71,7 +71,7 @@ function Home() {
       };
   return (
       <>    
-      <input name="search" className="search" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
+      <input name="search" className="search" placeholder="Search Your Companies" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
       <button className="clearSearch" onClick={()=>setSearch('')}>Clear</button>
             {allCompanies.length?<></>
             :<div>
