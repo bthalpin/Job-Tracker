@@ -1,5 +1,5 @@
 import React from 'react';
-// import './job.css';
+import './companyForm.css';
 
 function CompanyForm({newCompany,setNewCompany,handleSubmit,buttonName,setEdit}) {
     
@@ -16,8 +16,11 @@ function CompanyForm({newCompany,setNewCompany,handleSubmit,buttonName,setEdit})
             <input type="text" name="website" placeholder="Website" value={newCompany.website} onChange={(e)=>setNewCompany({...newCompany, website:e.target.value})}></input>
             <label htmlFor="logo">Company Logo</label>
             <input type="text" name="logo" placeholder="Logo" value={newCompany.logo} onChange={(e)=>setNewCompany({...newCompany, logo:e.target.value})}></input>
-            <button className="addButton" onClick={handleSubmit}>{buttonName}</button>
-            <button className='addButton' onClick={()=>setEdit(false)}>Cancel</button>
+            <div className="companyFormBtn">
+                <button className="addButton" onClick={handleSubmit}>{buttonName}</button>
+                <button className='addButton' onClick={()=>setEdit(false)}>Cancel</button>
+
+            </div>
         </form>
         </>
     );

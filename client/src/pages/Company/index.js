@@ -173,7 +173,7 @@ function Company() {
             <div>
                 <h3 className="noJobs">You currently do not have any jobs for {company.name}, press the add job button to track your first job.</h3>
             </div>}
-        <ConfirmModal show={show} setShow={setShow} callBack={deleteCompany} action="delete" name={company.name}/>
+        <ConfirmModal show={show} setShow={setShow} callBack={deleteCompany} action="delete" name={company.name} type="company"/>
 
       </div>
   );

@@ -143,7 +143,7 @@ function SelectedJob() {
             </>
             
             }
-        <ConfirmModal show={show} setShow={setShow} callBack={deleteJob} action="delete" name={newJob.title}/>
+        <ConfirmModal show={show} setShow={setShow} callBack={deleteJob} action="delete" name={newJob.title} type="job"/>
         </div>
 
         </div>

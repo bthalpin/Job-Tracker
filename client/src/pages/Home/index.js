@@ -88,7 +88,7 @@ function Home() {
                 </div>
             </div>
             :<></>} */}
-            <ConfirmModal show={show} setShow={setShow} callBack={addCompany} action="create" name={newCompany.name}/>
+            <ConfirmModal show={show} setShow={setShow} callBack={addCompany} action="create" name={newCompany.name} type="company"/>
         </div>:
         <div className="addContainer">
             {/* <Link to={'/company/'} className="addCompany">Add Company</Link> */}

@@ -24,9 +24,19 @@
     top:10%;
     left:50%;
     transform: translate(-50%,0);
-    width:500px;
-    height:300px;
+    /* width:500px;
+    height:300px; */
+    padding:2rem;
     background-color: var(--main);
+}
+.confirmBtn{
+    margin:1rem 0.2rem 0rem;
+    padding:0.7rem 1rem;
+    background-color: var(--button);
+    border:1px solid var(--border);
+    cursor: pointer;
+    border-radius:0.3rem;
+    color:white;
 }
 .show{
     display:block;

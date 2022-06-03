@@ -88,7 +88,7 @@ function AddJob() {
             </div>
         </div>
         :<></>}
-        <ConfirmModal show={show} setShow={setShow} callBack={addJob} action="create" name={newJob.title}/>
+        <ConfirmModal show={show} setShow={setShow} callBack={addJob} action="create" name={newJob.title} type="job"/>
 
     </div>
   );
