@@ -7,7 +7,7 @@ function CompanyForm({newCompany,setNewCompany,handleSubmit,buttonName,setEdit})
         <>
         <form>
             <label htmlFor="company">Company Name</label>
-            <input type="text" name="company" placeholder="Company name" value={newCompany.name} onChange={(e)=>setNewCompany({...newCompany, name:e.target.value})} required></input>
+            <input type="text" name="company" placeholder="Company name" value={newCompany.name} onChange={(e)=>setNewCompany({...newCompany, name:e.target.value})}></input>
             <label htmlFor="address">Address</label>
             <input type="text" name="address" placeholder="Address" value={newCompany.address} onChange={(e)=>setNewCompany({...newCompany, address:e.target.value})}></input>
             <label htmlFor="phone">Phone Number</label>

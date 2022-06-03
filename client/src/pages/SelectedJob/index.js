@@ -99,8 +99,9 @@ function SelectedJob() {
     }
 
     return (
-        <div className={`${job?.status}job jobContainer`} >
-            
+        <div className={`${job?.status}job jobPage`} >
+            <div className={`jobContainer`}>
+
             {edit
             ?
             <>  
@@ -143,6 +144,7 @@ function SelectedJob() {
             
             }
         <ConfirmModal show={show} setShow={setShow} callBack={deleteJob} action="delete" name={newJob.title}/>
+        </div>
 
         </div>
   );

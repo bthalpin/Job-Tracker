@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate,useParams } from 'react-router-dom';
 import './jobForm.css';
 
 function JobForm({newJob,setNewJob,handleSubmit,buttonName,setEdit}) {
-    
+    const navigate = useNavigate()
+    const {companyId} = useParams()
     return (
         <div className="jobFormContainer">
         <form>
@@ -29,7 +31,9 @@ function JobForm({newJob,setNewJob,handleSubmit,buttonName,setEdit}) {
             <button className="jobFormButton" onClick={handleSubmit}>{buttonName}</button>
             {buttonName==='Save'?
             <button className="jobFormButton" onClick={()=>setEdit(false)}>Cancel</button>
-            :<></>}
+            :
+            <button className="jobFormButton" onClick={()=>navigate(`/company/${companyId}`)}>Cancel</button>
+            }
 
             </div>
         </form>
