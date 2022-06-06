@@ -22,8 +22,11 @@
   },
   "homepage": "https://github.com/bthalpin/Job-Tracker#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.11",
     "concurrently": "^7.2.1",
     "dotenv": "^16.0.1",
-    "jsonwebtoken": "^8.5.1"
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^3.2.5"
   }
 }
