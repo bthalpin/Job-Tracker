@@ -1,0 +1,22 @@
+.jobScraper{
+    margin:0.5rem auto;
+    padding:1rem;
+    box-shadow: 0.5rem 0.5rem 1rem var(--shadow) inset;
+    border:1px solid var(--border);
+}
+.jobScrapeWarning{
+    color:red;
+}
+.jobScraper input{
+    padding:0.2rem;
+    margin:0.3rem 0;
+    /* border-radius:0.2rem; */
+}
+.jobScraper button{
+    padding:0.2rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    background-color: var(--button);
+    color:white;
+    cursor: pointer;
+}

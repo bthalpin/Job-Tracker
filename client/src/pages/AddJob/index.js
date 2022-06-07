@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import {JobForm,ConfirmModal} from '../../components';
+import {JobForm,ConfirmModal,JobPostData} from '../../components';
 import {Link,useParams,useNavigate} from 'react-router-dom';
 import Auth from '../../utils/auth';
 // import './AddJob.css'
@@ -10,6 +10,7 @@ function AddJob() {
     const [show,setShow] = useState('')
     const [status,setStatus] = useState('created')
     const token = Auth.getToken();
+    const [jobData,setJobData] = useState([])
     const [newJob,setNewJob] = useState({
         title:'',
         description:'',
@@ -20,6 +21,15 @@ function AddJob() {
         company:companyId
     })
     const [created,setCreated] = useState('')
+    useEffect (()=>{
+        // console.log('here',job)
+        // setJob({...job,description:`-${jobData.join('\n-')}`})
+        if(jobData.length){
+
+            setNewJob({...newJob,description:`-${jobData.join('\n-')}`})
+        }
+        // console.log('here',job)
+    },[jobData])
     // const handleChange = (e) => {
     //     e.preventDefault();
     //     const {value} = e.target
@@ -80,6 +90,7 @@ function AddJob() {
   return (
     <div className="AddJobContainer" >
         <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} buttonName='Add' />
+        <JobPostData setJobData={setJobData}/>
         {created!==''
         ?<div>
             <p>{created}</p>

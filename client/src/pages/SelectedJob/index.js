@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useParams,useNavigate} from 'react-router-dom';
-import {ConfirmModal,JobForm} from '../../components/';
+import {ConfirmModal,JobForm,JobPostData} from '../../components/';
 import Auth from '../../utils/auth';
 import './job.css'
 
@@ -9,6 +9,7 @@ function SelectedJob() {
     const navigate = useNavigate()
     const [show,setShow] = useState('')
     const [job,setJob ] = useState()
+    const [jobData,setJobData] = useState([])
     const [status,setStatus] = useState('created')
     const token = Auth.getToken();
     const [newJob,setNewJob] = useState({
@@ -21,6 +22,16 @@ function SelectedJob() {
         company:companyId
     })
     const [edit,setEdit] = useState(false)
+    useEffect (()=>{
+        // console.log('here',job)
+        // setJob({...job,description:`-${jobData.join('\n-')}`})
+        if(jobData.length){
+
+            setNewJob({...job,description:`-${jobData.join('\n-')}`})
+            editJob({...job,description:`-${jobData.join('\n-')}`})
+        }
+        // console.log('here',job)
+    },[jobData])
     useEffect(() => {
         getJob();
       }, []);
@@ -78,8 +89,8 @@ function SelectedJob() {
         setJob({...newJob,status:e.target.value})
         setNewJob({...newJob,status:e.target.value})
     }
-    const handleSubmit = (e) => {
-        e.preventDefault()
+
+    const editJob = (updatedData) => {
         let jobURL = `/api/jobs/${companyId}/${jobId}`;
         
         fetch(jobURL,{
@@ -87,7 +98,7 @@ function SelectedJob() {
             headers:{
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify(newJob)
+            body:JSON.stringify(updatedData||newJob)
 
         })
           .then((res) => res.json())
@@ -97,11 +108,14 @@ function SelectedJob() {
                 setEdit(false)
             });
     }
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        editJob()
+    }
+    console.log(job,jobData)
     return (
         <div className={`${job?.status}job jobPage`} >
             <div className={`jobContainer`}>
-
             {edit
             ?
             <>  
@@ -126,6 +140,13 @@ function SelectedJob() {
                     <p className="notes">{job?.notes}</p>
                 </>
                 :<></>}
+                {/* <div className="jobScraper">
+                    <p>Enter the URL of the job posting and Job Tracker will attempt to pull out relevant data to add to the job description.</p> */}
+                    <JobPostData setJobData={setJobData} />
+                    {/* <p className="jobScrapeWarning">*WILL REPLACE YOUR CURRENT JOB DESCRIPTION</p>
+                    <p>*Does not work with all job postings, and may require editing to complete the description</p>
+
+                </div> */}
                 <label htmlFor="status">Set status: </label>
                 <select name="status" value={newJob.status} onChange={changeStatus}>
                 <option value="created" >---</option>
