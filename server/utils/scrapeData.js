@@ -46,6 +46,7 @@ module.exports = {
                 if(info[i].children[0].children){
                     if(info[i].children[0].children[0].data.replace(/\n/g,'').replace(/ /g,'').length){
                         // console.log(info[i].children[0].children[0].data.replace(/\n/g,'').replace(' ','').length)
+                        console.log(description)
                         description.push(info[i].children[0].children[0].data.replace(/\n/g,''))
                     }
                 }
