@@ -8,6 +8,7 @@ router.route('/').post(async (req,res)=>{
         const scrapedData = await scrapeData(URL)
         console.log(scrapedData)
         if (scrapedData.description){
+            console.log(scrapedData)
             res.status(200).json(scrapedData)
             return
         }
