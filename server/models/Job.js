@@ -20,6 +20,12 @@ const jobSchema = new Schema({
     link: {
         type: String
     },
+    resumeLink:{
+        type: String
+    },
+    coverLetterLink: {
+        type: String
+    },
     status:{
         type:String,
         enum:['created','applied','offer','rejected','archived']

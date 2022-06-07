@@ -18,6 +18,8 @@ function SelectedJob() {
         description:'',
         contactInfo:'',
         link:'',
+        resumeLink:'',
+        coverLetterLink: '',
         notes:'',
         status:'created',
         company:companyId
@@ -134,7 +136,16 @@ function SelectedJob() {
             <h2>{job?.title}</h2>
                 <p>{job?.contactInfo}</p>
                 {/* {console.log(job?.link,'LINK')} */}
-                <a href={job?.link}>{job?.title} - Post</a>
+                <a href={job?.link}>{job?.title} - Job Post</a>
+                <div className="resumeContainer">
+                    {job?.resumeLink?
+                    <a href={job.resumeLink}>Resume</a>
+                    :<></>}
+                    {job?.coverLetterLink?
+                    <a href={job.coverLetterLink}>Cover Letter</a>
+                    :<></>}
+
+                </div>
                 {job?.description?
                 <>
                     <h3>Description:</h3>
