@@ -6,7 +6,7 @@ function JobPostData({setJobData}) {
     const [jobPostURL,setJobPostURL] = useState('')
     const findJobPost = (e) => {
         e.preventDefault()
-        let jobURL = `http://localhost:3001/api/job/description`;
+        let jobURL = `/api/job/description`;
         
         fetch(jobURL,{
             method:'POST',
