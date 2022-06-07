@@ -44,7 +44,7 @@ function SelectedJob() {
     useEffect(()=>{
         if(newJob.title){
         let jobURL = `/api/jobs/${companyId}/${jobId}`;
-        console.log(newJob.status)
+        // console.log(newJob.status)
         fetch(jobURL,{
             method:'PUT',
             headers:{
@@ -91,7 +91,7 @@ function SelectedJob() {
     }
     const changeStatus = async (e) => {
         e.preventDefault()
-        console.log('here')
+        // console.log('here')
         setJob({...newJob,status:e.target.value})
         setNewJob({...newJob,status:e.target.value})
     }
@@ -109,7 +109,7 @@ function SelectedJob() {
         })
           .then((res) => res.json())
           .then((response) => {
-              console.log(response)
+            //   console.log(response)
                 setJob(response)
                 setEdit(false)
             });
@@ -118,7 +118,7 @@ function SelectedJob() {
         e.preventDefault()
         editJob()
     }
-    console.log(job,jobData)
+    // console.log(job,jobData)
     return (
         <div className={`${job?.status}job jobPage`} >
             <div className={`jobContainer`}>
@@ -133,7 +133,7 @@ function SelectedJob() {
             <>
             <h2>{job?.title}</h2>
                 <p>{job?.contactInfo}</p>
-                {console.log(job?.link,'LINK')}
+                {/* {console.log(job?.link,'LINK')} */}
                 <a href={job?.link}>{job?.title} - Post</a>
                 {job?.description?
                 <>

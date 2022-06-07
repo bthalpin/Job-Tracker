@@ -4,11 +4,11 @@ const {scrapeData} = require('../../utils/scrapeData');
 router.route('/').post(async (req,res)=>{
     try {
         const URL = req.body.URL;
-        console.log(URL)
+        // console.log(URL)
         const scrapedData = await scrapeData(URL)
-        console.log(scrapedData)
+        // console.log(scrapedData)
         if (scrapedData.description){
-            console.log(scrapedData)
+            // console.log(scrapedData)
             res.status(200).json(scrapedData)
             return
         }

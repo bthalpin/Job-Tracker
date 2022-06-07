@@ -18,7 +18,7 @@ function JobPostData({setJobData}) {
         })
           .then((res) => res.json())
           .then((response) =>{
-            console.log(response,'HERE')
+            // console.log(response,'HERE')
             if (response.error){
                 setErrorMessage(response.error)
                 return

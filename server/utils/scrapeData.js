@@ -7,7 +7,7 @@ const getRawData = (URL) => {
     return fetch(URL)
         .then(response => response.text())
         .then(data =>  {
-            console.log(data,'RAW!!!!')
+            // console.log(data,'RAW!!!!')
             return data})
 }
 
@@ -18,16 +18,16 @@ module.exports = {
     scrapeData : async function(URL){
         const rawData = await getRawData(URL)
         const parsedData = await cheerio.load(rawData)
-        console.log(parsedData)
+        // console.log(parsedData)
         const info = (parsedData('li'))
-        console.log(info)
+        // console.log(info)
 
         // const indeedTitle = parsedData('.jobsearch-JobInfoHeader-title')
         // console.log(indeedTitle[0].children[0].data,'aaaa')
         let linkedInTitle = parsedData('h1')
-        console.log(linkedInTitle)
+        // console.log(linkedInTitle)
         if (linkedInTitle.length){
-            console.log(linkedInTitle[0].children,'inside')
+            // console.log(linkedInTitle[0].children,'inside')
             linkedInTitle = linkedInTitle[0].children[0].data
         } else {
             linkedInTitle = ''
@@ -51,13 +51,13 @@ module.exports = {
                 if(info[i].children[0].children){
                     if(info[i].children[0].children[0].data.replace(/\n/g,'').replace(/ /g,'').length){
                         // console.log(info[i].children[0].children[0].data.replace(/\n/g,'').replace(' ','').length)
-                        console.log(description)
+                        // console.log(description)
                         description.push(info[i].children[0].children[0].data.replace(/\n/g,''))
                     }
                 }
                 else if (info[i].children){
                     if(info[i].children[0].data.replace(/\n/g,'').replace(/ /g,'').length){
-                        console.log(info[i].children[0].data.replace(/\n/g,'').replace(/ /g,'').length,'1')
+                        // console.log(info[i].children[0].data.replace(/\n/g,'').replace(/ /g,'').length,'1')
     
                     description.push(info[i].children[0].data)}
                 }
@@ -73,7 +73,7 @@ module.exports = {
         //     jobData.title = indeedTitle
         // }
         // console.log(description,'test')
-        console.log(jobData,'JOBDATA')
+        // console.log(jobData,'JOBDATA')
         return jobData;
         // console.log(info[0].children[0].children[0])
         // console.log(info.children[6].children,info.children.length)
