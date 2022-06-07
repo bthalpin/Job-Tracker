@@ -16,6 +16,7 @@ module.exports = {
     scrapeData : async function(URL){
         const rawData = await getRawData(URL)
         const parsedData = cheerio.load(rawData)
+        console.log(parsedData)
         const info = (parsedData('li'))
 
         // const indeedTitle = parsedData('.jobsearch-JobInfoHeader-title')
