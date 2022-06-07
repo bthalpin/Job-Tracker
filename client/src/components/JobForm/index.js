@@ -20,7 +20,7 @@ function JobForm({newJob,setNewJob,handleSubmit,buttonName,setEdit}) {
             <label htmlFor="resume">Link to Resume</label>
             <input type="text" name="resume" placeholder="URL of resume" value={newJob.resumeLink} onChange={(e)=>setNewJob({...newJob, resumeLink:e.target.value})}></input>
             <label htmlFor="cover">Link to Cover Letter</label>
-            <input type="text" name="cover" placeholder="URL of cover letter" value={newJob.coverLetterlink} onChange={(e)=>setNewJob({...newJob, coverLetterLink:e.target.value})}></input>
+            <input type="text" name="cover" placeholder="URL of cover letter" value={newJob.coverLetterLink} onChange={(e)=>setNewJob({...newJob, coverLetterLink:e.target.value})}></input>
             <label htmlFor="notes">Notes</label>
             <textarea name="notes" placeholder="Notes" value={newJob.notes} onChange={(e)=>setNewJob({...newJob, notes:e.target.value})}></textarea>
             {/* {buttonName==='Add'?<></>:
