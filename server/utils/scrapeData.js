@@ -18,10 +18,12 @@ module.exports = {
         const parsedData = cheerio.load(rawData)
         console.log(parsedData)
         const info = (parsedData('li'))
+        console.log(info)
 
         // const indeedTitle = parsedData('.jobsearch-JobInfoHeader-title')
         // console.log(indeedTitle[0].children[0].data,'aaaa')
         let linkedInTitle = parsedData('h1')
+        console.log(linkedInTitle)
         if (linkedInTitle.length){
             console.log(linkedInTitle[0].children,'inside')
             linkedInTitle = linkedInTitle[0].children[0].data
