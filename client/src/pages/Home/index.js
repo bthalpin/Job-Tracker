@@ -97,7 +97,7 @@ function Home() {
 
         </div>}
         <div className="homeContainer" >
-            {allCompanies.filter(company=>company.name.includes(search)).map((company,index)=>{
+            {allCompanies.filter(company=>company.name.toUpperCase().includes(search.toUpperCase())).map((company,index)=>{
                 return (
                     <div className="homeCard" key={index}>
                         

@@ -24,9 +24,9 @@ function AddJob() {
     useEffect (()=>{
         // console.log('here',job)
         // setJob({...job,description:`-${jobData.join('\n-')}`})
-        if(jobData.length){
+        if(jobData?.description?.length){
 
-            setNewJob({...newJob,description:`-${jobData.join('\n-')}`})
+            setNewJob({...newJob,description:`-${jobData.description.join('\n-')}`,link:jobData.URL,title:jobData.title})
         }
         // console.log('here',job)
     },[jobData])

@@ -134,13 +134,13 @@ function Company() {
             {/* <> */}
             
                 
-                {allJobs.filter(job=>job.title.includes(jobSearch)&&job.status!==hideArchived).map((job,index)=>{
+                {allJobs.filter(job=>job.title.toUpperCase().includes(jobSearch.toUpperCase())&&job.status!==hideArchived).map((job,index)=>{
                     return (
                         <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
                             <h3 className="jobTitle">{job.title}</h3>
                             {/* <p>{job.description}</p> */}
                             {/* <p>{job.Notes}</p> */}
-                            <p>{job.link}</p>
+                            {/* <p>{job.link.substr(0,30)}</p> */}
                             <p>{job.contactInfo}</p>
                             {console.log(job)}
                             {job.createdAt?<p>Created at {job.date}</p>:<></>}

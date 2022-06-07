@@ -1,6 +1,6 @@
 .jobScraper{
     margin:0.5rem auto;
-    padding:1rem;
+    padding:2rem 1rem;
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow) inset;
     border:1px solid var(--border);
 }

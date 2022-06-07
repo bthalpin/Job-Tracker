@@ -9,7 +9,8 @@ function SelectedJob() {
     const navigate = useNavigate()
     const [show,setShow] = useState('')
     const [job,setJob ] = useState()
-    const [jobData,setJobData] = useState([])
+    // const [jobTitle,setJobTitle] = useState('')
+    const [jobData,setJobData] = useState({})
     const [status,setStatus] = useState('created')
     const token = Auth.getToken();
     const [newJob,setNewJob] = useState({
@@ -25,10 +26,15 @@ function SelectedJob() {
     useEffect (()=>{
         // console.log('here',job)
         // setJob({...job,description:`-${jobData.join('\n-')}`})
-        if(jobData.length){
+        if(jobData?.description?.length){
+            if (jobData.title){
+                setNewJob({...job,title:jobData.title,description:`-${jobData.description.join('\n-')}`,link:jobData.URL})
+                editJob({...job,title:jobData.title,description:`-${jobData.description.join('\n-')}`,link:jobData.URL})
+            }else{
+                setNewJob({...job,description:`-${jobData.description.join('\n-')}`,link:jobData.URL})
+                editJob({...job,description:`-${jobData.description.join('\n-')}`,link:jobData.URL})
 
-            setNewJob({...job,description:`-${jobData.join('\n-')}`})
-            editJob({...job,description:`-${jobData.join('\n-')}`})
+            }
         }
         // console.log('here',job)
     },[jobData])
@@ -127,6 +133,7 @@ function SelectedJob() {
             <>
             <h2>{job?.title}</h2>
                 <p>{job?.contactInfo}</p>
+                {console.log(job?.link,'LINK')}
                 <a href={job?.link}>{job?.title} - Post</a>
                 {job?.description?
                 <>

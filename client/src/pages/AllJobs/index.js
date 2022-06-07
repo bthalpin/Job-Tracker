@@ -36,7 +36,7 @@ function AllJobs() {
                   <button className="clearJobSearch" onClick={()=>setJobSearch('')}>Clear</button>
             <div className="allJobContainer" >
                 
-                {allJobs.filter(job=>job.title.includes(jobSearch)&&job.status!==hideArchived).map((job,index)=>{
+                {allJobs.filter(job=>job.title.toUpperCase().includes(jobSearch.toUpperCase())&&job.status!==hideArchived).map((job,index)=>{
                     return (
                         <Link to={`/jobs/${job.companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
                             <h3 className="jobTitle">{job.title}</h3>

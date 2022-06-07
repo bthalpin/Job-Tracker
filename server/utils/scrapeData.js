@@ -1,6 +1,7 @@
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
 const fs = require('fs')
+const { link } = require('fs/promises')
 
 const getRawData = (URL) => {
     return fetch(URL)
@@ -16,33 +17,65 @@ module.exports = {
         const rawData = await getRawData(URL)
         const parsedData = cheerio.load(rawData)
         const info = (parsedData('li'))
-        // const allData = info[0].map(child => {
+
+        // const indeedTitle = parsedData('.jobsearch-JobInfoHeader-title')
+        // console.log(indeedTitle[0].children[0].data,'aaaa')
+        let linkedInTitle = parsedData('h1')
+        if (linkedInTitle.length){
+            console.log(linkedInTitle[0].children,'inside')
+            linkedInTitle = linkedInTitle[0].children[0].data
+        } else {
+            linkedInTitle = ''
+        }
+        // if (indeedTitle.length){
+            // console.log(linkedInTitle[0].children,'inside')
+            // indeedTitle = indeedTitle[0].children[0].data
+        // } else {
+            // indeedTitle = ''
+        // }
+        // console.log(indeedTitle,linkedInTitle[0].children[0].data,'TITLE') 
+        // const description = info[0].map(child => {
         //     if (!child.children){
         //         return
         //     }
         //     return child.children.data
         // })
-        let allData =[]
+        let description =[]
         for (let i=0;i<info.length;i++){
             if (info[i].children){
                 if(info[i].children[0].children){
                     if(info[i].children[0].children[0].data.replace(/\n/g,'').replace(/ /g,'').length){
                         // console.log(info[i].children[0].children[0].data.replace(/\n/g,'').replace(' ','').length)
-                        allData.push(info[i].children[0].children[0].data.replace(/\n/g,''))
+                        description.push(info[i].children[0].children[0].data.replace(/\n/g,''))
                     }
                 }
                 else if (info[i].children){
                     if(info[i].children[0].data.replace(/\n/g,'').replace(/ /g,'').length){
                         console.log(info[i].children[0].data.replace(/\n/g,'').replace(/ /g,'').length,'1')
     
-                    allData.push(info[i].children[0].data)}
+                    description.push(info[i].children[0].data)}
                 }
-                // allData.push(info.children[i].children[0].data)
+                // description.push(info.children[i].children[0].data)
             }
         }
-        // console.log(allData,'test')
-        return allData;
+        // console.log(description,linkedInTitle,indeedTitle)
+        let jobData = {title:'',description:description}
+        if (linkedInTitle.length){
+            jobData.title = linkedInTitle
+        }
+        // if (indeedTitle.length){
+        //     jobData.title = indeedTitle
+        // }
+        // console.log(description,'test')
+        console.log(jobData,'JOBDATA')
+        return jobData;
         // console.log(info[0].children[0].children[0])
         // console.log(info.children[6].children,info.children.length)
     }
 } 
+
+
+
+
+// .jobsearch-JobInfoHeader-title
+// .jobsearch-JobInfoHeader-companyName
