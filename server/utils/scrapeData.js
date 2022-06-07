@@ -6,7 +6,9 @@ const { link } = require('fs/promises')
 const getRawData = (URL) => {
     return fetch(URL)
         .then(response => response.text())
-        .then(data =>  data)
+        .then(data =>  {
+            console.log(data,'RAW!!!!')
+            return data})
 }
 
 // const URL = 'https://www.linkedin.com/jobs/view/3082555808/?refId=6ba1d2b5-ca14-4b3a-a692-def796e075ee'
