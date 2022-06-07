@@ -15,7 +15,7 @@ module.exports = {
 
     scrapeData : async function(URL){
         const rawData = await getRawData(URL)
-        const parsedData = cheerio.load(rawData)
+        const parsedData = await cheerio.load(rawData)
         console.log(parsedData)
         const info = (parsedData('li'))
         console.log(info)
