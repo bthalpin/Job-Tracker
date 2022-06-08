@@ -23,6 +23,10 @@ function JobPostData({setJobData}) {
                 setErrorMessage(response.error)
                 return
             }
+            if (!response.desciption.length){
+                setErrorMessage('Unable to get job post data.')
+                return
+            }
             setErrorMessage('')
             setJobData({...response,URL:jobPostURL})
             
