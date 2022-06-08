@@ -23,7 +23,7 @@ function JobPostData({setJobData}) {
                 setErrorMessage(response.error)
                 return
             }
-            if (!response.desciption.length){
+            if (!response.description.length){
                 setErrorMessage('Unable to get job post data.')
                 return
             }
