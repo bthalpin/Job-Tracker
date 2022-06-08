@@ -1,1 +1,58 @@
-# Job-Tracker
+# JobTracker
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Description
+Job Tracker is an app that uses web scraping to allow you to quickly and easily organize your job opportunities.
+
+## Table of Contents
+
+[Link](#link)
+
+[Media](#media)
+
+[Installation](#installation)
+
+[Usage](#usage)
+
+[License](#license)
+
+[Contributing](#contributing)
+
+[Tests](#tests)
+
+[Questions](#questions)
+
+## Link
+[JobTracker](https://job-tracker-bh.herokuapp.com/)
+
+## Media
+
+![Main page](/client/public/images/main.png)
+
+![Add Job](/client/public/images/addJob.png)
+
+![Job page](/client/public/images/job.png)
+
+
+## Installation
+To install the necessary dependencies, run the following command:
+
+    npm install
+
+## Usage
+After downloading the repo, run npm i to install, and run npm run develop to run JobTracker locally.
+
+## License
+This product is licensed under MIT
+
+## Contributing
+None
+
+## Tests
+To run tests, run the following command:
+
+    npm test
+
+## Questions
+If you have any questions about the repo, open an issue or contact me directly at <brian.t.halpin@gmail.com>. You can find more
+    of my work at [Brian Halpin](https://github.com/bthalpin).
