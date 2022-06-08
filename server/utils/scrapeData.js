@@ -7,7 +7,7 @@ const getRawData = (URL) => {
     return fetch(URL)
         .then(response => response.text())
         .then(data =>  {
-            // console.log(data,'RAW!!!!')
+            console.log(data,'RAW!!!!')
             return data})
 }
 
@@ -20,7 +20,7 @@ module.exports = {
         const parsedData = await cheerio.load(rawData)
         // console.log(parsedData)
         const info = (parsedData('li'))
-        // console.log(info)
+        console.log(info)
 
         // const indeedTitle = parsedData('.jobsearch-JobInfoHeader-title')
         // console.log(indeedTitle[0].children[0].data,'aaaa')
