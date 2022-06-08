@@ -69,6 +69,7 @@ function Home() {
         //   .then((res) => res.json())
         //   .then((response) => console.log(response));
       };
+      console.log(allCompanies[0])
   return (
       <>    
       <input name="search" className="search" placeholder="Search Your Companies" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
@@ -105,7 +106,7 @@ function Home() {
                             <div>
                                 <h2>{company.name}</h2>
                                 <img src={company.logo||'/images/default.png'} alt="Company logo"></img>
-                                <p>{company.jobs.length} {company.jobs.length===1?'Job':'Jobs'}</p>
+                                <p>{company.jobs.length} {company.jobs.length===1?'Job':'Jobs'} - Applied {company.jobs.filter(job=>job.status==='created').length}</p>
 
                             </div>
                         </Link>

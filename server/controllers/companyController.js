@@ -6,6 +6,7 @@ module.exports = {
   getCompany(req, res) {
     console.log(req.user.data._id)
     Company.find({userId:ObjectId(req.user.data._id)})
+      .populate('jobs')
       .then((companys) => res.json(companys))
       .catch((err) => res.status(500).json(err));
   },
