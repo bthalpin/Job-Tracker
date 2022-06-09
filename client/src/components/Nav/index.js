@@ -32,7 +32,7 @@ function Nav() {
     },[location.pathname])
 
     return (
-       <div className="navigation">
+       <div className={"navigation"+(window.location.pathname==='/'?' hide':'')}>
            {isloggedIn?
             <>
             <Link to="/home/">

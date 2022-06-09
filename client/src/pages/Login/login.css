@@ -1,15 +1,41 @@
+.loginHeader{
+    margin:2rem auto;
+    width:43rem;
+    padding:1rem;
+}
+.loginImg{
+    width:10rem;
+}
+.welcome{
+    font-size: 4rem;
+}
+.welcomeText{
+    font-size:  1.2rem;
+    width:38rem;
+    margin:auto;
+}
+.title{
+    font-size: 1.9rem;
+}
+.loginBtn{
+    margin:2rem;
+    padding:0.7rem 1rem;
+    font-size: 2rem;
+    background-color: var(--button);
+    color:var(--main);
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+.loginBtn:hover{
+    color:white;
+    background-color: var(--rejected);
+    /* box-shadow: 0 0 1rem var(--button); */
+}
 .loginContainer{
     width:30rem;
     margin:2rem auto;
 }
-.loginContainer input {
-    width:100%;
-    padding:0.2rem;
-    border-radius: 0.2rem;
-}
-.inputContainer{
-    text-align: start;
-}
+
 .loginButton{
     padding:0.5rem;
     background-color: var(--button);
@@ -25,8 +51,24 @@
     width:fit-content;
     margin:auto;
 }
+@media screen and (max-width:656px) {
+    .loginHeader,.welcomeText{
+        width:95vw;
+    }
+    .loginHeader{
+        padding:0;
+    }
+}
 @media screen and (max-width:500px) {
     .loginContainer,.loginContainer input{
         width:95vw;
+    }
+}
+@media screen and (max-height:700px) {
+    .welcome{
+        font-size: 3rem;
+    }
+    .welcomeText{
+        font-size: 1.1rem;
     }
 }

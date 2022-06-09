@@ -4,5 +4,6 @@ import CompanyForm from './CompanyForm';
 import JobForm from './JobForm';
 import Nav from './Nav';
 import ConfirmModal from './ConfirmModal';
+import LoginModal from './LoginModal';
 
-export {Job,CompanyForm,JobForm,Nav,ConfirmModal,JobPostData}
+export {Job,CompanyForm,JobForm,Nav,ConfirmModal,JobPostData,LoginModal}

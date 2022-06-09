@@ -1,79 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import {Link,useNavigate} from 'react-router-dom';
+import {LoginModal} from '../../components';
 import Auth from '../../utils/auth';
 import './login.css';
 
 function Login() {
     const navigate = useNavigate()
-    const [errorMessage,setErrorMessage] = useState('')
-    const [loginOrRegister,setLoginOrRegister] = useState('login')
+    const [showLogin,setShowLogin] = useState('')
     const [user,setUser] = useState({
         name:'',
         email:'',
         password:''
     })
     
-    const register = (e) => {
-        e.preventDefault();
-        if (user.name===''||user.email===''||user.password===''){
-            return
-        }
-        fetch('/user',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(user)
+    
 
-        }).then(response=>response.json())
-        .then(data=>{
-            if (!data.token){
-                setErrorMessage('invalid')
-                return
-            }
-            Auth.login(data.token)
-            setErrorMessage('')
-            navigate('/home/')
-        })
-    }
-
-    const changeLogin = (path)=>{
-        setLoginOrRegister(path)
-        setErrorMessage('')
-        setUser({
-            name:'',
-            email:'',
-            password:''
-        })
-    }
-    const login = (e) => {
-        e.preventDefault();
-        if (user.email===''||user.password===''){
-            return
-        }
-        fetch('/user/login',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(user)
-
-        }).then(response=>response.json())
-        .then(data=>{
-            
-            if (!data.token){
-                setErrorMessage('invalid')
-                return
-            }
-            Auth.login(data.token)
-            setErrorMessage('')
-            navigate('/home/')
-        })
-
-    }
+    
     return (
-        <>
-        {loginOrRegister==='register'?
+        <div>  
+            <div className="loginHeader">
+                <img className="loginImg" src='/logo512.png'></img>
+                <p className="welcome">Welcome to JobTracker</p >
+                <p className="welcomeText">In the fast paced job hunting world, it can be difficult to keep track of all the information for the jobs that you are applying to.  <span className="title">JobTracker</span> is an easy to use app that allows you to fill out the company information and list all the job posts that you find.  Once you apply you can change your status and leave any notes for that job posting.</p>
+                <button className="loginBtn" onClick={()=>setShowLogin('showLogin')}>Login</button>
+            </div>
+        <LoginModal showLogin={showLogin} setShowLogin={setShowLogin} user={user} setUser={setUser} />
+        {/* {loginOrRegister==='register'?
             <div className="loginContainer">
                 <form onSubmit={register}>
                     <div className="inputContainer">
@@ -105,10 +57,10 @@ function Login() {
                 </form>
                 <p className="loginNavigation" onClick={()=>changeLogin('register')}>Click to Register</p>
                 {errorMessage}
-                
+               
             </div>
-        }
-        </>
+        } */}
+        </div>
     );
 }
 

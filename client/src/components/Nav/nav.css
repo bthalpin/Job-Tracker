@@ -32,7 +32,9 @@
     font-size: 2rem;
     font-weight:400;
 }
-
+.hide{
+    display:none;
+}
 @media screen and (max-width:500px) {
     .navLink,.navLink *{
         font-size: 1rem;

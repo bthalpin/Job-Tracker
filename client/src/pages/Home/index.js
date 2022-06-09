@@ -10,6 +10,7 @@ function Home() {
     const [show,setShow] = useState('')
     const [edit,setEdit] = useState(false)
     const [search,setSearch] = useState('');
+    const [order,setOrder] = useState('Ascending');
     const [newCompany,setNewCompany] = useState({
         name:'',
         address:'',
@@ -106,7 +107,7 @@ function Home() {
                             <div>
                                 <h2>{company.name}</h2>
                                 <img src={company.logo||'/images/default.png'} alt="Company logo"></img>
-                                <p>{company.jobs.length} {company.jobs.length===1?'Job':'Jobs'} - Applied {company.jobs.filter(job=>job.status==='created').length}</p>
+                                <p>{company.jobs.length} {company.jobs.length===1?'Job':'Jobs'} - Applied {company.jobs.filter(job=>job.status!=='created').length}</p>
 
                             </div>
                         </Link>

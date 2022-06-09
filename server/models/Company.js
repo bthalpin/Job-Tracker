@@ -29,7 +29,7 @@ const companySchema = new Schema({
     userId:{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
 });
 
 const Company = mongoose.model('Company', companySchema);

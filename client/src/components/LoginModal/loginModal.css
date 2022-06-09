@@ -1,0 +1,67 @@
+.loginModalContainer{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    /* background-color: black; */
+    
+    display:none;
+}
+.showLogin::before{
+    content:'';
+    background-color: black;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    opacity: 0.5;
+}
+.loginModalCard{
+    position: fixed;
+    border-radius:0.3rem;
+    top:10%;
+    left:50%;
+    transform: translate(-50%,0);
+    /* width:500px;
+    height:300px; */
+    padding:1.5rem 2rem;
+    background-color: var(--main);
+}
+.loginModalImg{
+    width:10rem;
+}
+.loginModalContainer label{
+    font-size: 1.1rem;;
+}
+.loginModalContainer input {
+    width:100%;
+    padding:0.5rem;
+    font-size: 1.1rem;
+    border-radius: 0.2rem;
+    margin-bottom:0.5rem;
+}
+.inputContainer{
+    margin:1rem 0;
+
+    text-align: start;
+}
+.loginModalBtn{
+    margin:0.5rem 0.2rem;
+    padding:0.7rem 1rem;
+    font-size: 1.2rem;
+    background-color: var(--button);
+    border:1px solid var(--border);
+    cursor: pointer;
+    border-radius:0.3rem;
+    color:white;
+}
+.showLogin{
+    display:block;
+}
+@media screen and (max-width:500px) {
+    .loginModalCard{
+        width:95vw;
+    }
+}
