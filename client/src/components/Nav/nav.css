@@ -11,12 +11,29 @@
     font-size: 1.2rem;
 }
 .navButtons{
+    display: flex;
+    align-items: center;
+}
+.toggle{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    width:240px;
+    width:210px;
     /* margin:auto 0.2rem; */
 }
+.home{
+    display:none;
+}
+.navLink{
+    cursor: pointer;
+}
+.menu{
+    display:none;
+    width:1.6rem;
+}
+/* .collapse,.expand{
+    display:block;
+} */
 .allJobLink{
     margin-left:auto;
     margin-right:2.378rem;
@@ -36,13 +53,57 @@
     display:none;
 }
 @media screen and (max-width:500px) {
-    .navLink,.navLink *{
-        font-size: 1rem;
+    .navContainer{
+        height:3.7rem;
+    }
+    .expanded{
+        position: absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+    }
+    .menu,.home{
+    display:block;   
+    }
+    .home{
+        width:100%;
+    }
+    .toggle{
+        display:flex;
+        width:100%;
+        justify-content: end;
+        margin:0.54rem 0;
+        position:relative;
+    }
+    .collapse{
+        display:none;
+    }
+    .expand .menu{
+        margin-right:0.5rem;
+    }
+    .expand{
+        /* display: block; */
+        position:absolute;
+        top:0.5rem;
+        right:0rem;
+        display:flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width:100px;
+        background-color: var(--nav);
+        border-bottom-left-radius:0.3rem;
+    }
+    .expand .navLink{
+        margin: 0.7rem 0;
+        padding:0.5rem;
+        /* font-size: 1rem; */
     }
     .navButtons{
-        width:180px;
+        width:90px;
     }
-    .allJobLink{
-        margin:auto;
+    .allJobLink,.logout{
+        width:100%;
+        /* margin:auto; */
     }
 }

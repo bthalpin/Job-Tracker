@@ -1,3 +1,7 @@
+.page{
+    /* position:absolute; */
+    /* margin-top:4rem; */
+}
 .welcomeMessage{
     margin:2rem auto;
     padding:1rem;

@@ -57,7 +57,11 @@ function LoginModal({showLogin, setShowLogin, user, setUser}) {
 
         }).then(response=>response.json())
         .then(data=>{
-            if (!data.token){
+            if(data.code===11000){
+                setErrorMessage('An account with that email is already used.')
+                return
+            }
+            if (!data.token){       
                 setErrorMessage('invalid')
                 return
             }
