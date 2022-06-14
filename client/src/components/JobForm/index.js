@@ -32,12 +32,12 @@ function JobForm({newJob,setNewJob,handleSubmit,buttonName,setEdit}) {
             </select>
             } */}
             <div>
-            <button className="jobFormButton" onClick={handleSubmit}>{buttonName}</button>
             {buttonName==='Save'?
-            <button className="jobFormButton" onClick={()=>setEdit(false)}>Cancel</button>
+            <button className="jobFormCancelBtn" onClick={()=>setEdit(false)}>Cancel</button>
             :
-            <button className="jobFormButton" onClick={()=>navigate(`/company/${companyId}`)}>Cancel</button>
-            }
+            <button className="jobFormCancelBtn" onClick={()=>navigate(`/company/${companyId}`)}>Cancel</button>
+        }
+        <button className="jobFormAddBtn" onClick={handleSubmit}>{buttonName}</button>
 
             </div>
         </form>

@@ -19,6 +19,7 @@ module.exports = {
   // Get a job
   getSingleJob(req, res) {
     Job.findOne({ _id: req.params.jobId,userId:req.user.data._id })
+      .populate('company')
       .select('-__v')
       .then((job) =>
         !job
@@ -73,6 +74,7 @@ module.exports = {
       { $set: req.body },
       { runValidators: true, new: true }
     )
+    .populate('company')
       .then((job) =>
         !job
           ? res.status(404).json({ message: 'No job with this id!' })

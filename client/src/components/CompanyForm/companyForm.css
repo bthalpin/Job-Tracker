@@ -1,7 +1,21 @@
 .companyFormBtn{
     display:flex;
 }
-.addButton{
+.addButton,.cancelButton{
     margin:0.2rem;
     cursor: pointer;
+    padding:0.5rem;
+    border-radius:0.5rem;
+    color:white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    min-width:100px;
+}
+.addButton{
+    background-color: var(--button);
+
+}
+.cancelButton{
+    background-color: var(--altButton);
+
 }

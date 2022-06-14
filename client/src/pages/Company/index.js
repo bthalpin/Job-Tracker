@@ -127,7 +127,7 @@ function Company() {
                 :
                 <button className="archiveButton" onClick={()=>setHideArchived('archived')}>Hide Archived</button>
             }
-                <input name="jobSearch" className="jobSearch"  placeholder={`Search your jobs for ${company.name}`} value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
+                <input name="jobSearch" className="jobSearch"  placeholder={`Filter ${company.name} jobs`} value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
                 <button className="clearJobSearch" onClick={()=>setJobSearch('')}>Clear</button>
             <div className="companyJobContainer" >
                 {/* {hideArchived? */}

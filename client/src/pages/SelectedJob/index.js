@@ -120,7 +120,7 @@ function SelectedJob() {
         e.preventDefault()
         editJob()
     }
-    // console.log(job,jobData)
+    console.log(job)
     return (
         <div className={`${job?.status}job jobPage`} >
             <div className={`jobContainer`}>
@@ -136,6 +136,9 @@ function SelectedJob() {
             <h2>{job?.title}</h2>
                 <p>{job?.contactInfo}</p>
                 {/* {console.log(job?.link,'LINK')} */}
+                <div>
+                    <Link to={`/company/${job?.company?._id}`}>{job?.company?.name}</Link>
+                </div>
                 <a href={job?.link}>{job?.title} - Job Post</a>
                 <div className="resumeContainer">
                     {job?.resumeLink?

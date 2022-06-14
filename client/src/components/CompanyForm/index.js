@@ -17,8 +17,8 @@ function CompanyForm({newCompany,setNewCompany,handleSubmit,buttonName,setEdit})
             <label htmlFor="logo">Company Logo</label>
             <input type="text" name="logo" placeholder="Logo" value={newCompany.logo} onChange={(e)=>setNewCompany({...newCompany, logo:e.target.value})}></input>
             <div className="companyFormBtn">
+                <button className='cancelButton' onClick={()=>setEdit(false)}>Cancel</button>
                 <button className="addButton" onClick={handleSubmit}>{buttonName}</button>
-                <button className='addButton' onClick={()=>setEdit(false)}>Cancel</button>
 
             </div>
         </form>

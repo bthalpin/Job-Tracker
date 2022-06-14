@@ -73,7 +73,7 @@ function Home() {
       console.log(allCompanies[0])
   return (
       <>    
-      <input name="search" className="search" placeholder="Search Your Companies" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
+      <input name="search" className="search" placeholder="Filter Your Companies" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
       <button className="clearSearch" onClick={()=>setSearch('')}>Clear</button>
             {allCompanies.length?<></>
             :<div>

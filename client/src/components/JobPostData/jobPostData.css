@@ -14,9 +14,18 @@
 }
 .jobScraper button{
     padding:0.2rem;
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
-    background-color: var(--button);
     color:white;
     cursor: pointer;
+}
+.clearBtn{
+    background-color: var(--altButton);
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+
+}
+.scrapeBtn{
+    background-color: var(--button);
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+
 }

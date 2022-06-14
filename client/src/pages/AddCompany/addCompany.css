@@ -17,7 +17,7 @@
 .homeButtonContainer{
     margin:1rem;
 }
-.addButton,.homeButton{
+/* .addButton,.homeButton{
     padding:0.5rem;
     background-color: var(--button);
     border-radius:0.5rem;
@@ -25,4 +25,4 @@
     font-size: 1.2rem;
     text-decoration: none;
     min-width:100px;
-}
+} */
