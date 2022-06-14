@@ -15,7 +15,7 @@
     margin:auto;
 }
 .title{
-    font-size: 1.9rem;
+    font-size: 1.8rem;
 }
 .loginBtn{
     margin:2rem;
@@ -51,12 +51,18 @@
     width:fit-content;
     margin:auto;
 }
-@media screen and (max-width:656px) {
+@media screen and (max-width:670px) {
     .loginHeader,.welcomeText{
         width:95vw;
     }
+    .welcomeText{
+        width: 80vw;
+    }
     .loginHeader{
         padding:0;
+    }
+    .welcome{
+        font-size: 3rem;
     }
 }
 @media screen and (max-width:500px) {

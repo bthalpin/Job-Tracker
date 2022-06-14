@@ -24,8 +24,8 @@
     top:10%;
     left:50%;
     transform: translate(-50%,0);
-    /* width:500px;
-    height:300px; */
+    width:500px;
+    /* height:300px; */
     padding:1.5rem 2rem;
     background-color: var(--main);
 }
@@ -63,5 +63,10 @@
 @media screen and (max-width:500px) {
     .loginModalCard{
         width:95vw;
+    }
+}
+@media screen and (max-height:700px) {
+    .loginModalCard{
+        top:0.5rem;
     }
 }

@@ -38,10 +38,10 @@ function Nav() {
         e.target.className==='menu'?setCollapse(false):setCollapse(true)
     }
     return (
-        <div className="navContainer">
+        <div className={"navContainer"+(window.location.pathname==='/'?' hide':'')}>
            
         <div className={(collapse?'':' expanded')} onClick={(e)=>close(e)}>
-       <div className={"navigation"+(window.location.pathname==='/'?' hide':'')}>
+       <div className="navigation">
            {isLoggedIn?
             <>
             <Link to="/home/">
