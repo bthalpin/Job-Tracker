@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-Job Tracker is an app that uses web scraping to allow you to quickly and easily organize your job opportunities.
+In the fast paced job hunting world, it can be difficult to keep track of all the information for the jobs that you are applying to. JobTracker is an easy to use app where you can save job postings to allow you to quickly and easily organize your job opportunities. Make use of the job post scraping feature to quickly grab some information from the posting to help you fill out the description.
 
 ## Table of Contents
 
