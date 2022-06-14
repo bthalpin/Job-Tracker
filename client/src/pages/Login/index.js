@@ -22,7 +22,7 @@ function Login() {
                 <img className="loginImg" src='/logo512.png'></img>
                 <p className="welcome">Welcome to JobTracker</p >
                 <p className="welcomeText">In the fast paced job hunting world, it can be difficult to keep track of all the information for the jobs that you are applying to.</p>
-                <p className="welcomeText">  <span className="title">JobTracker</span> is an easy to use app that allows you to group job postings by company to help you stay organized while looking for a job.</p>
+                <p className="welcomeText">  <span className="title">JobTracker</span> is an easy to use app where you can save job postings to allow you to quickly and easily organize your job opportunities.</p>
                 <button className="loginBtn" onClick={()=>setShowLogin('showLogin')}>Login</button>
             </div>
         <LoginModal showLogin={showLogin} setShowLogin={setShowLogin} user={user} setUser={setUser} />
