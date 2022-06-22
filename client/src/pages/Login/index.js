@@ -25,42 +25,9 @@ function Login() {
                 <p className="welcomeText">  <span className="title">JobTracker</span> is an easy to use app where you can save job postings to allow you to quickly and easily organize your job opportunities.</p>
                 <button className="loginBtn" onClick={()=>setShowLogin('showLogin')}>Login</button>
             </div>
-        <LoginModal showLogin={showLogin} setShowLogin={setShowLogin} user={user} setUser={setUser} />
-        {/* {loginOrRegister==='register'?
-            <div className="loginContainer">
-                <form onSubmit={register}>
-                    <div className="inputContainer">
-                        <label htmlFor="name">Name:</label>
-                        <input name="name" type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Enter Name" required></input>
-                        <label htmlFor="email">Email:</label>
-                        <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
-                        <label htmlFor="password">Password:</label>
-                        <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
-                    
-                    </div>
-                    <button className="loginButton">Register</button>
-                    
-                </form>
-                <p className="loginNavigation" onClick={()=>changeLogin('login')}>Return to Login</p>
-                {errorMessage}
-            </div>
+            
+            <LoginModal showLogin={showLogin} setShowLogin={setShowLogin} user={user} setUser={setUser} />
         
-        :   
-            <div className="loginContainer">
-                <form onSubmit={login}>
-                    <div className="inputContainer">
-                        <label htmlFor="email">Email:</label>
-                        <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
-                        <label htmlFor="password">Password:</label>
-                        <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
-                    </div>
-                    <button className="loginButton">Login</button>
-                </form>
-                <p className="loginNavigation" onClick={()=>changeLogin('register')}>Click to Register</p>
-                {errorMessage}
-               
-            </div>
-        } */}
         </div>
     );
 }

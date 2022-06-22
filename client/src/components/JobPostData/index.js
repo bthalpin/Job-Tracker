@@ -31,7 +31,6 @@ function JobPostData({setJobData}) {
         })
           .then((res) => res.json())
           .then((response) =>{
-            // console.log(response,'HERE')
             if (response.error){
                 setErrorMessage(response.error)
                 return
@@ -51,16 +50,16 @@ function JobPostData({setJobData}) {
       };
     return (
         <div className="jobScraper">
-                    <p>Enter the URL of the job posting and Job Tracker will attempt to pull out relevant data to add to the job description.</p>
-        <form onSubmit={findJobPost}>
-            <button className="clearBtn" onClick={clearSearch}>Clear</button>
-            <input type='text' placeholder='Enter URL of Job Post' onChange={(e)=>setJobPostURL(e.target.value)} value={jobPostURL}></input>
-            <button className="scrapeBtn">Search</button>
-        </form>
-        <p className="jobScrapeWarning">*WILL REPLACE YOUR CURRENT JOB INFORMATION</p>
-                    <p>*Does not work with all job postings, and may require editing to complete the description</p>
-        <p className="jobScrapeWarning">{errorMessage}</p>
-                </div>
+            <p>Enter the URL of the job posting and Job Tracker will attempt to pull out relevant data to add to the job description.</p>
+            <form onSubmit={findJobPost}>
+                <button className="clearBtn" onClick={clearSearch}>Clear</button>
+                <input type='text' placeholder='Enter URL of Job Post' onChange={(e)=>setJobPostURL(e.target.value)} value={jobPostURL}></input>
+                <button className="scrapeBtn">Search</button>
+            </form>
+            <p className="jobScrapeWarning">*WILL REPLACE YOUR CURRENT JOB INFORMATION</p>
+            <p>*Does not work with all job postings, and may require editing to complete the description</p>
+            <p className="jobScrapeWarning">{errorMessage}</p>
+        </div>
     );
   }
   

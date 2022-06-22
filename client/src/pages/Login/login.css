@@ -29,7 +29,6 @@
 .loginBtn:hover{
     color:white;
     background-color: var(--rejected);
-    /* box-shadow: 0 0 1rem var(--button); */
 }
 .loginContainer{
     width:30rem;

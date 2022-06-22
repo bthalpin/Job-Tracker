@@ -82,100 +82,66 @@ function Company() {
             setCompany(company)
             setNewCompany(company)
             setEdit(false)
-            // navigate(`/company/${companyId}`)
-            // setCreated(`The company ${company.name} was edited successfully`)
-           
         })
-        // let jobURL = `http://localhost:3001/api/jobs/`;
-        
-        // fetch(jobURL)
-        //   .then((res) => res.json())
-        //   .then((response) => console.log(response));
       };
   return (
       <div>
             {edit?
-            <div className='addCompanyContainer'>
-
-                <CompanyForm setEdit={setEdit} newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Save' />
+                <div className='addCompanyContainer'>
+                    <CompanyForm setEdit={setEdit} newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Save' />
                 </div>
-                :
-            <div className="companyContainer">
-                <h2>{company.name}</h2>
-                <img className="companyLogo" src={company.logo||'/images/default.png'} alt="logo"></img>
-                <p>
-                    {company.address}
-                </p>
-                <p>
-                    {company.phone}
-                </p>
-                <a href={company.website}>{company.name}</a>
-                <div className="companyBtnContainer">
-                            <button className="companyEdit" onClick={()=>setEdit(true)}>Edit</button>
-                            <button className="delete" onClick={()=>setShow('show')}>Delete</button>
-                        </div>
-            </div>
+            :
+                <div className="companyContainer">
+                    <h2>{company.name}</h2>
+                    <img className="companyLogo" src={company.logo||'/images/default.png'} alt="logo"></img>
+                    <p>
+                        {company.address}
+                    </p>
+                    <p>
+                        {company.phone}
+                    </p>
+                    <a href={company.website}>{company.name}</a>
+                    <div className="companyBtnContainer">
+                        <button className="companyEdit" onClick={()=>setEdit(true)}>Edit</button>
+                        <button className="delete" onClick={()=>setShow('show')}>Delete</button>
+                    </div>
+                </div>
             }
             <div className="addJobContainer">
 
                 <Link className="addJobBtn" to={`/company/add/${companyId}`} >Add Job</Link>
             </div>
             {company?.jobs?.length?
-            <>
-            {hideArchived?
-                <button className="archiveButton" onClick={()=>setHideArchived('')}>View Archived</button>
-                :
-                <button className="archiveButton" onClick={()=>setHideArchived('archived')}>Hide Archived</button>
-            }
+                <>
+                {hideArchived?
+                    <button className="archiveButton" onClick={()=>setHideArchived('')}>View Archived</button>
+                    :
+                    <button className="archiveButton" onClick={()=>setHideArchived('archived')}>Hide Archived</button>
+                }
                 <input name="jobSearch" className="jobSearch"  placeholder={`Filter ${company.name} jobs`} value={jobSearch} onChange={(e)=>setJobSearch(e.target.value)}></input>
                 <button className="clearJobSearch" onClick={()=>setJobSearch('')}>Clear</button>
-            <div className="companyJobContainer" >
-                {/* {hideArchived? */}
-            {/* <> */}
-            
-                
-                {allJobs.filter(job=>job.title.toUpperCase().includes(jobSearch.toUpperCase())&&job.status!==hideArchived).map((job,index)=>{
-                    return (
-                        <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
-                            <h3 className="jobTitle">{job.title}</h3>
-                            {/* <p>{job.description}</p> */}
-                            {/* <p>{job.Notes}</p> */}
-                            {/* <p>{job.link.substr(0,30)}</p> */}
-                            <p>{job.contactInfo}</p>
-                            {console.log(job)}
-                            {job.createdAt?<p>Created at {job.date}</p>:<></>}
-                        </Link>
+                <div className="companyJobContainer" >
+                                
+                    {allJobs.filter(job=>job.title.toUpperCase().includes(jobSearch.toUpperCase())&&job.status!==hideArchived).map((job,index)=>{
+                        return (
+                            <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
+                                <h3 className="jobTitle">{job.title}</h3>
+                                <p>{job.contactInfo}</p>
+                                {console.log(job)}
+                                {job.createdAt?<p>Created at {job.date}</p>:<></>}
+                            </Link>
                     )
-                })}
-            {/* </> */}
-            {/* : */}
-            {/* <> */}
-            {/* <button onClick={()=>setHideArchived(!hideArchived)}>Hide Archived</button> */}
-                
-                {/* {allJobs.filter(job=>job.title.includes(jobSearch)).map((job,index)=>{
-                    return (
-                        <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
-                            <h3 className="jobTitle">{job.title}</h3>
-                           
-                            <p>{job.link}</p>
-                            <p>{job.contactInfo}</p>
-                            {console.log(job)}
-                            {job.createdAt?<p>Created at {job.date}</p>:<></>}
-                        </Link>
-                    )
-                })} */}
-            {/* </>} */}
-                {/* <Job /> */}
+                    })}
 
-            </div>
-            </>
+                </div>
+                </>
             :
-            <div>
-                <h3 className="noJobs">You currently do not have any jobs for {company.name}, press the add job button to track your first job.</h3>
-            </div>}
-        <ConfirmModal show={show} setShow={setShow} callBack={deleteCompany} action="delete" name={company.name} type="company"/>
+                <div>
+                    <h3 className="noJobs">You currently do not have any jobs for {company.name}, press the add job button to track your first job.</h3>
+                </div>}
+            <ConfirmModal show={show} setShow={setShow} callBack={deleteCompany} action="delete" name={company.name} type="company"/>
 
-      </div>
+        </div>
   );
 }
 

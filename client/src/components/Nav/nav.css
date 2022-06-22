@@ -19,7 +19,6 @@
     justify-content: space-between;
     align-items: center;
     width:210px;
-    /* margin:auto 0.2rem; */
 }
 .home{
     display:none;
@@ -31,18 +30,9 @@
     display:none;
     width:1.6rem;
 }
-/* .collapse,.expand{
-    display:block;
-} */
 .allJobLink{
     margin-left:auto;
     margin-right:2.378rem;
-}
-.logout{
-    /* margin-left:auto; */
-}
-.titleContainer{
-    /* margin:auto; */
 }
 .navTitle{
     color:white;
@@ -83,7 +73,6 @@
         margin-right:0.5rem;
     }
     .expand{
-        /* display: block; */
         position:absolute;
         top:0.5rem;
         right:0rem;
@@ -97,13 +86,11 @@
     .expand .navLink{
         margin: 0.7rem 0;
         padding:0.5rem;
-        /* font-size: 1rem; */
     }
     .navButtons{
         width:90px;
     }
     .allJobLink,.logout{
         width:100%;
-        /* margin:auto; */
     }
 }

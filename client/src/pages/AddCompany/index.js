@@ -26,7 +26,6 @@ function AddCompany() {
 
         }).then(response=>response.json())
         .then(company=>{
-            // setCreated(`The company ${company.name} was created successfully`)
             setNewCompany({
                 name:'',
                 address:'',
@@ -39,29 +38,16 @@ function AddCompany() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(Auth.getProfile())
         console.log(newCompany)
         if (newCompany.name.trim()===''){
             return
         }
         setShow('show')
-        // let jobURL = `https://localhost:3001/api/jobs/`;
-        
-        // fetch(jobURL)
-        //   .then((res) => res.json())
-        //   .then((response) => console.log(response));
       };
   return (
     <div className="addCompanyContainer" >
         <CompanyForm newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Add' />
-        {/* {created!==''
-        ?<div>
-            <p>{created}</p>
-            <div className="homeButtonContainer">
-                <Link to='/' className="homeButton">Home</Link>
-            </div>
-        </div>
-        :<></>} */}
+       
         <ConfirmModal show={show} setShow={setShow} callBack={addCompany} action="create" name={newCompany.name}/>
     </div>
   );

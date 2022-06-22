@@ -6,7 +6,6 @@ import Auth from '../../utils/auth';
 import './loginModal.css';
 
 function LoginModal({showLogin, setShowLogin, user, setUser}) {
-    // const [show,setShow] = useState('')
     const navigate = useNavigate()
     const [loginOrRegister,setLoginOrRegister] = useState('login')
     const [errorMessage,setErrorMessage] = useState('')
@@ -32,7 +31,6 @@ function LoginModal({showLogin, setShowLogin, user, setUser}) {
             password:''
         })
         setShowLogin('')
-        // callBack()
     }
     const register = (e) => {
         e.preventDefault();
@@ -100,7 +98,6 @@ function LoginModal({showLogin, setShowLogin, user, setUser}) {
     console.log(showLogin)
     return (
         <>
-        {/* <button onClick={()=>setShow('show')}>show</button> */}
         <div className={`loginModalContainer ${showLogin}`} onClick={handleClose}>
             <div className="loginModalCard">
                 <img className="loginModalImg" src="/logo512.png"></img>
@@ -120,30 +117,24 @@ function LoginModal({showLogin, setShowLogin, user, setUser}) {
                 </>
                 :
                 <>
-                <>
-                <form>
-                    <div className="inputContainer">
-                        <label htmlFor="name">Name:</label>
-                        <input name="name" type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Enter Name" required></input>
-                        <label htmlFor="email">Email:</label>
-                        <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
-                        <label htmlFor="password">Password:</label>
-                        <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
-                    
-                    </div>
-                    <button type="submit" className="loginModalBtn" onClick={register}>Register</button>
-                    
-                </form>
-                <p className="loginNavigation" onClick={()=>changeLogin('login')}>Return to Login</p>
-                {errorMessage}
-            </>
+                    <form>
+                        <div className="inputContainer">
+                            <label htmlFor="name">Name:</label>
+                            <input name="name" type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Enter Name" required></input>
+                            <label htmlFor="email">Email:</label>
+                            <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
+                            <label htmlFor="password">Password:</label>
+                            <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
+                        
+                        </div>
+                        <button type="submit" className="loginModalBtn" onClick={register}>Register</button>
+                        
+                    </form>
+                    <p className="loginNavigation" onClick={()=>changeLogin('login')}>Return to Login</p>
+                    {errorMessage}
                 </>
                 }
-                {/* <img className="loginImg" src='/images/loginThumbnail.png'></img> */}
-                <div>
-                    {/* <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?</p> */}
-                </div>
-            
+               
             </div>
         </div>
         </>

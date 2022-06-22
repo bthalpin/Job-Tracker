@@ -13,22 +13,16 @@ function Job({job,setAllJobs}) {
       };
     return (
         <>
-        {job?   
-            <>
-            <h3>{job.title}</h3>
-            <p>{job.description}</p>
-            <p>{job.Notes}</p>
-            <p>{job.link}</p>
-            <p>{job.contactInfo}</p>
-            {/* <button >edit</button>
-            <button onClick={()=>deleteJob(job._id)}>delete</button> */}
-            </>
-           
-            
-        
-        :
-    <></>}
-        
+            {job?   
+                <>
+                    <h3>{job.title}</h3>
+                    <p>{job.description}</p>
+                    <p>{job.Notes}</p>
+                    <p>{job.link}</p>
+                    <p>{job.contactInfo}</p>
+                </>
+            :
+            <></>}
         </>
     );
   }

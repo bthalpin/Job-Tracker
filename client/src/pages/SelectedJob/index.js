@@ -9,7 +9,6 @@ function SelectedJob() {
     const navigate = useNavigate()
     const [show,setShow] = useState('')
     const [job,setJob ] = useState()
-    // const [jobTitle,setJobTitle] = useState('')
     const [jobData,setJobData] = useState({})
     const [status,setStatus] = useState('created')
     const token = Auth.getToken();
@@ -26,8 +25,6 @@ function SelectedJob() {
     })
     const [edit,setEdit] = useState(false)
     useEffect (()=>{
-        // console.log('here',job)
-        // setJob({...job,description:`-${jobData.join('\n-')}`})
         if(jobData?.description?.length){
             if (jobData.title){
                 setNewJob({...job,title:jobData.title,description:`-${jobData.description.join('\n-')}`,link:jobData.URL})
@@ -38,7 +35,6 @@ function SelectedJob() {
 
             }
         }
-        // console.log('here',job)
     },[jobData])
     useEffect(() => {
         getJob();
@@ -46,7 +42,6 @@ function SelectedJob() {
     useEffect(()=>{
         if(newJob.title){
         let jobURL = `/api/jobs/${companyId}/${jobId}`;
-        // console.log(newJob.status)
         fetch(jobURL,{
             method:'PUT',
             headers:{
@@ -93,7 +88,6 @@ function SelectedJob() {
     }
     const changeStatus = async (e) => {
         e.preventDefault()
-        // console.log('here')
         setJob({...newJob,status:e.target.value})
         setNewJob({...newJob,status:e.target.value})
     }
@@ -111,7 +105,6 @@ function SelectedJob() {
         })
           .then((res) => res.json())
           .then((response) => {
-            //   console.log(response)
                 setJob(response)
                 setEdit(false)
             });
@@ -124,69 +117,65 @@ function SelectedJob() {
     return (
         <div className={`${job?.status}job jobPage`} >
             <div className={`jobContainer`}>
-            {edit
-            ?
-            <>  
-                <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} setStatus={setStatus} setEdit={setEdit} buttonName='Save' />
+                {edit
+                ?
+                    <>  
+                        <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} setStatus={setStatus} setEdit={setEdit} buttonName='Save' />
 
+                        
+                    </>
+                :
+                    <>
+                        <h2>{job?.title}</h2>
+                        <p>{job?.contactInfo}</p>
+               
+                        <div>
+                            <Link to={`/company/${job?.company?._id}`}>{job?.company?.name}</Link>
+                        </div>
+                        <a href={job?.link}>{job?.title} - Job Post</a>
+                        <div className="resumeContainer">
+                            {job?.resumeLink?
+                                <a href={job.resumeLink}>Resume</a>
+                            :<></>}
+                            {job?.coverLetterLink?
+                                <a href={job.coverLetterLink}>Cover Letter</a>
+                            :<></>}
+
+                        </div>
+                        {job?.description?
+                            <>
+                                <h3>Description:</h3>
+                                <p className="description">{job.description}</p>
+                            </>
+                        :<></>}
+                        {job?.notes?
+                            <>
+                                <h3>Notes:</h3>
+                                <p className="notes">{job?.notes}</p>
+                            </>
+                        :<></>}
                 
-            </>
-            :
-            <>
-            <h2>{job?.title}</h2>
-                <p>{job?.contactInfo}</p>
-                {/* {console.log(job?.link,'LINK')} */}
-                <div>
-                    <Link to={`/company/${job?.company?._id}`}>{job?.company?.name}</Link>
-                </div>
-                <a href={job?.link}>{job?.title} - Job Post</a>
-                <div className="resumeContainer">
-                    {job?.resumeLink?
-                    <a href={job.resumeLink}>Resume</a>
-                    :<></>}
-                    {job?.coverLetterLink?
-                    <a href={job.coverLetterLink}>Cover Letter</a>
-                    :<></>}
+                        <JobPostData setJobData={setJobData} />
+                    
+                        <label htmlFor="status">Set status: </label>
+                        <select name="status" value={newJob.status} onChange={changeStatus}>
+                            <option value="created" >---</option>
+                            <option value="applied">Applied</option>
+                            <option value="offer">Offer</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="archived">Archive</option>
+                        </select>
 
-                </div>
-                {job?.description?
-                <>
-                    <h3>Description:</h3>
-                    <p className="description">{job.description}</p>
-                </>
-                :<></>}
-                {job?.notes?
-                <>
-                    <h3>Notes:</h3>
-                    <p className="notes">{job?.notes}</p>
-                </>
-                :<></>}
-                {/* <div className="jobScraper">
-                    <p>Enter the URL of the job posting and Job Tracker will attempt to pull out relevant data to add to the job description.</p> */}
-                    <JobPostData setJobData={setJobData} />
-                    {/* <p className="jobScrapeWarning">*WILL REPLACE YOUR CURRENT JOB DESCRIPTION</p>
-                    <p>*Does not work with all job postings, and may require editing to complete the description</p>
-
-                </div> */}
-                <label htmlFor="status">Set status: </label>
-                <select name="status" value={newJob.status} onChange={changeStatus}>
-                <option value="created" >---</option>
-                <option value="applied">Applied</option>
-                <option value="offer">Offer</option>
-                <option value="rejected">Rejected</option>
-                <option value="archived">Archive</option>
-            </select>
-            <div className="jobButtonContainer">
-                <button className="jobButton deleteJob" onClick={()=>setShow('show')}>Delete</button>
-                <button className="jobButton" onClick={()=>setEdit(true)}>Edit</button>
-
-            </div>
+                        <div className="jobButtonContainer">
+                            <button className="jobButton deleteJob" onClick={()=>setShow('show')}>Delete</button>
+                            <button className="jobButton" onClick={()=>setEdit(true)}>Edit</button>
+                        </div>
                 
-            </>
+                    </>
             
-            }
-        <ConfirmModal show={show} setShow={setShow} callBack={deleteJob} action="delete" name={newJob.title} type="job"/>
-        </div>
+                }
+                <ConfirmModal show={show} setShow={setShow} callBack={deleteJob} action="delete" name={newJob.title} type="job"/>
+            </div>
 
         </div>
   );

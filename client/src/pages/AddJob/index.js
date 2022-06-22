@@ -1,15 +1,12 @@
 import React, {useState,useEffect} from 'react';
 import {JobForm,ConfirmModal,JobPostData} from '../../components';
-import {Link,useParams,useNavigate} from 'react-router-dom';
+import {useParams,useNavigate} from 'react-router-dom';
 import Auth from '../../utils/auth';
-// import './AddJob.css'
 
 function AddJob() {
     const {companyId} = useParams()
     const navigate = useNavigate()
     const [show,setShow] = useState('')
-    const [status,setStatus] = useState('created')
-    const token = Auth.getToken();
     const [jobData,setJobData] = useState([])
     const [newJob,setNewJob] = useState({
         title:'',
@@ -20,38 +17,13 @@ function AddJob() {
         status:'created',
         company:companyId
     })
-    const [created,setCreated] = useState('')
     useEffect (()=>{
-        // console.log('here',job)
-        // setJob({...job,description:`-${jobData.join('\n-')}`})
         if(jobData?.description?.length){
 
             setNewJob({...newJob,description:`-${jobData.description.join('\n-')}`,link:jobData.URL,title:jobData.title})
         }
-        // console.log('here',job)
     },[jobData])
-    // const handleChange = (e) => {
-    //     e.preventDefault();
-    //     const {value} = e.target
-    //     console.log(value,'change')
-    //     switch (value){
-    //         case 'applied':
-    //             console.log('here')
-    //             setNewJob({...newJob, applied:true,rejected:false,offer:false})
-    //             break;
-            
-    //         case 'offer':
-    //             setNewJob({...newJob, applied:true,rejected:false,offer:true})
-    //             break;
-            
-    //         case 'rejected':
-    //             setNewJob({...newJob, applied:true,rejected:true,offer:false})
-    //             break;
-    //         default:
-    //             setNewJob({...newJob, applied:false,rejected:false,offer:false})
-    //     }
-    //     console.log(newJob)
-    // }
+  
     const addJob = () =>{
         fetch(`/api/jobs/${companyId}`,{
             method:'POST',
@@ -62,7 +34,6 @@ function AddJob() {
 
         }).then(response=>response.json())
         .then(job=>{
-            // setCreated(`The job ${job.title} was created successfully`)
             setNewJob({
                 title:'',
                 description:'',
@@ -76,11 +47,6 @@ function AddJob() {
             navigate(`/company/${companyId}`)
             
         })
-        // let jobURL = `http://localhost:3001/api/jobs/`;
-        
-        // fetch(jobURL)
-        //   .then((res) => res.json())
-        //   .then((response) => console.log(response));
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -91,14 +57,7 @@ function AddJob() {
     <div className="AddJobContainer" >
         <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} buttonName='Add' />
         <JobPostData setJobData={setJobData}/>
-        {created!==''
-        ?<div>
-            <p>{created}</p>
-            <div className="backButtonContainer">
-                <Link to={`/company/${companyId}`} className="back">Back</Link>
-            </div>
-        </div>
-        :<></>}
+       
         <ConfirmModal show={show} setShow={setShow} callBack={addJob} action="create" name={newJob.title} type="job"/>
 
     </div>

@@ -1,8 +1,7 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {Nav} from './components';
-import {Home,Company,AddCompany,EditCompany,AddJob,SelectedJob,Login,AllJobs} from './pages';
+import {Home,Company,AddCompany,AddJob,SelectedJob,Login,AllJobs} from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Auth from './utils/auth';
 import './App.css';
 
 function App() {
@@ -29,10 +28,6 @@ function App() {
             path='/myjobs/'
             element={<AllJobs />}
             />
-          {/* <Route
-            path='/company/edit/:companyId'
-            element={<EditCompany />}
-            /> */}
           <Route
             path='/company/add/:companyId'
             element={<AddJob />}

@@ -14,7 +14,6 @@
 .jobButtonContainer{
     display:flex;
     justify-content: center;
-    /* margin-top:3rem; */
 }
 .jobScraper{
     margin:0.5rem auto;
@@ -44,16 +43,12 @@
     margin:auto;
     
 }
-.jobContainer *{
-    /* margin:auto; */
-}
 .jobContainer h3{
     text-align: start;
 }
 .description,.notes{
     white-space: pre-wrap;
     text-align: start;
-    /* width:90vw; */
     word-break: break-all;
     margin-bottom:3rem;
     padding:1rem;
