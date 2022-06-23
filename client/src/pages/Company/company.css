@@ -44,7 +44,7 @@
 .companyEdit:hover{
     background-color: var(--btnHover);
 }
-.delete{
+.delete:hover{
     background-color: var(--warningHvr);
 }
 .addJobContainer{
