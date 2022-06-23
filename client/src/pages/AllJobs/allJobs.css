@@ -11,7 +11,7 @@
     border-radius: 0.2rem;
     border:1px solid var(--border);
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
-    transition: all 0.2s ease-in-out;
+    transition: var(--fade);
 
 }
 .archiveBtn,.clearJobSearch{
@@ -20,7 +20,7 @@
     color:white;
     border:2px solid rgb(95, 95, 95);
     background-color: var(--altButton);
-    transition: all 0.2s ease-in-out;
+    transition: var(--fade);
 
 }
 .jobSearch{

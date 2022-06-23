@@ -8,13 +8,14 @@
   --altHover:#626c8b;
   --nav:#2F5061;
   --border:#4297A0;
-  --appliedHvr:rgb(240, 240, 162);
-  --applied:rgb(248, 248, 80);
-  --offerHvr:rgb(146, 209, 146);
-  --offer:rgb(128, 223, 128);
-  --rejectedHvr:rgb(167, 114, 114);
-  --rejected:rgb(185, 67, 67);
+  --applied:rgb(240, 240, 162);
+  --appliedHvr:rgb(248, 248, 80);
+  --offer:rgb(146, 209, 146);
+  --offerHvr:rgb(128, 223, 128);
+  --rejected:rgb(167, 114, 114);
+  --rejectedHvr:rgb(185, 67, 67);
   --warning:rgb(99, 16, 16);
+  --fade:all 0.2s ease-in-out;
 }
 
 *{

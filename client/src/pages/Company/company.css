@@ -19,7 +19,6 @@
     border-radius: 0.2rem;
     border:1px solid var(--border);
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
-    transition: all 0.2s ease-in-out;
 }
 .companyBtnContainer{
     display:flex;
@@ -54,21 +53,21 @@
     margin-top: 0.5rem;;
     padding:0.3rem;
 }
-.clearJobSearch{
+.clearJobSearch,.archiveButton{
+    cursor: pointer;
     padding:0.3rem;
     color:white;
     border:2px solid rgb(95, 95, 95);
+    background-color: var(--altButton);
+    transition: var(--fade);
+}
+.clearJobSearch{
     border-top-right-radius: 0.4rem;
     border-bottom-right-radius: 0.4rem;
-    background-color: var(--altButton);
 }
 .archiveButton{
-    padding:0.3rem;
-    color:white;
-    border:2px solid rgb(95, 95, 95);
     border-top-left-radius: 0.4rem;
     border-bottom-left-radius: 0.4rem;
-    background-color: var(--altButton);
 }
 .noJobs{
     margin-top:5rem;
