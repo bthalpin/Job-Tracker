@@ -19,6 +19,7 @@
     border-radius: 0.2rem;
     border:1px solid var(--border);
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
+    transition: var(--fade);
 }
 .companyBtnContainer{
     display:flex;
@@ -30,7 +31,7 @@
     background-color: var(--button);
     cursor: pointer;
     margin:1rem 1rem 0;
-
+    transition: var(--fade);
 }
 .delete{
     padding:0.5rem;
@@ -38,7 +39,13 @@
     cursor: pointer;
     background-color: var(--warning);
     margin:1rem 1rem 0;
-
+    transition: var(--fade);
+}
+.companyEdit:hover{
+    background-color: var(--btnHover);
+}
+.delete{
+    background-color: var(--warningHvr);
 }
 .addJobContainer{
     margin:1rem;
@@ -47,7 +54,12 @@
     background-color: var(--button);
     color:white;
     padding:0.5rem;
-    border:1px solid var(--border)
+    border:1px solid var(--border);
+    transition: var(--fade);
+    
+}
+.addJobBtn:hover{
+    background-color: var(--btnHover);
 }
 .jobSearch{
     margin-top: 0.5rem;;
@@ -68,6 +80,9 @@
 .archiveButton{
     border-top-left-radius: 0.4rem;
     border-bottom-left-radius: 0.4rem;
+}
+.clearJobSearch:hover,.archiveButton:hover{
+    background-color: var(--altHover);
 }
 .noJobs{
     margin-top:5rem;
