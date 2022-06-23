@@ -1,6 +1,6 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import {CompanyForm, ConfirmModal} from '../../components';
-import {Link,useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './addCompany.css'
 
@@ -14,8 +14,6 @@ function AddCompany() {
         website:'',
         logo:'',
     })
-    const [created,setCreated] = useState('')
-    const token = Auth.getToken();
     const addCompany = () => {
         fetch('/api/company',{
             method:'POST',
@@ -38,7 +36,6 @@ function AddCompany() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(newCompany)
         if (newCompany.name.trim()===''){
             return
         }

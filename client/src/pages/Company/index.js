@@ -26,7 +26,7 @@ function Company() {
         getJobs();
       }, []);
     
-   const getCompany = () => {
+    const getCompany = () => {
         let companyURL = `/api/company/${companyId}`;
         
         fetch(companyURL,{
@@ -39,7 +39,7 @@ function Company() {
               setNewCompany(response)
               setCompany(response)});
       };
-   const getJobs = () => {
+    const getJobs = () => {
         let jobURL = `/api/jobs/${companyId}`;
         
         fetch(jobURL,{
@@ -50,8 +50,7 @@ function Company() {
           .then((res) => res.json())
           .then((response) => setAllJobs(response));
       };
-     const deleteCompany = () => {
-        console.log(companyId)
+    const deleteCompany = () => {
         let companyURL = `/api/company/${companyId}`;
         
         fetch(companyURL,{
@@ -63,12 +62,11 @@ function Company() {
           .then((res) => res.json())
           .then((response) => navigate('/home/'))
       };
-      const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (!newCompany.name){
             return
         }
-        console.log(newCompany)
         fetch(`/api/company/${companyId}`,{
             method:'PUT',
             headers:{
@@ -83,9 +81,9 @@ function Company() {
             setNewCompany(company)
             setEdit(false)
         })
-      };
-  return (
-      <div>
+    };
+    return (
+        <div>
             {edit?
                 <div className='addCompanyContainer'>
                     <CompanyForm setEdit={setEdit} newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Save' />
@@ -95,7 +93,7 @@ function Company() {
                     <h2>{company.name}</h2>
                     <img className="companyLogo" src={company.logo||'/images/default.png'} alt="logo"></img>
                     <p>
-                        {company.address}
+                        <a href={`https://google.com/maps/place/${company?.address?.split(' ').join('+')}`}>{company.address}</a>
                     </p>
                     <p>
                         {company.phone}
@@ -127,8 +125,7 @@ function Company() {
                             <Link to={`/jobs/${companyId}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
                                 <h3 className="jobTitle">{job.title}</h3>
                                 <p>{job.contactInfo}</p>
-                                {console.log(job)}
-                                {job.createdAt?<p>Created at {job.date}</p>:<></>}
+                                {job.createdAt?<p>Created on {job.date}</p>:<></>}
                             </Link>
                     )
                     })}

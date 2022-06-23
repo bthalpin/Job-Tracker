@@ -72,7 +72,6 @@ function LoginModal({showLogin, setShowLogin, user, setUser}) {
     
     const login = (e) => {
         e.preventDefault();
-        console.log('here')
         if (user.email===''||user.password===''){
             return
         }
@@ -95,12 +94,11 @@ function LoginModal({showLogin, setShowLogin, user, setUser}) {
             navigate('/home/')
         })
     }
-    console.log(showLogin)
     return (
         <>
         <div className={`loginModalContainer ${showLogin}`} onClick={handleClose}>
             <div className="loginModalCard">
-                <img className="loginModalImg" src="/logo512.png"></img>
+                <img className="loginModalImg" src="/logo512.png" alt="JobTracker Logo"></img>
                 {loginOrRegister==='login'?
                 <>
                     <form>

@@ -22,10 +22,9 @@ function Nav() {
         if (Auth.loggedIn() && location.pathname==='/'){
             navigate('/home');
         }
-    },[location.pathname])
+    },[location.pathname,navigate])
     
     const close = (e) => {
-        console.log(e.target.className)
         e.target.className==='menu'?setCollapse(false):setCollapse(true)
     }
     return (

@@ -53,16 +53,15 @@ const jobSchema = new Schema({
 
 jobSchema.virtual('date').get(function(){
     const newDate = new Date(this.createdAt);
-    console.log(newDate)
-    let hour = newDate.getHours() ;
-    let timeOfDay;
-    if(hour>12){
-      hour-=12
-      timeOfDay = 'PM'
-    } else {
-      timeOfDay = 'AM'
-    }
-    return `${hour}${timeOfDay} - ${newDate.getMonth() + 1}/${newDate.getDate()}/${newDate.getFullYear()}`
+    // let hour = newDate.getHours() ;
+    // let timeOfDay;
+    // if(hour>12){
+    //   hour-=12
+    //   timeOfDay = 'PM'
+    // } else {
+    //   timeOfDay = 'AM'
+    // }
+    return `${newDate.getMonth() + 1}/${newDate.getDate()}/${newDate.getFullYear()}`
 })
 
 const Job = mongoose.model('Job', jobSchema);

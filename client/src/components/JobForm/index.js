@@ -8,7 +8,6 @@ function JobForm({newJob,setNewJob,handleSubmit,buttonName,setEdit}) {
     return (
         <div className="jobFormContainer">
             <form>
-                {console.log(newJob)}
                 <label htmlFor="Job">Job Title</label>
                 <input type="text" name="Job" placeholder="Job Title" value={newJob.title} onChange={(e)=>setNewJob({...newJob, title:e.target.value})}></input>
                 <label htmlFor="Description">Description</label>

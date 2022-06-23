@@ -22,7 +22,7 @@ function AddJob() {
 
             setNewJob({...newJob,description:`-${jobData.description.join('\n-')}`,link:jobData.URL,title:jobData.title})
         }
-    },[jobData])
+    },[jobData,newJob])
   
     const addJob = () =>{
         fetch(`/api/jobs/${companyId}`,{
@@ -50,7 +50,6 @@ function AddJob() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(newJob,'submit')
         setShow('show')
       };
   return (

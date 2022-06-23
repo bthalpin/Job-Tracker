@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {CompanyForm} from '../../components';
 import Auth from '../../utils/auth';
-import {Link, useParams,useNavigate} from 'react-router-dom';
+import {useParams,useNavigate} from 'react-router-dom';
 
 function EditCompany() {
     const {companyId} = useParams()
@@ -24,11 +24,10 @@ function EditCompany() {
         .then(company=>{
             setNewCompany(company)})
 
-    },[setNewCompany])
+    },[setNewCompany,companyId,token])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(newCompany)
         fetch(`/api/company/${companyId}`,{
             method:'PUT',
             headers:{

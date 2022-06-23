@@ -10,7 +10,6 @@ function SelectedJob() {
     const [show,setShow] = useState('')
     const [job,setJob ] = useState()
     const [jobData,setJobData] = useState({})
-    const [status,setStatus] = useState('created')
     const token = Auth.getToken();
     const [newJob,setNewJob] = useState({
         title:'',
@@ -113,14 +112,13 @@ function SelectedJob() {
         e.preventDefault()
         editJob()
     }
-    console.log(job)
     return (
         <div className={`${job?.status}job jobPage`} >
             <div className={`jobContainer`}>
                 {edit
                 ?
                     <>  
-                        <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} setStatus={setStatus} setEdit={setEdit} buttonName='Save' />
+                        <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} setEdit={setEdit} buttonName='Save' />
 
                         
                     </>

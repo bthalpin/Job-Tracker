@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import {Link,useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './allJobs.css';
 
 function AllJobs() {
-    const navigate = useNavigate()
     const [allJobs,setAllJobs ] = useState([])
     const [jobSearch,setJobSearch] = useState('');
     const [hideArchived,setHideArchived] = useState('archived')
     const token = Auth.getToken();
+    
     useEffect(() => {
         getAllJobs();
-      }, []);
-    
-   const getAllJobs = () => {
-       console.log(token)
+    }, []);
+
+    const getAllJobs = () => {
         let jobURL = `/api/jobs/myjobs`;
         
         fetch(jobURL,{
@@ -24,8 +23,9 @@ function AllJobs() {
         })
           .then((res) => res.json())
           .then((response) => setAllJobs(response));
-      };
-   console.log(allJobs)
+    };
+
+    
   return (
       <div>
             {hideArchived?
@@ -42,8 +42,7 @@ function AllJobs() {
                         <Link to={`/jobs/${job.company}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
                             <h3 className="jobTitle">{job.title}</h3>
                             <p>{job.contactInfo}</p>
-                            {console.log(job)}
-                            {job.createdAt?<p>Created at {job.date}</p>:<></>}
+                            {job.createdAt?<p>Created on {job.date}</p>:<></>}
                         </Link>
                     )
                 })}
