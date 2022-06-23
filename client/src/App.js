@@ -1,6 +1,6 @@
 import React from 'react';
-import {Nav} from './components';
-import {Home,Company,AddCompany,AddJob,SelectedJob,Login,AllJobs} from './pages';
+import {Nav,AddCompany} from './components';
+import {Home,Company,AddJob,SelectedJob,Login,AllJobs} from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -20,10 +20,10 @@ function App() {
             path='/'
             element={<Login />}
             />
-          <Route
+          {/* <Route
             path='/company/'
             element={<AddCompany />}
-            />
+            /> */}
           <Route
             path='/myjobs/'
             element={<AllJobs />}

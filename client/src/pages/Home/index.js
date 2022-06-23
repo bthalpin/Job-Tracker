@@ -7,7 +7,7 @@ import './home.css';
 function Home() {
     const token = Auth.getToken();
     const [show,setShow] = useState('')
-    const [edit,setEdit] = useState(false)
+    const [add,setAdd] = useState(false)
     const [search,setSearch] = useState('');
     // const [order,setOrder] = useState('Ascending');
     const [newCompany,setNewCompany] = useState({
@@ -52,7 +52,7 @@ function Home() {
                 website:'',
                 logo:'',
             })
-            setEdit(false)
+            setAdd(false)
         })
     }
     const handleSubmit = (e) => {
@@ -72,7 +72,7 @@ function Home() {
                 <p className="welcomeMessage"><span className="welcome">Welcome to JobTracker!</span> To begin, start by adding a company that you are applying to.  Once the company is created you can then add individual jobs and mark the jobs once you apply, get an offer, or are rejected.</p>
             </div>}
 
-            {edit?
+            {add?
                 <div className="addCompanyContainer" >
                     <CompanyForm newCompany={newCompany} setNewCompany={setNewCompany} handleSubmit={handleSubmit} buttonName='Add' />
            
@@ -80,7 +80,7 @@ function Home() {
                 </div>
             :
                 <div className="addContainer">
-                    <button className="addCompany" onClick={()=>setEdit(true)}>Add Company</button>
+                    <button className="addCompany" onClick={()=>setAdd(true)}>Add Company</button>
                 </div>
             }
             <div className="homeContainer" >
@@ -89,10 +89,14 @@ function Home() {
                         <div className="homeCard" key={index}>
                         
                             <Link to={`/company/${company._id}`} className="homeLink" key={index}>
-                                <div>
-                                    <h2>{company.name}</h2>
-                                    <img src={company.logo||'/images/default.png'} alt="Company logo"></img>
-                                    <p>{company.jobs.length} {company.jobs.length===1?'Job':'Jobs'} - Applied {company.jobs.filter(job=>job.status!=='created').length}</p>
+                                <div className="cardContent">
+                                    <div className="imageContainer">
+                                        <img src={company.logo||'/images/default.png'} alt="Company logo"></img>
+                                    </div>
+                                    <div>
+                                        <h2>{company.name}</h2>
+                                        <p>{company.jobs.length} {company.jobs.length===1?'Job':'Jobs'} - Applied {company.jobs.filter(job=>job.status!=='created').length}</p>
+                                    </div>
 
                                 </div>
                             </Link>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './companyForm.css';
 
-function CompanyForm({newCompany,setNewCompany,handleSubmit,buttonName,setEdit}) {
+function CompanyForm({newCompany,setNewCompany,handleSubmit,buttonName,setAdd}) {
 
     // Adds https to the URL
     const checkURL = (value) => {
@@ -27,7 +27,7 @@ function CompanyForm({newCompany,setNewCompany,handleSubmit,buttonName,setEdit})
                 <label htmlFor="logo">Company Logo</label>
                 <input type="text" name="logo" placeholder="Logo" value={newCompany.logo} onChange={(e)=>setNewCompany({...newCompany, logo:e.target.value})}></input>
                 <div className="companyFormBtn">
-                    <button className='cancelButton' onClick={()=>setEdit(false)}>Cancel</button>
+                    <button className='cancelButton' onClick={()=>setAdd(false)}>Cancel</button>
                     <button className="addButton" onClick={handleSubmit}>{buttonName}</button>
 
                 </div>

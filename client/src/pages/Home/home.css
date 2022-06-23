@@ -11,12 +11,17 @@
     padding:0.3rem;
 }
 .clearSearch{
+    cursor: pointer;
     padding:0.3rem;
     color:white;
     border:2px solid rgb(95, 95, 95);
     border-top-right-radius: 0.4rem;
     border-bottom-right-radius: 0.4rem;
     background-color: var(--altButton);
+    transition: all 0.2s ease-in-out;
+}
+.clearSearch:hover{
+    background-color: var(--altHover);
 }
 .addContainer{
     margin:2rem;
@@ -29,6 +34,10 @@
     border-radius:0.3rem;
     color:white;
     font-size: 1.2rem;
+    transition: all 0.2s ease-in-out;
+}
+.addCompany:hover{
+    background-color: var(--btnHover);
 }
 .homeContainer{
     display:flex;
@@ -36,29 +45,45 @@
     justify-content: center;
 }
 .homeCard{
-    margin:2rem;
+    margin:0.2rem;
     max-width: 98vw;
+    width:500px;
     border-radius: 0.2rem;
     border:1px solid var(--border);
     box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
+    transition: all 0.2s ease-in-out;
+}
+.homeCard:hover{
+    background-color: var(--highlight);
 }
 
 .homeLink{
     width:100%;
     height:100%;
 }
-.homeLink div{
+.cardContent{
+    display:flex;
+    align-items: center;
     padding:1rem;
     width:100%;
     height:100%;
 }
+.imageContainer{
+    width:50%;
+}
 .homeCard img {
     margin:1rem;
-    height:5rem;
-    max-width: 80vw;
+    max-height:300px;
+    max-width: 80%;
 }
 @media screen and (max-width:500px) {
     .welcome{
         font-size: 1.4rem;
+    }
+    .cardContent{
+        display: block;
+    }
+    .imageContainer{
+        width:100%;
     }
 }

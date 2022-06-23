@@ -39,7 +39,7 @@ function AllJobs() {
                 
                 {allJobs.filter(job=>job.title.toUpperCase().includes(jobSearch.toUpperCase())&&job.status!==hideArchived).map((job,index)=>{
                     return (
-                        <Link to={`/jobs/${job.company}/${job._id}`} className={`companyCard ${job.status}`} key={index}>
+                        <Link to={`/jobs/${job.company}/${job._id}`} className={`allJobCard ${job.status}`} key={index}>
                             <h3 className="jobTitle">{job.title}</h3>
                             <p>{job.contactInfo}</p>
                             {job.createdAt?<p>Created on {job.date}</p>:<></>}

@@ -15,7 +15,14 @@
     background-color: var(--button);
 
 }
+.addButton:hover{
+    background-color: var(--btnHover);
+}
 .cancelButton{
     background-color: var(--altButton);
+
+}
+.cancelButton:hover{
+    background-color: var(--altHover);
 
 }
