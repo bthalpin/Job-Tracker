@@ -5,6 +5,7 @@ const { signToken } = require('../utils/auths');
 module.exports = {
     // Get a user
   async login(req, res) {
+    console.log(req,'login')
     try {
 
         const user = await User.findOne({email: req.body.email })

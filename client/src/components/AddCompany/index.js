@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {CompanyForm, ConfirmModal} from '../../components';
+import {CompanyForm, ConfirmModal} from '..';
 import {useNavigate} from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './addCompany.css'

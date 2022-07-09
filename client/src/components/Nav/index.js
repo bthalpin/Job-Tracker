@@ -13,6 +13,9 @@ function Nav() {
         navigate('/')
     }
     useEffect(()=>{
+        if (location.pathname==='/privacy'){
+            return
+        }
         if(Auth.loggedIn()){
             setIsLoggedIn(true)
         } else {
