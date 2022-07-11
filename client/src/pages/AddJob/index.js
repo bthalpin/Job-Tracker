@@ -22,7 +22,7 @@ function AddJob() {
 
             setNewJob({...newJob,description:`-${jobData.description.join('\n-')}`,link:jobData.URL,title:jobData.title})
         }
-    },[jobData,newJob])
+    },[jobData])
   
     const addJob = () =>{
         fetch(`/api/jobs/${companyId}`,{
@@ -50,10 +50,14 @@ function AddJob() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!newJob.title){
+            return
+        }
         setShow('show')
       };
   return (
     <div className="AddJobContainer" >
+        {console.log(newJob)}
         <JobForm newJob={newJob} setNewJob={setNewJob} handleSubmit={handleSubmit} buttonName='Add' />
         <JobPostData setJobData={setJobData}/>
        
