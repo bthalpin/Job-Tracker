@@ -104,9 +104,9 @@ function LoginModal({showLogin, setShowLogin, user, setUser}) {
                     <form>
                         <div className="inputContainer">
                             <label htmlFor="email">Email:</label>
-                            <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
+                            <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required autoComplete='email'></input>
                             <label htmlFor="password">Password:</label>
-                            <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
+                            <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required autoComplete='current-password'></input>
                         </div>
                         <button onClick={login} type="submit" className="loginModalBtn">Login</button>
                     </form>
@@ -118,9 +118,9 @@ function LoginModal({showLogin, setShowLogin, user, setUser}) {
                     <form>
                         <div className="inputContainer">
                             <label htmlFor="name">Name:</label>
-                            <input name="name" type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Enter Name" required></input>
+                            <input name="name" type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Enter Name" required autoComplete='name'></input>
                             <label htmlFor="email">Email:</label>
-                            <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required></input>
+                            <input name="email" type="email" value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} placeholder="Enter Email" required autoComplete='email'></input>
                             <label htmlFor="password">Password:</label>
                             <input name="password" type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} placeholder="Enter Password" required></input>
                         
