@@ -1,5 +1,5 @@
 .loginHeader{
-    margin:2rem auto;
+    margin:2rem auto 0;
     width:43rem;
     padding:1rem;
 }
@@ -9,13 +9,22 @@
 .welcome{
     font-size: 4rem;
 }
+.loginCard{
+    /* width:60%; */
+    margin:auto;
+    padding:1rem;
+    box-shadow: 0.5rem 0.5rem 1rem var(--shadow);
+    /* background-color: black; */
+
+}
 .welcomeText{
     font-size:  1.2rem;
-    width:38rem;
-    margin:auto;
+    margin-top:0.5rem;
+    /* width:38rem; */
+    /* margin:auto; */
 }
 .title{
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     
 }
 .loginBtn{
@@ -35,7 +44,6 @@
     width:30rem;
     margin:2rem auto;
 }
-
 .loginButton{
     padding:0.5rem;
     background-color: var(--button);
@@ -50,6 +58,13 @@
     cursor: pointer;
     width:fit-content;
     margin:auto;
+}
+.androidLink{
+    margin-top:2rem;
+}
+.androidImg{
+    width:60%;
+    max-width: 13rem;
 }
 @media screen and (max-width:670px) {
     .loginHeader,.welcomeText{

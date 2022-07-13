@@ -43,7 +43,7 @@ function Nav() {
                             <div className="navButtons">
                                 {window.location.pathname!=='/'&&window.location.pathname!=='/home/'?
                                     <div className="back navLink" onClick={()=>navigate(-1)}><p>Back</p></div>
-                                :<></>
+                                    :<></>
                                 }
                                 <div className={`toggle ${collapse?' ':'expand'}`} onClick={()=>setCollapse(!collapse)}>
                                     <img className="menu" src="/images/menu.png" alt="menu"></img>
