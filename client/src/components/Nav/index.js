@@ -28,7 +28,7 @@ function Nav() {
     },[location.pathname,navigate])
     
     const close = (e) => {
-        e.target.className==='menu'?setCollapse(false):setCollapse(true)
+        e.target.className==='menu'&&collapse?setCollapse(false):setCollapse(true)
     }
     return (
         <div className={"navContainer"+(window.location.pathname==='/'?' hide':'')}>
@@ -49,7 +49,7 @@ function Nav() {
                                     <img className="menu" src="/images/menu.png" alt="menu"></img>
                                     <div className={`home navLink  ${collapse?'collapse':''}`}><Link to="/home/">Home</Link></div>
                                     <div className={`allJobLink navLink  ${collapse?'collapse':''}`}><Link to='/myjobs'>All Jobs</Link></div>
-                                    <div className={`allJobLink navLink  ${collapse?'collapse':''}`}><Link to='/profile'>Profile</Link></div>
+                                    <div className={`navLink  ${collapse?'collapse':''}`}><Link to='/profile'>Profile</Link></div>
                                     <div className={`logout navLink ${collapse?'collapse':''}`} onClick={logout}>Logout</div>
                                 </div>
                             </div>
