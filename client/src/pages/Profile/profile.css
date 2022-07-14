@@ -1,0 +1,26 @@
+.profileInput label{
+    font-size: 1.1rem;
+}
+.profileInput input {
+    width:100%;
+    padding:0.5rem;
+    font-size: 1.1rem;
+    border-radius: 0.2rem;
+    margin-bottom:0.5rem;
+}
+.profileInput{
+    margin:1rem auto;
+    padding:2rem;
+    text-align: start;
+    max-width: 600px;
+}
+.loginModalBtn{
+    margin:0.5rem 0.2rem;
+    padding:0.7rem 1rem;
+    font-size: 1.2rem;
+    background-color: var(--button);
+    border:1px solid var(--border);
+    cursor: pointer;
+    border-radius:0.3rem;
+    color:white;
+}

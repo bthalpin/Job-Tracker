@@ -37,8 +37,8 @@ module.exports = {
         }
       },
     // can add userName to signToken function and payload if needed
-    signToken: function ({ email, _id }) {
-        const payload = { email, _id };
+    signToken: function ({ name, email, _id }) {
+        const payload = { name, email, _id };
         console.log(payload,secret)
         return jwt.sign({ data: payload}, secret, { expiresIn: expiration });
     },

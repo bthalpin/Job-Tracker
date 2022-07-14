@@ -49,6 +49,7 @@ function Nav() {
                                     <img className="menu" src="/images/menu.png" alt="menu"></img>
                                     <div className={`home navLink  ${collapse?'collapse':''}`}><Link to="/home/">Home</Link></div>
                                     <div className={`allJobLink navLink  ${collapse?'collapse':''}`}><Link to='/myjobs'>All Jobs</Link></div>
+                                    <div className={`allJobLink navLink  ${collapse?'collapse':''}`}><Link to='/profile'>Profile</Link></div>
                                     <div className={`logout navLink ${collapse?'collapse':''}`} onClick={logout}>Logout</div>
                                 </div>
                             </div>

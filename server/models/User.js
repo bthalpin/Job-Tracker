@@ -26,12 +26,28 @@ const userSchema = new Schema({
 
 
 userSchema.pre('save', async function(next) {
+    // console.log(this.isModified('password',this))
     if (this.isnew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
 
     next();
+});
+
+userSchema.pre('findOneAndUpdate', async function(next) {
+    try {
+    // console.log(this.isModified('password','this',this))
+        if(!this._update.$set.password){
+            next()
+        }
+        const saltRounds = 10;
+
+        this._update.$set.password = await bcrypt.hash(this._update.$set.password, saltRounds);
+        next()
+    } catch (err) {
+        return next(err)
+    }
 });
 
 userSchema.methods.isCorrectPassword = async function(password) {

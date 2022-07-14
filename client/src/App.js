@@ -1,6 +1,6 @@
 import React from 'react';
 import {Nav} from './components';
-import {Home,Company,AddJob,SelectedJob,Login,AllJobs,Privacy} from './pages';
+import {Home,Company,AddJob,SelectedJob,Login,AllJobs,Profile,Privacy} from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -39,6 +39,10 @@ function App() {
           <Route
             path='/jobs/:companyId/:jobId'
             element={<SelectedJob />}
+            />
+          <Route
+            path='/profile'
+            element={<Profile />}
             />
           <Route
             path='/privacy'
