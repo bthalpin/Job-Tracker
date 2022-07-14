@@ -31,7 +31,11 @@
     margin:1rem;
     cursor: pointer;
     border-radius: 0.2rem;
+    border:1px solid var(--border);
 
+}
+.jobButton:hover {
+    background-color: var(--btnHover);
 }
 .deleteJob{
     background-color: var(--warning);

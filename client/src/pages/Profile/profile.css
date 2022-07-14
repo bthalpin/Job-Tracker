@@ -24,3 +24,20 @@
     border-radius:0.3rem;
     color:white;
 }
+.deleteBtn{
+    margin-top:4rem;
+    background-color: var(--warning);
+}
+.updateBtn{
+    background-color: var(--button);
+}
+.deleteBtn, .updateBtn {
+    cursor: pointer;
+    padding:0.5rem;
+    color:white;
+    border-radius: 0.2rem;
+    border:1px solid var(--border);
+}
+.deleteBtn:hover,.updateBtn:hover{
+    background-color: var(--btnHover);
+}

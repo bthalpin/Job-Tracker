@@ -84,10 +84,10 @@ function Profile() {
                             <input name="password" type="password" value={user.newPassword} onChange={(e)=>setUser({...user,newPassword:e.target.value})} placeholder="Enter Password" required></input>
                         
                         </div>
-                        <button type="submit" className="" onClick={updateUser}>Update</button>
+                        <button type="submit" className="updateBtn" onClick={updateUser}>Update</button>
                         
                     </form>
-                    <button onClick={()=>setShow('show')}>Delete Your Account</button>
+                    <button className="deleteBtn" onClick={()=>setShow('show')}>Delete Your Account</button>
             <ConfirmModal show={show} setShow={setShow} callBack={deleteUser} action="delete" name={currentUser.name} type="user"/>
         </div>
     );

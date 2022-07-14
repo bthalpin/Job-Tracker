@@ -26,39 +26,30 @@
     justify-content: center;
 }
 .companyEdit{
-    padding:0.5rem;
-    color:white;
     background-color: var(--button);
-    cursor: pointer;
-    margin:1rem 1rem 0;
-    transition: var(--fade);
 }
 .delete{
+    background-color: var(--warning);
+    
+}
+.companyEdit,.delete,.addJobBtn{
+    margin:1rem 1rem 0;
+    cursor: pointer;
     padding:0.5rem;
     color:white;
-    cursor: pointer;
-    background-color: var(--warning);
-    margin:1rem 1rem 0;
+    border-radius: 0.2rem;
+    border:1px solid var(--border);
     transition: var(--fade);
-}
-.companyEdit:hover{
-    background-color: var(--btnHover);
-}
-.delete:hover{
-    background-color: var(--warningHvr);
 }
 .addJobContainer{
     margin:1rem;
 }
 .addJobBtn{
     background-color: var(--button);
-    color:white;
-    padding:0.5rem;
-    border:1px solid var(--border);
-    transition: var(--fade);
     
 }
-.addJobBtn:hover{
+
+.companyEdit:hover,.delete:hover,.addJobBtn:hover{
     background-color: var(--btnHover);
 }
 .jobSearch{
@@ -69,7 +60,7 @@
     cursor: pointer;
     padding:0.3rem;
     color:white;
-    border:2px solid rgb(95, 95, 95);
+    border:2px solid var(--border);
     background-color: var(--altButton);
     transition: var(--fade);
 }

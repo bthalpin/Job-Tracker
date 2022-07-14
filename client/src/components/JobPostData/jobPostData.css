@@ -12,6 +12,7 @@
     margin:0.3rem 0;
 }
 .jobScraper button{
+    border:2px solid var(--border);
     padding:0.2rem;
     color:white;
     cursor: pointer;

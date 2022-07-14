@@ -60,6 +60,7 @@
     }
     .menu,.home{
     display:block;   
+    cursor: pointer;
     }
     /* .home{
         width:100%;
